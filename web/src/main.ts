@@ -88,23 +88,66 @@ async function main(): Promise<void> {
   renderDataBrowser(dataBrowserEl, data);
 
   aboutEl.innerHTML = `
-    <div class="bg-white rounded-2xl shadow p-6 space-y-4">
-      <h2 class="text-lg font-bold text-gray-700">資料來源</h2>
-      <p class="text-sm text-gray-500">資料產生時間：${data.metadata.generated_at.slice(0, 10)}</p>
-      <div class="space-y-3">
-        ${data.metadata.datasets
-          .map(
-            (dataset) => `
-              <div class="border border-gray-100 rounded-xl p-4">
-                <div class="font-medium text-gray-800 text-sm">${dataset.source_name}</div>
-                <div class="text-xs text-gray-500 mt-1">版本 ${dataset.version}・生效 ${dataset.effective_date}・最後整理 ${dataset.last_checked_at}</div>
-                <a class="text-xs text-blue-600 hover:underline mt-2 inline-block" href="${dataset.source_url}" target="_blank" rel="noreferrer">${dataset.source_url}</a>
-              </div>
-            `
-          )
-          .join("")}
+    <div class="space-y-6">
+
+      <!-- 資料來源 -->
+      <div class="bg-white rounded-2xl shadow p-6 space-y-4">
+        <h2 class="text-lg font-bold text-gray-700">資料來源</h2>
+        <p class="text-sm text-gray-500">資料產生時間：${data.metadata.generated_at.slice(0, 10)}</p>
+        <div class="space-y-3">
+          ${data.metadata.datasets
+            .map(
+              (dataset) => `
+                <div class="border border-gray-100 rounded-xl p-4 space-y-1">
+                  <div class="font-medium text-gray-800 text-sm">${dataset.source_name}</div>
+                  ${dataset.source_document ? `<div class="text-xs text-gray-500">${dataset.source_document}</div>` : ""}
+                  <div class="text-xs text-gray-400">版本 ${dataset.version}・生效 ${dataset.effective_date}・最後整理 ${dataset.last_checked_at}</div>
+                  <a class="text-xs text-blue-600 hover:underline inline-block break-all" href="${dataset.source_url}" target="_blank" rel="noreferrer">${dataset.source_url}</a>
+                </div>
+              `
+            )
+            .join("")}
+        </div>
       </div>
-      <p class="text-xs text-gray-400">資料僅供試算參考，不代表任何人實際薪資，以官方公告為準</p>
+
+      <!-- 相關法規 -->
+      <div class="bg-white rounded-2xl shadow p-6 space-y-4">
+        <h2 class="text-lg font-bold text-gray-700">相關法規依據</h2>
+        <div class="space-y-3 text-sm">
+          <div class="border border-gray-100 rounded-xl p-4 space-y-1">
+            <div class="font-semibold text-gray-800">公務人員俸給法</div>
+            <div class="text-xs text-gray-500">規範公務員本俸、年功俸、各項加給之給與標準及支給方式。本俸依俸點換算月俸額。</div>
+            <a class="text-xs text-blue-600 hover:underline inline-block" href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030007" target="_blank" rel="noreferrer">全國法規資料庫 S0030007</a>
+          </div>
+          <div class="border border-gray-100 rounded-xl p-4 space-y-1">
+            <div class="font-semibold text-gray-800">公務人員加給給與辦法</div>
+            <div class="text-xs text-gray-500">規範專業加給、主管職務加給、地域加給之適用對象、職等範圍及月支數額。</div>
+            <a class="text-xs text-blue-600 hover:underline inline-block" href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030008" target="_blank" rel="noreferrer">全國法規資料庫 S0030008</a>
+          </div>
+          <div class="border border-gray-100 rounded-xl p-4 space-y-1">
+            <div class="font-semibold text-gray-800">公務人員考績法（第 6 條）</div>
+            <div class="text-xs text-gray-500">考績甲等：晉本俸一級，並給與一個月俸給總額之一次獎金；乙等：晉本俸一級；丙等：留原俸級；丁等：免職。年功俸最高級者，考績甲等改給一個半月俸給總額之一次獎金。</div>
+            <a class="text-xs text-blue-600 hover:underline inline-block" href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030005" target="_blank" rel="noreferrer">全國法規資料庫 S0030005</a>
+          </div>
+          <div class="border border-gray-100 rounded-xl p-4 space-y-1">
+            <div class="font-semibold text-gray-800">公務人員退休資遣撫卹法</div>
+            <div class="text-xs text-gray-500">規範退撫舊制（84 年 7 月前到職）及新制（84 年 7 月後到職）之費率、自付比例及基數計算方式。</div>
+            <a class="text-xs text-blue-600 hover:underline inline-block" href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030027" target="_blank" rel="noreferrer">全國法規資料庫 S0030027</a>
+          </div>
+          <div class="border border-gray-100 rounded-xl p-4 space-y-1">
+            <div class="font-semibold text-gray-800">公務人員保險法</div>
+            <div class="text-xs text-gray-500">規範公保費率（目前為 7.22%）、政府補助比例（65%）、被保險人自付比例（35%）及保險給付項目。</div>
+            <a class="text-xs text-blue-600 hover:underline inline-block" href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0050013" target="_blank" rel="noreferrer">全國法規資料庫 S0050013</a>
+          </div>
+          <div class="border border-gray-100 rounded-xl p-4 space-y-1">
+            <div class="font-semibold text-gray-800">全民健康保險法（第 18 條）</div>
+            <div class="text-xs text-gray-500">規範健保費率（115 年為 5.17%）、受僱者自付比例（30%）及眷屬保費計算方式。投保金額依中央主管機關公告之分級表認定。</div>
+            <a class="text-xs text-blue-600 hover:underline inline-block" href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0060001" target="_blank" rel="noreferrer">全國法規資料庫 L0060001</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-xs text-gray-400 text-center">資料僅供試算參考，不代表任何人實際薪資，以官方公告及法規為準。</p>
     </div>
   `;
 }

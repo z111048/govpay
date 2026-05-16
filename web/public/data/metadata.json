@@ -1,12 +1,13 @@
 {
-  "generated_at": "2026-05-16T15:26:41+00:00",
+  "generated_at": "2026-05-16T16:48:13+00:00",
   "datasets": [
     {
       "dataset": "salary_points",
       "version": "114.01",
       "effective_date": "2025-01-01",
       "source_name": "銓敘部公務人員俸額表",
-      "source_url": "https://www.mocs.gov.tw/",
+      "source_document": "公務人員俸給法施行細則附表－俸額表（第 114 年）",
+      "source_url": "https://www.mocs.gov.tw/Pages/Detail.aspx?nodeid=114&pid=7903",
       "last_checked_at": "2026-05-16"
     },
     {
@@ -14,7 +15,8 @@
       "version": "114.01",
       "effective_date": "2025-01-01",
       "source_name": "銓敘部公務人員職等俸級表",
-      "source_url": "https://www.mocs.gov.tw/",
+      "source_document": "公務人員俸給法施行細則附表－職等俸級表（第 114 年）",
+      "source_url": "https://www.mocs.gov.tw/Pages/Detail.aspx?nodeid=114&pid=7903",
       "last_checked_at": "2026-05-16"
     },
     {
@@ -22,7 +24,8 @@
       "version": "114.01",
       "effective_date": "2025-01-01",
       "source_name": "銓敘部公務人員專業加給表",
-      "source_url": "https://www.mocs.gov.tw/",
+      "source_document": "公務人員加給給與辦法附表－專業加給表（第 114 年）",
+      "source_url": "https://www.mocs.gov.tw/Pages/Detail.aspx?nodeid=114&pid=7905",
       "last_checked_at": "2026-05-16"
     },
     {
@@ -30,7 +33,8 @@
       "version": "114.01",
       "effective_date": "2025-01-01",
       "source_name": "銓敘部主管職務加給表",
-      "source_url": "https://www.mocs.gov.tw/",
+      "source_document": "公務人員加給給與辦法附表－主管職務加給表（第 114 年）",
+      "source_url": "https://www.mocs.gov.tw/Pages/Detail.aspx?nodeid=114&pid=7905",
       "last_checked_at": "2026-05-16"
     },
     {
@@ -38,7 +42,8 @@
       "version": "115.01",
       "effective_date": "2026-01-01",
       "source_name": "衛生福利部中央健康保險署投保金額分級表",
-      "source_url": "https://www.nhi.gov.tw/",
+      "source_document": "全民健康保險投保金額分級表（第 115 年，自 2026-01-01 起）",
+      "source_url": "https://www.nhi.gov.tw/ch/np-2506-1.html",
       "last_checked_at": "2026-05-16"
     },
     {
@@ -46,7 +51,8 @@
       "version": "114.01",
       "effective_date": "2025-01-01",
       "source_name": "公務人員退休撫卹基金管理委員會",
-      "source_url": "https://www.fund.gov.tw/",
+      "source_document": "公務人員退休撫卹基金費率及撥繳規定（第 114 年）",
+      "source_url": "https://www.fund.gov.tw/cp.aspx?n=23",
       "last_checked_at": "2026-05-16"
     },
     {
@@ -54,7 +60,8 @@
       "version": "114.01",
       "effective_date": "2025-01-01",
       "source_name": "臺灣銀行公教保險部公保費率表",
-      "source_url": "https://www.bankoftaiwan.com.tw/",
+      "source_document": "公務人員保險費率及自付比例（第 114 年）",
+      "source_url": "https://www.bot.com.tw/tw/Pages/BotServiceDetail.aspx?nodeID=286",
       "last_checked_at": "2026-05-16"
     }
   ]

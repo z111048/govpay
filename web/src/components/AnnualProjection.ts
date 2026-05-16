@@ -76,8 +76,8 @@ function calcYears(
 
     records.push({ year: y, point, monthlyNet, monthlyTotal, performanceBonus, yearEndBonus, annualTotal, cumulative });
 
-    // 下一年的薪資調整
-    if (advanceLevel && grade === "A") {
+    // 下一年的薪資調整：甲等、乙等均晉俸一級（公務人員考績法第 6 條）；丙等留原俸級
+    if (advanceLevel && grade !== "C") {
       point = advanceSalaryPoint(data, scenario.rank, point);
     }
     raiseFactor *= 1 + annualRaiseRate / 100;
@@ -181,7 +181,7 @@ export function renderAnnualProjection(
           </div>
           <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
             <input id="proj-advance" type="checkbox" class="w-4 h-4 rounded accent-blue-500" ${advanceLevel?'checked':''}>
-            <span>甲等考績每年晉俸一級（依職等俸級表自動計算）</span>
+            <span>甲、乙等考績每年晉俸一級（依考績法第 6 條，丙等留原俸級）</span>
           </label>
 
           <!-- 預測表格 -->

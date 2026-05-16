@@ -27,13 +27,22 @@ PROFESSIONAL_ALLOWANCE_TABLE_IDS = [
     "professional_allowance_table_8",
 ]
 SOURCE_URLS = {
-    "salary_points": "https://www.mocs.gov.tw/",
-    "professional_allowances": "https://www.mocs.gov.tw/",
-    "health_insurance": "https://www.nhi.gov.tw/",
-    "pension": "https://www.fund.gov.tw/",
-    "civil_service_insurance": "https://www.bankoftaiwan.com.tw/",
-    "salary_grades": "https://www.mocs.gov.tw/",
-    "supervisory_allowances": "https://www.mocs.gov.tw/",
+    "salary_points": "https://www.mocs.gov.tw/Pages/Detail.aspx?nodeid=114&pid=7903",
+    "salary_grades": "https://www.mocs.gov.tw/Pages/Detail.aspx?nodeid=114&pid=7903",
+    "professional_allowances": "https://www.mocs.gov.tw/Pages/Detail.aspx?nodeid=114&pid=7905",
+    "supervisory_allowances": "https://www.mocs.gov.tw/Pages/Detail.aspx?nodeid=114&pid=7905",
+    "health_insurance": "https://www.nhi.gov.tw/ch/np-2506-1.html",
+    "pension": "https://www.fund.gov.tw/cp.aspx?n=23",
+    "civil_service_insurance": "https://www.bot.com.tw/tw/Pages/BotServiceDetail.aspx?nodeID=286",
+}
+SOURCE_DOCUMENTS = {
+    "salary_points": "公務人員俸給法施行細則附表－俸額表（第 114 年）",
+    "salary_grades": "公務人員俸給法施行細則附表－職等俸級表（第 114 年）",
+    "professional_allowances": "公務人員加給給與辦法附表－專業加給表（第 114 年）",
+    "supervisory_allowances": "公務人員加給給與辦法附表－主管職務加給表（第 114 年）",
+    "health_insurance": "全民健康保險投保金額分級表（第 115 年，自 2026-01-01 起）",
+    "pension": "公務人員退休撫卹基金費率及撥繳規定（第 114 年）",
+    "civil_service_insurance": "公務人員保險費率及自付比例（第 114 年）",
 }
 
 
@@ -51,6 +60,7 @@ def export_salary_points(year: int = 114) -> dict:  # type: ignore[type-arg]
         "effective_date": table.effective_date,
         "source_name": "銓敘部公務人員俸額表",
         "source_url": SOURCE_URLS["salary_points"],
+        "source_document": SOURCE_DOCUMENTS["salary_points"],
         "last_checked_at": TODAY,
         "generated_at": NOW,
         "year": table.year,
@@ -68,6 +78,7 @@ def export_salary_grades(year: int = 114) -> dict:  # type: ignore[type-arg]
         "effective_date": table.effective_date,
         "source_name": "銓敘部公務人員職等俸級表",
         "source_url": SOURCE_URLS["salary_grades"],
+        "source_document": SOURCE_DOCUMENTS["salary_grades"],
         "last_checked_at": TODAY,
         "generated_at": NOW,
         "year": table.year,
@@ -94,6 +105,7 @@ def export_professional_allowances() -> dict:  # type: ignore[type-arg]
         "effective_date": "2025-01-01",
         "source_name": "銓敘部公務人員專業加給表",
         "source_url": SOURCE_URLS["professional_allowances"],
+        "source_document": SOURCE_DOCUMENTS["professional_allowances"],
         "last_checked_at": TODAY,
         "generated_at": NOW,
         "tables": [
@@ -124,6 +136,7 @@ def export_supervisory_allowances() -> dict:  # type: ignore[type-arg]
         "effective_date": table.effective_date,
         "source_name": "銓敘部主管職務加給表",
         "source_url": SOURCE_URLS["supervisory_allowances"],
+        "source_document": SOURCE_DOCUMENTS["supervisory_allowances"],
         "last_checked_at": TODAY,
         "generated_at": NOW,
         "items": [
@@ -150,6 +163,7 @@ def export_health_insurance(year: int = 115) -> dict:  # type: ignore[type-arg]
         "effective_date": table.effective_date,
         "source_name": "衛生福利部中央健康保險署投保金額分級表",
         "source_url": SOURCE_URLS["health_insurance"],
+        "source_document": SOURCE_DOCUMENTS["health_insurance"],
         "last_checked_at": TODAY,
         "generated_at": NOW,
         "year": table.year,
@@ -183,6 +197,7 @@ def export_pension(system: str = "old") -> dict:  # type: ignore[type-arg]
         "effective_date": table.effective_date,
         "source_name": "公務人員退休撫卹基金管理委員會",
         "source_url": SOURCE_URLS["pension"],
+        "source_document": SOURCE_DOCUMENTS["pension"],
         "last_checked_at": TODAY,
         "generated_at": NOW,
         "system": table.system,
@@ -203,6 +218,7 @@ def export_civil_service_insurance() -> dict:  # type: ignore[type-arg]
         "effective_date": table.effective_date,
         "source_name": "臺灣銀行公教保險部公保費率表",
         "source_url": SOURCE_URLS["civil_service_insurance"],
+        "source_document": SOURCE_DOCUMENTS["civil_service_insurance"],
         "last_checked_at": TODAY,
         "generated_at": NOW,
         "items": [
@@ -228,6 +244,7 @@ def export_metadata(datasets: list[dict]) -> dict:  # type: ignore[type-arg]
                 "version": d.get("version"),
                 "effective_date": d.get("effective_date"),
                 "source_name": d.get("source_name"),
+                "source_document": d.get("source_document", ""),
                 "source_url": d.get("source_url", ""),
                 "last_checked_at": d.get("last_checked_at"),
             }

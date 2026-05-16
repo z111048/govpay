@@ -114,6 +114,7 @@ export interface MetadataDataset {
   version: string;
   effective_date: string;
   source_name: string;
+  source_document: string;
   source_url: string;
   last_checked_at: string;
 }
