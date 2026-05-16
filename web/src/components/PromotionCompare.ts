@@ -5,6 +5,7 @@ import { comparePromotion } from "../salaryCalculator";
 import { renderSalaryForm } from "./SalaryForm";
 import { SCENARIOS } from "../scenarios";
 import { toPng } from "html-to-image";
+import { icon } from "../icons";
 
 function fmt(n: number): string {
   return n.toLocaleString("zh-TW");
@@ -27,14 +28,16 @@ export function renderPromotionCompare(
 ): void {
   let beforeScenario: SalaryScenario = { ...initialBefore };
   let afterScenario: SalaryScenario = { ...initialAfter };
+
   container.innerHTML = `
-    <div class="space-y-6">
+    <div style="display:flex;flex-direction:column;gap:1.25rem;">
 
       <!-- 範例情境選擇 -->
-      <div class="bg-white rounded-2xl shadow p-4">
-        <label class="block">
-          <span class="text-sm text-gray-600 font-medium">範例情境</span>
-          <select id="scenario-select" class="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+      <div class="card">
+        <div class="section-heading">${icon("list-bullet")} 範例情境</div>
+        <label>
+          <span class="field-label">選擇情境</span>
+          <select id="scenario-select" style="border:1.5px solid var(--c-border);border-radius:8px;padding:7px 11px;font-size:13px;color:var(--c-text);background:var(--c-surface);font-family:inherit;width:100%;">
             ${SCENARIOS.map((s, i) => `<option value="${i}">${s.label}</option>`).join("")}
             <option value="-1">自訂（手動填寫）</option>
           </select>
@@ -42,13 +45,13 @@ export function renderPromotionCompare(
       </div>
 
       <!-- 升等前後表單 -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;" class="compare-forms-grid">
         <div>
-          <div class="mb-2 text-sm font-semibold text-gray-500 uppercase tracking-wide">升等前</div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--c-text-3);margin-bottom:8px;padding-left:2px;">升等前</div>
           <div id="before-form"></div>
         </div>
         <div>
-          <div class="mb-2 text-sm font-semibold text-gray-500 uppercase tracking-wide">升等後</div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--c-primary);margin-bottom:8px;padding-left:2px;">升等後</div>
           <div id="after-form"></div>
         </div>
       </div>
@@ -65,50 +68,63 @@ export function renderPromotionCompare(
     const cmp = comparePromotion(data, beforeScenario, afterScenario);
     const resultEl = container.querySelector("#compare-result") as HTMLElement;
     const sign = cmp.monthlyDiff >= 0 ? "+" : "";
+    const diffColor = cmp.monthlyDiff >= 0 ? "var(--c-success)" : "var(--c-error)";
+    const diffBg = cmp.monthlyDiff >= 0 ? "var(--c-success-bg)" : "var(--c-error-bg)";
+
     resultEl.innerHTML = `
-      <div class="bg-white rounded-2xl shadow p-6">
-        <h3 class="text-lg font-bold text-gray-700 mb-4">升等比較結果</h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="text-center rounded-xl bg-gray-50 p-4">
-            <div class="text-xs text-gray-500 mb-1">升等前實領</div>
-            <div class="text-xl font-bold text-gray-800">${fmt(cmp.before.netTotal)}</div>
+      <div class="card">
+        <div class="section-heading">${icon("arrow-trending-up")} 升等比較結果</div>
+
+        <!-- 四格摘要 -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.25rem;">
+          <div style="background:var(--c-surface-2);border-radius:10px;padding:14px;text-align:center;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--c-text-3);margin-bottom:6px;">升等前實領</div>
+            <div style="font-size:1.25rem;font-weight:700;font-variant-numeric:tabular-nums;color:var(--c-text);">${fmt(cmp.before.netTotal)}</div>
           </div>
-          <div class="text-center rounded-xl bg-gray-50 p-4">
-            <div class="text-xs text-gray-500 mb-1">升等後實領</div>
-            <div class="text-xl font-bold text-gray-800">${fmt(cmp.after.netTotal)}</div>
+          <div style="background:var(--c-primary-bg);border-radius:10px;padding:14px;text-align:center;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--c-primary);margin-bottom:6px;">升等後實領</div>
+            <div style="font-size:1.25rem;font-weight:700;font-variant-numeric:tabular-nums;color:var(--c-primary);">${fmt(cmp.after.netTotal)}</div>
           </div>
-          <div class="text-center rounded-xl ${cmp.monthlyDiff >= 0 ? "bg-green-50" : "bg-red-50"} p-4">
-            <div class="text-xs text-gray-500 mb-1">每月增加</div>
-            <div class="text-xl font-bold ${cmp.monthlyDiff >= 0 ? "text-green-600" : "text-red-600"}">${sign}${fmt(cmp.monthlyDiff)}</div>
+          <div style="background:${diffBg};border-radius:10px;padding:14px;text-align:center;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:${diffColor};margin-bottom:6px;">每月增加</div>
+            <div style="font-size:1.25rem;font-weight:700;font-variant-numeric:tabular-nums;color:${diffColor};">${sign}${fmt(cmp.monthlyDiff)}</div>
           </div>
-          <div class="text-center rounded-xl ${cmp.annualDiff >= 0 ? "bg-green-50" : "bg-red-50"} p-4">
-            <div class="text-xs text-gray-500 mb-1">年增加</div>
-            <div class="text-xl font-bold ${cmp.annualDiff >= 0 ? "text-green-600" : "text-red-600"}">${sign}${fmt(cmp.annualDiff)}</div>
+          <div style="background:${diffBg};border-radius:10px;padding:14px;text-align:center;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:${diffColor};margin-bottom:6px;">每年增加</div>
+            <div style="font-size:1.25rem;font-weight:700;font-variant-numeric:tabular-nums;color:${diffColor};">${sign}${fmt(cmp.annualDiff)}</div>
           </div>
         </div>
 
-        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-          ${(["before", "after"] as const)
-            .map((side) => {
-              const result = side === "before" ? cmp.before : cmp.after;
-              const label = side === "before" ? "升等前" : "升等後";
-              return `
-                <div>
-                  <div class="text-sm font-semibold text-gray-600 mb-2">${label}明細</div>
-                  <div class="space-y-1">
-                    ${result.earnings
-                      .map((item) => `<div class="flex justify-between text-sm"><span class="text-gray-500">${item.label}</span><span>${fmt(item.amount)}</span></div>`)
-                      .join("")}
-                    <div class="border-t pt-1 mt-1 flex justify-between text-sm font-semibold text-green-700"><span>應領</span><span>${fmt(result.grossTotal)}</span></div>
-                    ${result.deductions
-                      .map((item) => `<div class="flex justify-between text-sm"><span class="text-gray-500">${item.label}</span><span class="text-red-500">−${fmt(item.amount)}</span></div>`)
-                      .join("")}
-                    <div class="border-t pt-1 mt-1 flex justify-between text-sm font-semibold text-red-600"><span>扣款</span><span>−${fmt(result.deductionTotal)}</span></div>
-                    <div class="flex justify-between text-sm font-bold text-blue-700 pt-1"><span>實領</span><span>${fmt(result.netTotal)}</span></div>
-                  </div>
-                </div>`;
-            })
-            .join("")}
+        <!-- 明細對照 -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          ${(["before", "after"] as const).map((side) => {
+            const result = side === "before" ? cmp.before : cmp.after;
+            const label = side === "before" ? "升等前明細" : "升等後明細";
+            const accentColor = side === "before" ? "var(--c-text-2)" : "var(--c-primary)";
+            return `
+              <div>
+                <div style="font-size:12px;font-weight:700;color:${accentColor};margin-bottom:8px;letter-spacing:0.04em;">${label}</div>
+                ${result.earnings.map((item) => `
+                  <div class="row-item">
+                    <span style="color:var(--c-text-3);">${item.label}</span>
+                    <span style="font-variant-numeric:tabular-nums;">${fmt(item.amount)}</span>
+                  </div>`).join("")}
+                <div class="row-item" style="border-top:1.5px solid var(--c-border);margin-top:4px;padding-top:6px;font-weight:700;color:var(--c-success);">
+                  <span>應領合計</span><span>${fmt(result.grossTotal)}</span>
+                </div>
+                ${result.deductions.map((item) => `
+                  <div class="row-item">
+                    <span style="color:var(--c-text-3);">${item.label}</span>
+                    <span style="color:var(--c-error);font-variant-numeric:tabular-nums;">−${fmt(item.amount)}</span>
+                  </div>`).join("")}
+                <div class="row-item" style="border-top:1.5px solid var(--c-border);margin-top:4px;padding-top:6px;font-weight:700;color:var(--c-error);">
+                  <span>扣款合計</span><span>−${fmt(result.deductionTotal)}</span>
+                </div>
+                <div class="row-item" style="background:var(--c-primary-bg);border-radius:8px;padding:8px 12px;margin-top:6px;font-weight:700;color:var(--c-primary);">
+                  <span>實領</span><span style="font-size:1.1rem;">${fmt(result.netTotal)}</span>
+                </div>
+              </div>`;
+          }).join("")}
         </div>
       </div>
     `;
@@ -119,36 +135,38 @@ export function renderPromotionCompare(
   function renderShareCard(cmp: ReturnType<typeof comparePromotion>): void {
     const cardEl = container.querySelector("#share-card-section") as HTMLElement;
     const sign = cmp.monthlyDiff >= 0 ? "+" : "";
-    const colorClass = cmp.monthlyDiff >= 0 ? "text-green-600" : "text-red-600";
+    const diffTextColor = cmp.monthlyDiff >= 0 ? "#10B981" : "#EF4444";
 
     cardEl.innerHTML = `
-      <div class="bg-white rounded-2xl shadow p-6 space-y-4">
-        <h3 class="text-lg font-bold text-gray-700">分享圖卡</h3>
-        <div id="share-card-preview" class="mx-auto w-80 aspect-square bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-6 flex flex-col justify-between text-white select-none">
+      <div class="card">
+        <div class="section-heading">${icon("share")} 分享圖卡</div>
+
+        <div id="share-card-preview" style="margin:0 auto;width:320px;aspect-ratio:1/1;background:linear-gradient(135deg,var(--c-primary) 0%,#1565C0 100%);border-radius:20px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;user-select:none;">
           <div>
-            <div class="text-xs font-medium opacity-70 mb-1">公務人員薪資試算</div>
-            <div class="text-sm font-bold">${rankLabel(beforeScenario.rank)} → ${rankLabel(afterScenario.rank)}</div>
-            <div class="text-xs opacity-70 mt-0.5">俸點 ${beforeScenario.point}・${beforeScenario.pensionSystem === "old" ? "退撫舊制" : "退撫新制"}・健保${beforeScenario.healthInsuranceDependents === 0 ? "本人" : beforeScenario.healthInsuranceDependents + "口眷"}${beforeScenario.engineeringExtra ? "・工程加給" : ""}</div>
+            <div style="font-size:10px;font-weight:600;opacity:0.7;margin-bottom:4px;">公務人員薪資試算</div>
+            <div style="font-size:14px;font-weight:700;">${rankLabel(beforeScenario.rank)} → ${rankLabel(afterScenario.rank)}</div>
+            <div style="font-size:10px;opacity:0.6;margin-top:3px;">俸點 ${beforeScenario.point}・${beforeScenario.pensionSystem === "old" ? "退撫舊制" : "退撫新制"}・健保${beforeScenario.healthInsuranceDependents === 0 ? "本人" : beforeScenario.healthInsuranceDependents + "口眷"}${beforeScenario.engineeringExtra ? "・工程加給" : ""}</div>
           </div>
-          <div class="grid grid-cols-2 gap-3 my-4">
-            <div class="bg-white/10 rounded-xl p-3 text-center">
-              <div class="text-xs opacity-70 mb-1">升等前實領</div>
-              <div class="text-lg font-extrabold">${fmt(cmp.before.netTotal)}</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;">
+            <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:12px;text-align:center;">
+              <div style="font-size:10px;opacity:0.7;margin-bottom:4px;">升等前實領</div>
+              <div style="font-size:1.1rem;font-weight:800;font-variant-numeric:tabular-nums;">${fmt(cmp.before.netTotal)}</div>
             </div>
-            <div class="bg-white/10 rounded-xl p-3 text-center">
-              <div class="text-xs opacity-70 mb-1">升等後實領</div>
-              <div class="text-lg font-extrabold">${fmt(cmp.after.netTotal)}</div>
+            <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:12px;text-align:center;">
+              <div style="font-size:10px;opacity:0.7;margin-bottom:4px;">升等後實領</div>
+              <div style="font-size:1.1rem;font-weight:800;font-variant-numeric:tabular-nums;">${fmt(cmp.after.netTotal)}</div>
             </div>
           </div>
-          <div class="bg-white rounded-xl p-4 text-center">
-            <div class="text-xs text-blue-600 font-medium mb-1">每月增加</div>
-            <div class="text-3xl font-black ${colorClass}">${sign}${fmt(cmp.monthlyDiff)}</div>
-            <div class="text-xs text-gray-500 mt-1">年增 ${sign}${fmt(cmp.annualDiff)} 元</div>
+          <div style="background:#fff;border-radius:14px;padding:16px;text-align:center;">
+            <div style="font-size:11px;font-weight:600;color:var(--c-primary);margin-bottom:4px;">每月增加</div>
+            <div style="font-size:2rem;font-weight:900;color:${diffTextColor};font-variant-numeric:tabular-nums;">${sign}${fmt(cmp.monthlyDiff)}</div>
+            <div style="font-size:11px;color:#666;margin-top:4px;">每年增加 ${sign}${fmt(cmp.annualDiff)} 元</div>
           </div>
-          <div class="text-xs opacity-50 text-right">govpay・資料僅供參考</div>
+          <div style="font-size:10px;opacity:0.4;text-align:right;">govpay・資料僅供參考</div>
         </div>
-        <button id="download-png" class="w-full rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-sm font-semibold py-2.5 transition-colors">
-          下載圖卡 PNG
+
+        <button id="download-png" class="btn btn-primary" style="width:100%;margin-top:1rem;">
+          ${icon("arrow-down-tray", "inline-icon")} 下載圖卡 PNG
         </button>
       </div>
     `;
@@ -170,18 +188,16 @@ export function renderPromotionCompare(
         console.error(e);
       } finally {
         btn.disabled = false;
-        btn.textContent = "下載圖卡 PNG";
+        btn.innerHTML = `${icon("arrow-down-tray", "inline-icon")} 下載圖卡 PNG`;
       }
     });
   }
 
-  // 範例情境選擇
   container.querySelector("#scenario-select")?.addEventListener("change", (e) => {
     const idx = parseInt((e.target as HTMLSelectElement).value, 10);
     if (idx >= 0) {
       beforeScenario = { ...SCENARIOS[idx].before };
       afterScenario = { ...SCENARIOS[idx].after };
-      // 重繪表單
       renderForms();
     }
   });
@@ -192,7 +208,6 @@ export function renderPromotionCompare(
       initialScenario: beforeScenario,
       onChange: (nextScenario) => {
         beforeScenario = nextScenario;
-        // 切換到自訂模式
         const sel = container.querySelector("#scenario-select") as HTMLSelectElement;
         if (sel) sel.value = "-1";
         renderResult();

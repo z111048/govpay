@@ -3,10 +3,10 @@
   "version": "114.01",
   "effective_date": "2025-01-01",
   "source_name": "臺灣銀行公教保險部公保費率表",
-  "source_url": "https://www.bot.com.tw/tw/Pages/BotServiceDetail.aspx?nodeID=286",
-  "source_document": "公務人員保險費率及自付比例（第 114 年）",
+  "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0050013",
+  "source_document": "公務人員保險法施行細則附表（保費費率表）第 114 年版",
   "last_checked_at": "2026-05-16",
-  "generated_at": "2026-05-16T16:48:13+00:00",
+  "generated_at": "2026-05-16T17:11:30+00:00",
   "items": [
     {
       "base_salary": 14395,

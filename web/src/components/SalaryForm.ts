@@ -7,6 +7,7 @@ import type {
   SalaryScenario,
   SupervisoryAllowanceItem,
 } from "../types";
+import { icon } from "../icons";
 
 export interface FormOptions {
   data: AppData;
@@ -16,34 +17,19 @@ export interface FormOptions {
 
 function rankLabel(rank: number): string {
   const map: Record<number, string> = {
-    1: "委任一等",
-    2: "委任二等",
-    3: "委任三等",
-    4: "委任四等",
-    5: "委任五等",
-    6: "薦任六等",
-    7: "薦任七等",
-    8: "薦任八等",
-    9: "薦任九等",
-    10: "簡任十等",
-    11: "簡任十一等",
-    12: "簡任十二等",
-    13: "簡任十三等",
-    14: "簡任十四等",
+    1: "委任一等", 2: "委任二等", 3: "委任三等", 4: "委任四等", 5: "委任五等",
+    6: "薦任六等", 7: "薦任七等", 8: "薦任八等", 9: "薦任九等",
+    10: "簡任十等", 11: "簡任十一等", 12: "簡任十二等", 13: "簡任十三等", 14: "簡任十四等",
   };
   return map[rank] ?? `第 ${rank} 職等`;
 }
 
 function getRankEntries(data: AppData, rank: number): SalaryGradeEntry[] {
-  return data.salaryGrades.entries
-    .filter((entry) => entry.rank === rank)
-    .sort((a, b) => a.level - b.level);
+  return data.salaryGrades.entries.filter((e) => e.rank === rank).sort((a, b) => a.level - b.level);
 }
 
 function getAvailableTables(data: AppData, rank: number): ProfessionalAllowanceTable[] {
-  return data.professionalAllowances.tables.filter((table) =>
-    table.items.some((item) => item.rank === rank)
-  );
+  return data.professionalAllowances.tables.filter((t) => t.items.some((i) => i.rank === rank));
 }
 
 function getApplicableSupervisors(data: AppData, rank: number): SupervisoryAllowanceItem[] {
@@ -52,6 +38,8 @@ function getApplicableSupervisors(data: AppData, rank: number): SupervisoryAllow
   );
   return matched.length > 0 ? matched : data.supervisoryAllowances.items;
 }
+
+const SEL = "width:100%;border:1.5px solid var(--c-border);border-radius:8px;padding:8px 12px;font-size:13px;color:var(--c-text);background:var(--c-surface);font-family:inherit;";
 
 export function renderSalaryForm(container: HTMLElement, opts: FormOptions): void {
   const { data, initialScenario, onChange } = opts;
@@ -62,118 +50,99 @@ export function renderSalaryForm(container: HTMLElement, opts: FormOptions): voi
     const availableTables = getAvailableTables(data, scenario.rank);
     const applicableSupervisors = getApplicableSupervisors(data, scenario.rank);
 
-    if (rankEntries.length > 0 && !rankEntries.some((entry) => entry.point === scenario.point)) {
+    if (rankEntries.length > 0 && !rankEntries.some((e) => e.point === scenario.point))
       scenario.point = rankEntries[0].point;
-    }
-
-    if (
-      availableTables.length > 0 &&
-      !availableTables.some((table) => table.table_id === scenario.professionalAllowanceTable)
-    ) {
+    if (availableTables.length > 0 && !availableTables.some((t) => t.table_id === scenario.professionalAllowanceTable))
       scenario.professionalAllowanceTable = availableTables[0].table_id;
-    }
 
     const supervisoryEnabled = scenario.supervisoryAllowance > 0;
     const selectedSupervisorId =
-      applicableSupervisors.find(
-        (item) => item.monthly_allowance === scenario.supervisoryAllowance
-      )?.category_id ?? "manual";
+      applicableSupervisors.find((i) => i.monthly_allowance === scenario.supervisoryAllowance)?.category_id ?? "manual";
 
     container.innerHTML = `
-      <div class="bg-white rounded-2xl shadow p-6 space-y-4">
-        <h2 class="text-lg font-bold text-gray-700">試算條件</h2>
+      <div class="card">
+        <div class="section-heading" style="margin-bottom:1.25rem;">
+          ${icon("cog")} 試算條件
+        </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <label class="block">
-            <span class="text-sm text-gray-600 font-medium">職等</span>
-            <select id="rank" class="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
-              ${Array.from(new Set(data.salaryGrades.entries.map((entry) => entry.rank)))
-                .sort((a, b) => a - b)
-                .map(
-                  (rank) =>
-                    `<option value="${rank}" ${rank === scenario.rank ? "selected" : ""}>${rankLabel(rank)}</option>`
-                )
-                .join("")}
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;margin-bottom:1.25rem;">
+          <label>
+            <span class="field-label">職等</span>
+            <select id="rank" style="${SEL}">
+              ${Array.from(new Set(data.salaryGrades.entries.map((e) => e.rank))).sort((a,b)=>a-b)
+                .map((r) => `<option value="${r}" ${r===scenario.rank?"selected":""}>${rankLabel(r)}</option>`).join("")}
             </select>
           </label>
 
-          <label class="block">
-            <span class="text-sm text-gray-600 font-medium">俸級 / 俸點</span>
-            <select id="point" class="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
-              ${rankEntries
-                .map(
-                  (entry) =>
-                    `<option value="${entry.point}" ${entry.point === scenario.point ? "selected" : ""}>${entry.grade_type}${entry.level}・俸點 ${entry.point}</option>`
-                )
-                .join("")}
+          <label>
+            <span class="field-label">俸級 / 俸點</span>
+            <select id="point" style="${SEL}">
+              ${rankEntries.map((e) =>
+                `<option value="${e.point}" ${e.point===scenario.point?"selected":""}>${e.grade_type}${e.level}・${e.point} 點</option>`
+              ).join("")}
             </select>
           </label>
 
-          <label class="block">
-            <span class="text-sm text-gray-600 font-medium">專業加給表</span>
-            <select id="professional-table" class="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
-              ${availableTables
-                .map(
-                  (table) =>
-                    `<option value="${table.table_id}" ${table.table_id === scenario.professionalAllowanceTable ? "selected" : ""}>${table.name}</option>`
-                )
-                .join("")}
+          <label>
+            <span class="field-label">專業加給表</span>
+            <select id="professional-table" style="${SEL}">
+              ${availableTables.map((t) =>
+                `<option value="${t.table_id}" ${t.table_id===scenario.professionalAllowanceTable?"selected":""}>${t.name}</option>`
+              ).join("")}
             </select>
           </label>
 
-          <label class="block">
-            <span class="text-sm text-gray-600 font-medium">退撫制度</span>
-            <select id="pension" class="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
-              <option value="old" ${scenario.pensionSystem === "old" ? "selected" : ""}>舊制</option>
-              <option value="new" ${scenario.pensionSystem === "new" ? "selected" : ""}>新制</option>
+          <label>
+            <span class="field-label">退撫制度</span>
+            <select id="pension" style="${SEL}">
+              <option value="old" ${scenario.pensionSystem==="old"?"selected":""}>舊制（84年7月前到職）</option>
+              <option value="new" ${scenario.pensionSystem==="new"?"selected":""}>新制（84年7月後到職）</option>
             </select>
           </label>
 
-          <label class="block">
-            <span class="text-sm text-gray-600 font-medium">健保眷口數</span>
-            <select id="dependents" class="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
-              ${[0, 1, 2, 3, 4, 5, 6]
-                .map(
-                  (count) =>
-                    `<option value="${count}" ${count === scenario.healthInsuranceDependents ? "selected" : ""}>${count === 0 ? "本人（無眷口）" : `${count} 口眷屬`}</option>`
-                )
-                .join("")}
+          <label>
+            <span class="field-label">健保眷口數</span>
+            <select id="dependents" style="${SEL}">
+              ${[0,1,2,3,4,5,6].map((c) =>
+                `<option value="${c}" ${c===scenario.healthInsuranceDependents?"selected":""}>${c===0?"本人（無眷口）":c+" 口眷屬"}</option>`
+              ).join("")}
             </select>
           </label>
         </div>
 
-        <label class="flex items-center gap-3 cursor-pointer select-none">
-          <input type="checkbox" id="engineering" class="w-4 h-4 rounded accent-blue-500" ${scenario.engineeringExtra ? "checked" : ""}>
-          <span class="text-sm text-gray-700">工程人員另增支 <span class="font-semibold text-blue-600">+3,000 元</span></span>
+        <!-- 工程加給 -->
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 14px;border-radius:10px;background:var(--c-surface-2);margin-bottom:10px;user-select:none;">
+          <input type="checkbox" id="engineering" style="width:16px;height:16px;accent-color:var(--c-primary);" ${scenario.engineeringExtra?"checked":""}>
+          <span style="font-size:13.5px;color:var(--c-text-2);">工程人員另增支</span>
+          <span class="badge badge-blue" style="margin-left:auto;">+3,000 元</span>
         </label>
 
-        <div class="rounded-xl border border-gray-200 p-4 space-y-3">
-          <label class="flex items-center gap-3 cursor-pointer select-none">
-            <input type="checkbox" id="supervisory-enabled" class="w-4 h-4 rounded accent-blue-500" ${supervisoryEnabled ? "checked" : ""}>
-            <span class="text-sm text-gray-700">主管加給</span>
+        <!-- 主管加給 -->
+        <div style="border:1.5px solid var(--c-border);border-radius:10px;padding:12px 14px;">
+          <label style="display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;margin-bottom:${supervisoryEnabled?"12px":"0"};">
+            <input type="checkbox" id="supervisory-enabled" style="width:16px;height:16px;accent-color:var(--c-primary);" ${supervisoryEnabled?"checked":""}>
+            <span style="font-size:13.5px;font-weight:500;color:var(--c-text-2);">主管職務加給</span>
+            ${supervisoryEnabled?`<span class="badge badge-green" style="margin-left:auto;">+${scenario.supervisoryAllowance.toLocaleString("zh-TW")} 元</span>`:""}
           </label>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 ${supervisoryEnabled ? "" : "opacity-60"}">
-            <label class="block">
-              <span class="text-sm text-gray-600 font-medium">主管類別預設</span>
-              <select id="supervisory-category" ${supervisoryEnabled ? "" : "disabled"} class="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 disabled:bg-gray-100 disabled:text-gray-400">
-                <option value="manual" ${selectedSupervisorId === "manual" ? "selected" : ""}>手動輸入</option>
-                ${applicableSupervisors
-                  .map(
-                    (item) =>
-                      `<option value="${item.category_id}" ${item.category_id === selectedSupervisorId ? "selected" : ""}>${item.category_name}（${item.monthly_allowance.toLocaleString("zh-TW")} 元）</option>`
-                  )
-                  .join("")}
+          ${supervisoryEnabled ? `
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <label>
+              <span class="field-label">主管類別</span>
+              <select id="supervisory-category" style="${SEL}">
+                <option value="manual" ${selectedSupervisorId==="manual"?"selected":""}>手動輸入</option>
+                ${applicableSupervisors.map((i) =>
+                  `<option value="${i.category_id}" ${i.category_id===selectedSupervisorId?"selected":""}>${i.category_name}（${i.monthly_allowance.toLocaleString("zh-TW")} 元）</option>`
+                ).join("")}
               </select>
             </label>
-
-            <label class="block">
-              <span class="text-sm text-gray-600 font-medium">主管加給金額</span>
-              <input id="supervisory-allowance" type="number" min="0" step="100" value="${scenario.supervisoryAllowance}" ${supervisoryEnabled ? "" : "disabled"} class="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 disabled:bg-gray-100 disabled:text-gray-400">
+            <label>
+              <span class="field-label">加給金額（元）</span>
+              <input id="supervisory-allowance" type="number" min="0" step="100" value="${scenario.supervisoryAllowance}" style="${SEL}">
             </label>
           </div>
-
-          <p class="text-xs text-gray-500">可依職等套用預設主管加給，也可改為手動輸入。</p>
+          <p style="font-size:11px;color:var(--c-text-4);margin-top:6px;">選擇職類自動帶入，亦可手動修改金額</p>
+          ` : ""}
         </div>
       </div>
     `;
@@ -185,25 +154,19 @@ export function renderSalaryForm(container: HTMLElement, opts: FormOptions): voi
     const nextRank = parseInt((container.querySelector("#rank") as HTMLSelectElement).value, 10);
     const nextRankEntries = getRankEntries(data, nextRank);
     const nextTables = getAvailableTables(data, nextRank);
-    const supervisoryEnabled = (container.querySelector("#supervisory-enabled") as HTMLInputElement)
-      .checked;
-    const categoryId = (container.querySelector("#supervisory-category") as HTMLSelectElement).value;
-    const manualAllowance = parseInt(
-      (container.querySelector("#supervisory-allowance") as HTMLInputElement).value || "0",
-      10
-    );
+    const supervisoryEnabled = (container.querySelector("#supervisory-enabled") as HTMLInputElement).checked;
+    const categoryId = (container.querySelector("#supervisory-category") as HTMLSelectElement)?.value ?? "manual";
+    const manualAllowance = parseInt((container.querySelector("#supervisory-allowance") as HTMLInputElement)?.value || "0", 10);
     const applicableSupervisors = getApplicableSupervisors(data, nextRank);
-    const selectedSupervisor = applicableSupervisors.find((item) => item.category_id === categoryId);
+    const selectedSupervisor = applicableSupervisors.find((i) => i.category_id === categoryId);
 
     let nextPoint = parseInt((container.querySelector("#point") as HTMLSelectElement).value, 10);
-    if (!nextRankEntries.some((entry) => entry.point === nextPoint) && nextRankEntries.length > 0) {
+    if (!nextRankEntries.some((e) => e.point === nextPoint) && nextRankEntries.length > 0)
       nextPoint = nextRankEntries[0].point;
-    }
 
     let nextTableId = (container.querySelector("#professional-table") as HTMLSelectElement).value;
-    if (!nextTables.some((table) => table.table_id === nextTableId) && nextTables.length > 0) {
+    if (!nextTables.some((t) => t.table_id === nextTableId) && nextTables.length > 0)
       nextTableId = nextTables[0].table_id;
-    }
 
     let supervisoryAllowance = 0;
     if (supervisoryEnabled) {
@@ -220,40 +183,29 @@ export function renderSalaryForm(container: HTMLElement, opts: FormOptions): voi
     }
 
     scenario = {
-      rank: nextRank,
-      point: nextPoint,
+      rank: nextRank, point: nextPoint,
       professionalAllowanceTable: nextTableId,
-      pensionSystem: (container.querySelector("#pension") as HTMLSelectElement).value as
-        | "old"
-        | "new",
-      healthInsuranceDependents: parseInt(
-        (container.querySelector("#dependents") as HTMLSelectElement).value,
-        10
-      ),
+      pensionSystem: (container.querySelector("#pension") as HTMLSelectElement).value as "old" | "new",
+      healthInsuranceDependents: parseInt((container.querySelector("#dependents") as HTMLSelectElement).value, 10),
       engineeringExtra: (container.querySelector("#engineering") as HTMLInputElement).checked,
       supervisoryAllowance,
     };
-
     render();
     onChange(scenario);
   }
 
   function attachListeners(): void {
-    const register = (selector: string, source: string) => {
-      container.querySelector(selector)?.addEventListener("change", () => read(source));
-    };
-
-    register("#rank", "rank");
-    register("#point", "point");
-    register("#professional-table", "professional-table");
-    register("#pension", "pension");
-    register("#dependents", "dependents");
-    register("#engineering", "engineering");
-    register("#supervisory-enabled", "supervisory-enabled");
-    register("#supervisory-category", "supervisory-category");
-    container
-      .querySelector("#supervisory-allowance")
-      ?.addEventListener("input", () => read("supervisory-allowance"));
+    const onChange = (sel: string, src: string) =>
+      container.querySelector(sel)?.addEventListener("change", () => read(src));
+    onChange("#rank", "rank");
+    onChange("#point", "point");
+    onChange("#professional-table", "professional-table");
+    onChange("#pension", "pension");
+    onChange("#dependents", "dependents");
+    onChange("#engineering", "engineering");
+    onChange("#supervisory-enabled", "supervisory-enabled");
+    onChange("#supervisory-category", "supervisory-category");
+    container.querySelector("#supervisory-allowance")?.addEventListener("input", () => read("supervisory-allowance"));
   }
 
   render();

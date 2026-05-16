@@ -27,22 +27,22 @@ PROFESSIONAL_ALLOWANCE_TABLE_IDS = [
     "professional_allowance_table_8",
 ]
 SOURCE_URLS = {
-    "salary_points": "https://www.mocs.gov.tw/Pages/Detail.aspx?nodeid=114&pid=7903",
-    "salary_grades": "https://www.mocs.gov.tw/Pages/Detail.aspx?nodeid=114&pid=7903",
-    "professional_allowances": "https://www.mocs.gov.tw/Pages/Detail.aspx?nodeid=114&pid=7905",
-    "supervisory_allowances": "https://www.mocs.gov.tw/Pages/Detail.aspx?nodeid=114&pid=7905",
-    "health_insurance": "https://www.nhi.gov.tw/ch/np-2506-1.html",
-    "pension": "https://www.fund.gov.tw/cp.aspx?n=23",
-    "civil_service_insurance": "https://www.bot.com.tw/tw/Pages/BotServiceDetail.aspx?nodeID=286",
+    "salary_points": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030007",
+    "salary_grades": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030007",
+    "professional_allowances": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030008",
+    "supervisory_allowances": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030008",
+    "health_insurance": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0060001",
+    "pension": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030027",
+    "civil_service_insurance": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0050013",
 }
 SOURCE_DOCUMENTS = {
-    "salary_points": "公務人員俸給法施行細則附表－俸額表（第 114 年）",
-    "salary_grades": "公務人員俸給法施行細則附表－職等俸級表（第 114 年）",
-    "professional_allowances": "公務人員加給給與辦法附表－專業加給表（第 114 年）",
-    "supervisory_allowances": "公務人員加給給與辦法附表－主管職務加給表（第 114 年）",
-    "health_insurance": "全民健康保險投保金額分級表（第 115 年，自 2026-01-01 起）",
-    "pension": "公務人員退休撫卹基金費率及撥繳規定（第 114 年）",
-    "civil_service_insurance": "公務人員保險費率及自付比例（第 114 年）",
+    "salary_points": "公務人員俸給法施行細則附表一（俸額表）第 114 年版",
+    "salary_grades": "公務人員俸給法施行細則附表二（職等俸級表）第 114 年版",
+    "professional_allowances": "公務人員加給給與辦法附表（專業加給表）第 114 年版",
+    "supervisory_allowances": "公務人員加給給與辦法附表（主管職務加給表）第 114 年版",
+    "health_insurance": "全民健康保險投保金額分級表第 115 年版（自 2026-01-01 起）",
+    "pension": "公務人員退休資遣撫卹法施行細則附表（退撫費率表）第 114 年版",
+    "civil_service_insurance": "公務人員保險法施行細則附表（保費費率表）第 114 年版",
 }
 
 

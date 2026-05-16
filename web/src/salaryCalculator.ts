@@ -48,14 +48,22 @@ function getHealthInsuranceAmount(
 
 function findPensionPayment(data: AppData, point: number): number {
   const item = data.pension.items.find((entry) => entry.point === point);
-  if (!item) throw new Error(`俸點 ${point} 的退撫資料找不到`);
-  return item.self_payment;
+  if (item) return item.self_payment;
+  // Fallback: nearest point
+  const nearest = data.pension.items.reduce((prev, curr) =>
+    Math.abs(curr.point - point) < Math.abs(prev.point - point) ? curr : prev
+  );
+  return nearest.self_payment;
 }
 
 function findInsurancePayment(data: AppData, baseSalary: number): number {
   const item = data.insurance.items.find((entry) => entry.base_salary === baseSalary);
-  if (!item) throw new Error(`本俸 ${baseSalary} 的公保資料找不到`);
-  return item.self_payment;
+  if (item) return item.self_payment;
+  // Compute from uniform rate (7.22% × 35%)
+  const ref = data.insurance.items[0];
+  const rate = ref.rate_basis_points / 10000;
+  const selfPayRatio = ref.self_pay_ratio_basis_points / 10000;
+  return Math.round(baseSalary * rate * selfPayRatio);
 }
 
 export function calculateSalary(data: AppData, scenario: SalaryScenario): SalaryResult {

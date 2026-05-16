@@ -2,6 +2,7 @@
 
 import type { AppData, SalaryGradeEntry, SalaryScenario } from "../types";
 import { calculateSalary } from "../salaryCalculator";
+import { icon } from "../icons";
 
 type PerformanceGrade = "A" | "B" | "C";
 
@@ -12,20 +13,17 @@ function fmt(n: number): string {
   return n.toLocaleString("zh-TW");
 }
 
-/** 根據目前職等與俸點，找出下一個俸點（甲等考績晉一級） */
+/** 根據目前職等與俸點，找出下一個俸點 */
 function advanceSalaryPoint(data: AppData, rank: number, currentPoint: number): number {
   const entries = data.salaryGrades.entries.filter((e) => e.rank === rank);
   if (entries.length === 0) return currentPoint;
-
-  // 先排序：本俸在前，年功俸在後，各自依 level 排序
   const sorted = [...entries].sort((a, b) => {
     const typeOrder = (e: SalaryGradeEntry) => (e.grade_type === "本俸" ? 0 : 1);
     return typeOrder(a) - typeOrder(b) || a.level - b.level;
   });
-
-  const currentIdx = sorted.findIndex((e) => e.point === currentPoint);
-  if (currentIdx === -1) return currentPoint;
-  const next = sorted[currentIdx + 1];
+  const idx = sorted.findIndex((e) => e.point === currentPoint);
+  if (idx === -1) return currentPoint;
+  const next = sorted[idx + 1];
   return next ? next.point : currentPoint;
 }
 
@@ -55,19 +53,18 @@ function calcYears(
   let cumulative = 0;
 
   for (let y = 1; y <= years; y++) {
-    const adjustedScenario = { ...scenario, point };
     let result;
     try {
-      result = calculateSalary(data, adjustedScenario);
+      result = calculateSalary(data, { ...scenario, point });
     } catch {
-      break;
+      // Should not happen with robust lookups, but skip gracefully
+      continue;
     }
 
     const baseSalary = result.earnings.find((e) => e.code === "base_salary")?.amount ?? 0;
     const monthlyNet = Math.round(result.netTotal * raiseFactor);
     const grossTotal = Math.round(result.grossTotal * raiseFactor);
     const baseSalaryAdjusted = Math.round(baseSalary * raiseFactor);
-
     const monthlyTotal = monthlyNet * 12;
     const performanceBonus = Math.round(grossTotal * GRADE_MONTHS[grade]);
     const yearEndBonus = Math.round(baseSalaryAdjusted * yearEndMonths);
@@ -76,7 +73,7 @@ function calcYears(
 
     records.push({ year: y, point, monthlyNet, monthlyTotal, performanceBonus, yearEndBonus, annualTotal, cumulative });
 
-    // 下一年的薪資調整：甲等、乙等均晉俸一級（公務人員考績法第 6 條）；丙等留原俸級
+    // 甲等、乙等均晉俸一級（公務人員考績法第 6 條）；丙等留原俸級
     if (advanceLevel && grade !== "C") {
       point = advanceSalaryPoint(data, scenario.rank, point);
     }
@@ -84,6 +81,8 @@ function calcYears(
   }
   return records;
 }
+
+const SEL = "border:1.5px solid var(--c-border);border-radius:8px;padding:7px 11px;font-size:13px;color:var(--c-text);background:var(--c-surface);font-family:inherit;width:100%;";
 
 export function renderAnnualProjection(
   container: HTMLElement,
@@ -105,129 +104,131 @@ export function renderAnnualProjection(
     const annualTotal = annualNet + performanceBonus + yearEndBonus;
 
     const records = calcYears(data, scenario, years, grade, yearEndMonths, annualRaiseRate, advanceLevel);
+    const maxAnnual = Math.max(...records.map(r => r.annualTotal));
 
     container.innerHTML = `
-      <div class="space-y-6">
+      <div style="display:flex;flex-direction:column;gap:1.25rem;">
 
-        <!-- 本年度試算 -->
-        <div class="bg-white rounded-2xl shadow p-6 space-y-4">
-          <h2 class="text-lg font-bold text-gray-700">本年度薪資試算</h2>
-          <p class="text-xs text-gray-500">以目前試算情境計算，考績獎金以應領合計為基礎，年終獎金以本俸為基礎。</p>
+        <!-- 本年度 -->
+        <div class="card">
+          <div class="section-heading">${icon("calendar")} 本年度薪資試算</div>
 
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            <div class="rounded-xl bg-gray-50 p-4 text-center">
-              <div class="text-xs text-gray-500 mb-1">月薪 × 12</div>
-              <div class="text-xl font-bold text-gray-800">${fmt(annualNet)}</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1rem;">
+            <div class="stat-chip stat-chip-neutral" style="text-align:center;">
+              <div style="font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px;color:var(--c-text-3);">月薪 × 12</div>
+              <div style="font-size:1.3rem;font-weight:700;font-variant-numeric:tabular-nums;">${fmt(annualNet)}</div>
             </div>
-            <div class="rounded-xl bg-yellow-50 p-4 text-center">
-              <div class="text-xs text-gray-500 mb-1">考績獎金（${GRADE_LABEL[grade]}）</div>
-              <div class="text-xl font-bold text-yellow-700">${fmt(performanceBonus)}</div>
+            <div class="stat-chip" style="background:var(--c-warning-bg);color:var(--c-warning);text-align:center;">
+              <div style="font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px;">考績獎金（${GRADE_LABEL[grade]}）</div>
+              <div style="font-size:1.3rem;font-weight:700;font-variant-numeric:tabular-nums;">+${fmt(performanceBonus)}</div>
             </div>
-            <div class="rounded-xl bg-orange-50 p-4 text-center">
-              <div class="text-xs text-gray-500 mb-1">年終獎金（${yearEndMonths} 個月）</div>
-              <div class="text-xl font-bold text-orange-600">${fmt(yearEndBonus)}</div>
+            <div class="stat-chip" style="background:#FFF3E0;color:#E65100;text-align:center;">
+              <div style="font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px;">年終獎金（${yearEndMonths}月）</div>
+              <div style="font-size:1.3rem;font-weight:700;font-variant-numeric:tabular-nums;">+${fmt(yearEndBonus)}</div>
             </div>
           </div>
 
-          <div class="rounded-xl bg-blue-50 px-5 py-4 flex justify-between items-center">
-            <span class="text-base font-bold text-blue-700">全年合計（稅前概算）</span>
-            <span class="text-2xl font-extrabold text-blue-700">${fmt(annualTotal)}</span>
+          <div style="background:var(--c-primary);border-radius:10px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);">全年合計（稅前概算）</div>
+            <div style="font-size:1.6rem;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;">${fmt(annualTotal)}</div>
           </div>
 
-          <!-- 說明細項 -->
-          <div class="space-y-1 text-sm">
-            <div class="flex justify-between text-gray-600 py-1 border-b border-gray-100">
-              <span>月實領</span><span>${fmt(result.netTotal)}</span>
-            </div>
-            <div class="flex justify-between text-gray-600 py-1 border-b border-gray-100">
-              <span>月應領（公保/健保/退撫計算基礎）</span><span>${fmt(result.grossTotal)}</span>
-            </div>
-            <div class="flex justify-between text-gray-600 py-1 border-b border-gray-100">
-              <span>本俸（年終獎金計算基礎）</span><span>${fmt(baseSalary)}</span>
-            </div>
+          <div style="margin-top:1rem;">
+            ${[
+              ["月實領（稅前）", fmt(result.netTotal)],
+              ["月應領（公保/健保/退撫計算基礎）", fmt(result.grossTotal)],
+              ["本俸（年終獎金計算基礎）", fmt(baseSalary)],
+            ].map(([label, val]) => `
+              <div class="row-item">
+                <span style="color:var(--c-text-3);">${label}</span>
+                <span style="font-weight:600;font-variant-numeric:tabular-nums;">${val}</span>
+              </div>`).join("")}
           </div>
         </div>
 
-        <!-- 參數設定 -->
-        <div class="bg-white rounded-2xl shadow p-6 space-y-4">
-          <h2 class="text-lg font-bold text-gray-700">多年收入預測</h2>
-          <p class="text-xs text-gray-500">以目前職等不升等為前提，預測未來 1–5 年總收入。</p>
+        <!-- 多年預測 -->
+        <div class="card">
+          <div class="section-heading">${icon("chart-bar")} 多年收入預測</div>
+          <p style="font-size:12px;color:var(--c-text-3);margin-bottom:1rem;">以目前職等不升等為前提，預測未來收入。甲、乙等每年晉俸一級（考績法第 6 條）。</p>
 
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <label class="block">
-              <span class="text-sm text-gray-600 font-medium">預測年數</span>
-              <select id="proj-years" class="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
-                ${[1,2,3,4,5].map(n => `<option value="${n}" ${n===years?'selected':''}>${n} 年</option>`).join('')}
+          <!-- 參數列 -->
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:1rem;">
+            <label>
+              <span class="field-label">預測年數</span>
+              <select id="proj-years" style="${SEL}">
+                ${[1,2,3,4,5].map(n=>`<option value="${n}" ${n===years?"selected":""}>${n} 年</option>`).join("")}
               </select>
             </label>
-            <label class="block">
-              <span class="text-sm text-gray-600 font-medium">考績等次假設</span>
-              <select id="proj-grade" class="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
-                <option value="A" ${grade==='A'?'selected':''}>全部甲等</option>
-                <option value="B" ${grade==='B'?'selected':''}>全部乙等</option>
-                <option value="C" ${grade==='C'?'selected':''}>全部丙等</option>
+            <label>
+              <span class="field-label">考績等次</span>
+              <select id="proj-grade" style="${SEL}">
+                <option value="A" ${grade==="A"?"selected":""}>全部甲等</option>
+                <option value="B" ${grade==="B"?"selected":""}>全部乙等</option>
+                <option value="C" ${grade==="C"?"selected":""}>全部丙等</option>
               </select>
             </label>
-            <label class="block">
-              <span class="text-sm text-gray-600 font-medium">年終月數</span>
-              <input id="proj-yearend" type="number" min="0" max="3" step="0.5" value="${yearEndMonths}"
-                class="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <label>
+              <span class="field-label">年終月數</span>
+              <input id="proj-yearend" type="number" min="0" max="3" step="0.5" value="${yearEndMonths}" style="${SEL}">
             </label>
-            <label class="block">
-              <span class="text-sm text-gray-600 font-medium">每年薪資調整 (%)</span>
-              <input id="proj-raise" type="number" min="-5" max="10" step="0.5" value="${annualRaiseRate}"
-                class="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <label>
+              <span class="field-label">年薪調整 (%)</span>
+              <input id="proj-raise" type="number" min="-5" max="10" step="0.5" value="${annualRaiseRate}" style="${SEL}">
             </label>
           </div>
-          <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-            <input id="proj-advance" type="checkbox" class="w-4 h-4 rounded accent-blue-500" ${advanceLevel?'checked':''}>
-            <span>甲、乙等考績每年晉俸一級（依考績法第 6 條，丙等留原俸級）</span>
+
+          <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 12px;background:var(--c-surface-2);border-radius:8px;margin-bottom:1rem;user-select:none;">
+            <input id="proj-advance" type="checkbox" style="width:15px;height:15px;accent-color:var(--c-primary);" ${advanceLevel?"checked":""}>
+            <span style="font-size:13px;color:var(--c-text-2);">甲、乙等每年晉俸一級（依考績法第 6 條，丙等留原俸級）</span>
           </label>
 
-          <!-- 預測表格 -->
-          <div class="overflow-x-auto rounded-xl border border-gray-200">
-            <table class="min-w-full text-sm">
-              <thead class="bg-gray-50 text-gray-600">
+          <!-- 表格 -->
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
                 <tr>
-                  <th class="px-3 py-2 text-left font-semibold whitespace-nowrap">年</th>
-                  <th class="px-3 py-2 text-left font-semibold whitespace-nowrap">俸點</th>
-                  <th class="px-3 py-2 text-right font-semibold whitespace-nowrap">月實領</th>
-                  <th class="px-3 py-2 text-right font-semibold whitespace-nowrap">月薪×12</th>
-                  <th class="px-3 py-2 text-right font-semibold whitespace-nowrap">考績獎金</th>
-                  <th class="px-3 py-2 text-right font-semibold whitespace-nowrap">年終獎金</th>
-                  <th class="px-3 py-2 text-right font-semibold whitespace-nowrap">全年合計</th>
-                  <th class="px-3 py-2 text-right font-semibold whitespace-nowrap">累計合計</th>
+                  <th>年份</th><th>俸點</th>
+                  <th class="right">月實領</th>
+                  <th class="right">月薪×12</th>
+                  <th class="right">考績獎金</th>
+                  <th class="right">年終獎金</th>
+                  <th class="right">全年合計</th>
+                  <th class="right">累計</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-gray-100">
-                ${records.map(r => `
-                  <tr class="odd:bg-white even:bg-gray-50/50">
-                    <td class="px-3 py-2 font-medium text-gray-700">第 ${r.year} 年</td>
-                    <td class="px-3 py-2 text-gray-600">${r.point}</td>
-                    <td class="px-3 py-2 text-right">${fmt(r.monthlyNet)}</td>
-                    <td class="px-3 py-2 text-right">${fmt(r.monthlyTotal)}</td>
-                    <td class="px-3 py-2 text-right text-yellow-700">${fmt(r.performanceBonus)}</td>
-                    <td class="px-3 py-2 text-right text-orange-600">${fmt(r.yearEndBonus)}</td>
-                    <td class="px-3 py-2 text-right font-semibold text-blue-700">${fmt(r.annualTotal)}</td>
-                    <td class="px-3 py-2 text-right font-bold text-blue-900">${fmt(r.cumulative)}</td>
-                  </tr>`).join('')}
+              <tbody>
+                ${records.map(r => {
+                  const barW = Math.round((r.annualTotal / maxAnnual) * 100);
+                  return `<tr>
+                    <td style="font-weight:600;color:var(--c-primary);">第 ${r.year} 年</td>
+                    <td><span class="badge badge-gray">${r.point}</span></td>
+                    <td class="right">${fmt(r.monthlyNet)}</td>
+                    <td class="right">${fmt(r.monthlyTotal)}</td>
+                    <td class="right" style="color:var(--c-warning);">${fmt(r.performanceBonus)}</td>
+                    <td class="right" style="color:#E65100;">${fmt(r.yearEndBonus)}</td>
+                    <td class="right">
+                      <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end;">
+                        <div style="width:${barW}px;max-width:60px;height:4px;background:var(--c-primary);border-radius:2px;opacity:0.35;"></div>
+                        <span style="font-weight:700;color:var(--c-primary-text);">${fmt(r.annualTotal)}</span>
+                      </div>
+                    </td>
+                    <td class="right" style="font-weight:700;color:var(--c-text);">${fmt(r.cumulative)}</td>
+                  </tr>`;
+                }).join("")}
               </tbody>
             </table>
           </div>
-          <p class="text-xs text-amber-700">※ 試算結果僅供參考，實際金額以官方公告為準。考績獎金以月應領合計計算，年終獎金以本俸計算。</p>
+          <p style="font-size:11px;color:var(--c-text-4);margin-top:8px;">※ 試算結果僅供參考，實際金額以官方公告為準。考績獎金以月應領合計計算，年終獎金以本俸計算。</p>
         </div>
-
       </div>
     `;
 
-    // 綁定事件
+    // Events
     container.querySelector("#proj-years")?.addEventListener("change", (e) => {
-      years = parseInt((e.target as HTMLSelectElement).value, 10);
-      render();
+      years = parseInt((e.target as HTMLSelectElement).value, 10); render();
     });
     container.querySelector("#proj-grade")?.addEventListener("change", (e) => {
-      grade = (e.target as HTMLSelectElement).value as PerformanceGrade;
-      render();
+      grade = (e.target as HTMLSelectElement).value as PerformanceGrade; render();
     });
     container.querySelector("#proj-yearend")?.addEventListener("input", (e) => {
       const v = parseFloat((e.target as HTMLInputElement).value);
@@ -238,8 +239,7 @@ export function renderAnnualProjection(
       if (!isNaN(v)) { annualRaiseRate = v; render(); }
     });
     container.querySelector("#proj-advance")?.addEventListener("change", (e) => {
-      advanceLevel = (e.target as HTMLInputElement).checked;
-      render();
+      advanceLevel = (e.target as HTMLInputElement).checked; render();
     });
   }
 
@@ -254,3 +254,4 @@ export function updateAnnualProjection(
 ): void {
   renderAnnualProjection(container, data, scenario);
 }
+

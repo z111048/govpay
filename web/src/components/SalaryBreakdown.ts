@@ -1,6 +1,7 @@
 // 薪資明細顯示元件
 
 import type { SalaryResult } from "../types";
+import { icon } from "../icons";
 
 function fmt(n: number): string {
   return n.toLocaleString("zh-TW");
@@ -8,47 +9,53 @@ function fmt(n: number): string {
 
 export function renderSalaryBreakdown(container: HTMLElement, result: SalaryResult): void {
   container.innerHTML = `
-    <div class="bg-white rounded-2xl shadow p-6 space-y-4">
-      <h2 class="text-lg font-bold text-gray-700">薪資明細</h2>
+    <div class="card" style="padding:1.5rem;">
 
-      <div class="space-y-2">
-        <div class="text-sm font-semibold text-green-700 uppercase tracking-wide">應領</div>
-        ${result.earnings
-          .map(
-            (e) => `
-          <div class="flex justify-between text-sm py-1 border-b border-gray-100">
-            <span class="text-gray-600">${e.label}</span>
-            <span class="font-medium text-gray-900">${fmt(e.amount)}</span>
-          </div>`
-          )
-          .join("")}
-        <div class="flex justify-between text-sm font-bold pt-1">
-          <span class="text-green-700">應領合計</span>
-          <span class="text-green-700">${fmt(result.grossTotal)}</span>
+      <!-- 每月實領 hero -->
+      <div style="background:var(--c-primary);border-radius:12px;padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">
+        <div>
+          <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.75);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:4px;">每月實領</div>
+          <div style="font-size:2rem;font-weight:700;color:#fff;line-height:1;font-variant-numeric:tabular-nums;">${fmt(result.netTotal)}</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:4px;">元 / 月</div>
+        </div>
+        <div style="opacity:0.3;">${icon("banknotes","w-12 h-12")}</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.25rem;">
+        <div class="stat-chip stat-chip-success">
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:4px;">應領合計</div>
+          <div style="font-size:1.4rem;font-weight:700;font-variant-numeric:tabular-nums;">${fmt(result.grossTotal)}</div>
+        </div>
+        <div class="stat-chip stat-chip-error">
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:4px;">扣款合計</div>
+          <div style="font-size:1.4rem;font-weight:700;font-variant-numeric:tabular-nums;">−${fmt(result.deductionTotal)}</div>
         </div>
       </div>
 
-      <div class="space-y-2 mt-4">
-        <div class="text-sm font-semibold text-red-600 uppercase tracking-wide">扣款</div>
-        ${result.deductions
-          .map(
-            (d) => `
-          <div class="flex justify-between text-sm py-1 border-b border-gray-100">
-            <span class="text-gray-600">${d.label}</span>
-            <span class="font-medium text-red-500">−${fmt(d.amount)}</span>
-          </div>`
-          )
-          .join("")}
-        <div class="flex justify-between text-sm font-bold pt-1">
-          <span class="text-red-600">扣款合計</span>
-          <span class="text-red-600">−${fmt(result.deductionTotal)}</span>
+      <!-- 應領明細 -->
+      <div style="margin-bottom:1rem;">
+        <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--c-success);margin-bottom:8px;">
+          ${icon("plus-circle","w-4 h-4")} 應領項目
         </div>
+        ${result.earnings.map(e => `
+          <div class="row-item">
+            <span style="color:var(--c-text-3);font-size:13.5px;">${e.label}</span>
+            <span style="font-weight:600;color:var(--c-text);font-variant-numeric:tabular-nums;">${fmt(e.amount)}</span>
+          </div>`).join("")}
       </div>
 
-      <div class="mt-4 rounded-xl bg-blue-50 px-5 py-4 flex justify-between items-center">
-        <span class="text-base font-bold text-blue-700">每月實領</span>
-        <span class="text-2xl font-extrabold text-blue-700">${fmt(result.netTotal)}</span>
+      <!-- 扣款明細 -->
+      <div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--c-error);margin-bottom:8px;">
+          ${icon("minus-circle","w-4 h-4")} 扣款項目
+        </div>
+        ${result.deductions.map(d => `
+          <div class="row-item">
+            <span style="color:var(--c-text-3);font-size:13.5px;">${d.label}</span>
+            <span style="font-weight:600;color:var(--c-error);font-variant-numeric:tabular-nums;">−${fmt(d.amount)}</span>
+          </div>`).join("")}
       </div>
+
     </div>
   `;
 }
