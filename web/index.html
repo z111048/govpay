@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>公務人員薪資試算</title>
+    <meta name="description" content="公務人員薪資試算，支援升等前後比較、主管加給、專業加給、年度試算與多年預測。" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <div class="max-w-6xl mx-auto px-4 py-6">
+      <header class="mb-6">
+        <h1 class="text-2xl font-extrabold text-blue-700">公務人員薪資試算</h1>
+        <p class="text-sm text-gray-500 mt-1">支援俸點、職等、專業加給、主管加給、升等比較與年度預測</p>
+        <p class="text-xs text-amber-700 mt-2">資料僅供試算參考，不代表任何人實際薪資，以官方公告為準</p>
+      </header>
+
+      <div class="flex flex-wrap gap-1 bg-gray-200 rounded-xl p-1 mb-6">
+        <button data-tab="calculator" class="tab-btn flex-1">薪資試算</button>
+        <button data-tab="promotion" class="tab-btn flex-1">升等比較</button>
+        <button data-tab="annual" class="tab-btn flex-1">年度試算</button>
+        <button data-tab="databrowser" class="tab-btn flex-1">資料查詢</button>
+        <button data-tab="about" class="tab-btn flex-1">資料來源</button>
+      </div>
+
+      <div id="loading" class="text-center py-12 text-gray-400 text-sm">載入資料中…</div>
+
+      <div id="app-content" class="hidden">
+        <div data-panel="calculator" class="space-y-4">
+          <div id="calc-form"></div>
+          <div id="calc-breakdown"></div>
+        </div>
+
+        <div data-panel="promotion" class="hidden" id="panel-promotion"></div>
+
+        <div data-panel="annual" class="hidden" id="panel-annual"></div>
+
+        <div data-panel="databrowser" class="hidden" id="panel-databrowser"></div>
+
+        <div data-panel="about" class="hidden" id="panel-about"></div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

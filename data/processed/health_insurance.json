@@ -1,0 +1,628 @@
+{
+  "dataset": "health_insurance",
+  "version": "115.01",
+  "effective_date": "2026-01-01",
+  "source_name": "衛生福利部中央健康保險署投保金額分級表",
+  "source_url": "https://www.nhi.gov.tw/",
+  "last_checked_at": "2026-05-16",
+  "generated_at": "2026-05-16T15:26:41+00:00",
+  "year": 115,
+  "items": [
+    {
+      "range_min": 0,
+      "range_max": 26400,
+      "insured_salary": 26400,
+      "self_payment": {
+        "dependents_0": 408,
+        "dependents_1": 816,
+        "dependents_2": 1224,
+        "dependents_3": 1632,
+        "dependents_4": 2040,
+        "dependents_5": 2040,
+        "dependents_6": 2040
+      }
+    },
+    {
+      "range_min": 26401,
+      "range_max": 27600,
+      "insured_salary": 27600,
+      "self_payment": {
+        "dependents_0": 428,
+        "dependents_1": 856,
+        "dependents_2": 1284,
+        "dependents_3": 1712,
+        "dependents_4": 2140,
+        "dependents_5": 2140,
+        "dependents_6": 2140
+      }
+    },
+    {
+      "range_min": 27601,
+      "range_max": 28800,
+      "insured_salary": 28800,
+      "self_payment": {
+        "dependents_0": 447,
+        "dependents_1": 894,
+        "dependents_2": 1341,
+        "dependents_3": 1788,
+        "dependents_4": 2235,
+        "dependents_5": 2235,
+        "dependents_6": 2235
+      }
+    },
+    {
+      "range_min": 28801,
+      "range_max": 30300,
+      "insured_salary": 30300,
+      "self_payment": {
+        "dependents_0": 470,
+        "dependents_1": 940,
+        "dependents_2": 1410,
+        "dependents_3": 1880,
+        "dependents_4": 2350,
+        "dependents_5": 2350,
+        "dependents_6": 2350
+      }
+    },
+    {
+      "range_min": 30301,
+      "range_max": 31800,
+      "insured_salary": 31800,
+      "self_payment": {
+        "dependents_0": 493,
+        "dependents_1": 986,
+        "dependents_2": 1479,
+        "dependents_3": 1972,
+        "dependents_4": 2465,
+        "dependents_5": 2465,
+        "dependents_6": 2465
+      }
+    },
+    {
+      "range_min": 31801,
+      "range_max": 33300,
+      "insured_salary": 33300,
+      "self_payment": {
+        "dependents_0": 516,
+        "dependents_1": 1032,
+        "dependents_2": 1548,
+        "dependents_3": 2064,
+        "dependents_4": 2580,
+        "dependents_5": 2580,
+        "dependents_6": 2580
+      }
+    },
+    {
+      "range_min": 33301,
+      "range_max": 34800,
+      "insured_salary": 34800,
+      "self_payment": {
+        "dependents_0": 540,
+        "dependents_1": 1080,
+        "dependents_2": 1620,
+        "dependents_3": 2160,
+        "dependents_4": 2700,
+        "dependents_5": 2700,
+        "dependents_6": 2700
+      }
+    },
+    {
+      "range_min": 34801,
+      "range_max": 36300,
+      "insured_salary": 36300,
+      "self_payment": {
+        "dependents_0": 563,
+        "dependents_1": 1126,
+        "dependents_2": 1689,
+        "dependents_3": 2252,
+        "dependents_4": 2815,
+        "dependents_5": 2815,
+        "dependents_6": 2815
+      }
+    },
+    {
+      "range_min": 36301,
+      "range_max": 38200,
+      "insured_salary": 38200,
+      "self_payment": {
+        "dependents_0": 593,
+        "dependents_1": 1186,
+        "dependents_2": 1779,
+        "dependents_3": 2372,
+        "dependents_4": 2965,
+        "dependents_5": 2965,
+        "dependents_6": 2965
+      }
+    },
+    {
+      "range_min": 38201,
+      "range_max": 40100,
+      "insured_salary": 40100,
+      "self_payment": {
+        "dependents_0": 622,
+        "dependents_1": 1244,
+        "dependents_2": 1866,
+        "dependents_3": 2488,
+        "dependents_4": 3110,
+        "dependents_5": 3110,
+        "dependents_6": 3110
+      }
+    },
+    {
+      "range_min": 40101,
+      "range_max": 42000,
+      "insured_salary": 42000,
+      "self_payment": {
+        "dependents_0": 651,
+        "dependents_1": 1302,
+        "dependents_2": 1953,
+        "dependents_3": 2604,
+        "dependents_4": 3255,
+        "dependents_5": 3255,
+        "dependents_6": 3255
+      }
+    },
+    {
+      "range_min": 42001,
+      "range_max": 43900,
+      "insured_salary": 43900,
+      "self_payment": {
+        "dependents_0": 681,
+        "dependents_1": 1362,
+        "dependents_2": 2043,
+        "dependents_3": 2724,
+        "dependents_4": 3405,
+        "dependents_5": 3405,
+        "dependents_6": 3405
+      }
+    },
+    {
+      "range_min": 43901,
+      "range_max": 45800,
+      "insured_salary": 45800,
+      "self_payment": {
+        "dependents_0": 710,
+        "dependents_1": 1420,
+        "dependents_2": 2130,
+        "dependents_3": 2840,
+        "dependents_4": 3550,
+        "dependents_5": 3550,
+        "dependents_6": 3550
+      }
+    },
+    {
+      "range_min": 45801,
+      "range_max": 48200,
+      "insured_salary": 48200,
+      "self_payment": {
+        "dependents_0": 748,
+        "dependents_1": 1496,
+        "dependents_2": 2244,
+        "dependents_3": 2992,
+        "dependents_4": 3740,
+        "dependents_5": 3740,
+        "dependents_6": 3740
+      }
+    },
+    {
+      "range_min": 48201,
+      "range_max": 50600,
+      "insured_salary": 50600,
+      "self_payment": {
+        "dependents_0": 785,
+        "dependents_1": 1570,
+        "dependents_2": 2355,
+        "dependents_3": 3140,
+        "dependents_4": 3925,
+        "dependents_5": 3925,
+        "dependents_6": 3925
+      }
+    },
+    {
+      "range_min": 50601,
+      "range_max": 53000,
+      "insured_salary": 53000,
+      "self_payment": {
+        "dependents_0": 822,
+        "dependents_1": 1644,
+        "dependents_2": 2466,
+        "dependents_3": 3288,
+        "dependents_4": 4110,
+        "dependents_5": 4110,
+        "dependents_6": 4110
+      }
+    },
+    {
+      "range_min": 53001,
+      "range_max": 55400,
+      "insured_salary": 55400,
+      "self_payment": {
+        "dependents_0": 859,
+        "dependents_1": 1718,
+        "dependents_2": 2577,
+        "dependents_3": 3436,
+        "dependents_4": 4295,
+        "dependents_5": 4295,
+        "dependents_6": 4295
+      }
+    },
+    {
+      "range_min": 55401,
+      "range_max": 57800,
+      "insured_salary": 57800,
+      "self_payment": {
+        "dependents_0": 896,
+        "dependents_1": 1792,
+        "dependents_2": 2688,
+        "dependents_3": 3584,
+        "dependents_4": 4480,
+        "dependents_5": 4480,
+        "dependents_6": 4480
+      }
+    },
+    {
+      "range_min": 57801,
+      "range_max": 60800,
+      "insured_salary": 60800,
+      "self_payment": {
+        "dependents_0": 943,
+        "dependents_1": 1886,
+        "dependents_2": 2829,
+        "dependents_3": 3772,
+        "dependents_4": 4715,
+        "dependents_5": 4715,
+        "dependents_6": 4715
+      }
+    },
+    {
+      "range_min": 60801,
+      "range_max": 63800,
+      "insured_salary": 63800,
+      "self_payment": {
+        "dependents_0": 989,
+        "dependents_1": 1978,
+        "dependents_2": 2967,
+        "dependents_3": 3956,
+        "dependents_4": 4945,
+        "dependents_5": 4945,
+        "dependents_6": 4945
+      }
+    },
+    {
+      "range_min": 63801,
+      "range_max": 66800,
+      "insured_salary": 66800,
+      "self_payment": {
+        "dependents_0": 1036,
+        "dependents_1": 2072,
+        "dependents_2": 3108,
+        "dependents_3": 4144,
+        "dependents_4": 5180,
+        "dependents_5": 5180,
+        "dependents_6": 5180
+      }
+    },
+    {
+      "range_min": 66801,
+      "range_max": 69800,
+      "insured_salary": 69800,
+      "self_payment": {
+        "dependents_0": 1083,
+        "dependents_1": 2166,
+        "dependents_2": 3249,
+        "dependents_3": 4332,
+        "dependents_4": 5415,
+        "dependents_5": 5415,
+        "dependents_6": 5415
+      }
+    },
+    {
+      "range_min": 69801,
+      "range_max": 72800,
+      "insured_salary": 72800,
+      "self_payment": {
+        "dependents_0": 1129,
+        "dependents_1": 2258,
+        "dependents_2": 3387,
+        "dependents_3": 4516,
+        "dependents_4": 5645,
+        "dependents_5": 5645,
+        "dependents_6": 5645
+      }
+    },
+    {
+      "range_min": 72801,
+      "range_max": 76500,
+      "insured_salary": 76500,
+      "self_payment": {
+        "dependents_0": 1186,
+        "dependents_1": 2372,
+        "dependents_2": 3558,
+        "dependents_3": 4744,
+        "dependents_4": 5930,
+        "dependents_5": 5930,
+        "dependents_6": 5930
+      }
+    },
+    {
+      "range_min": 76501,
+      "range_max": 80200,
+      "insured_salary": 80200,
+      "self_payment": {
+        "dependents_0": 1244,
+        "dependents_1": 2488,
+        "dependents_2": 3732,
+        "dependents_3": 4976,
+        "dependents_4": 6220,
+        "dependents_5": 6220,
+        "dependents_6": 6220
+      }
+    },
+    {
+      "range_min": 80201,
+      "range_max": 83900,
+      "insured_salary": 83900,
+      "self_payment": {
+        "dependents_0": 1301,
+        "dependents_1": 2602,
+        "dependents_2": 3903,
+        "dependents_3": 5204,
+        "dependents_4": 6505,
+        "dependents_5": 6505,
+        "dependents_6": 6505
+      }
+    },
+    {
+      "range_min": 83901,
+      "range_max": 87600,
+      "insured_salary": 87600,
+      "self_payment": {
+        "dependents_0": 1358,
+        "dependents_1": 2716,
+        "dependents_2": 4074,
+        "dependents_3": 5432,
+        "dependents_4": 6790,
+        "dependents_5": 6790,
+        "dependents_6": 6790
+      }
+    },
+    {
+      "range_min": 87601,
+      "range_max": 92100,
+      "insured_salary": 92100,
+      "self_payment": {
+        "dependents_0": 1428,
+        "dependents_1": 2856,
+        "dependents_2": 4284,
+        "dependents_3": 5712,
+        "dependents_4": 7140,
+        "dependents_5": 7140,
+        "dependents_6": 7140
+      }
+    },
+    {
+      "range_min": 92101,
+      "range_max": 96600,
+      "insured_salary": 96600,
+      "self_payment": {
+        "dependents_0": 1498,
+        "dependents_1": 2996,
+        "dependents_2": 4494,
+        "dependents_3": 5992,
+        "dependents_4": 7490,
+        "dependents_5": 7490,
+        "dependents_6": 7490
+      }
+    },
+    {
+      "range_min": 96601,
+      "range_max": 101100,
+      "insured_salary": 101100,
+      "self_payment": {
+        "dependents_0": 1568,
+        "dependents_1": 3136,
+        "dependents_2": 4704,
+        "dependents_3": 6272,
+        "dependents_4": 7840,
+        "dependents_5": 7840,
+        "dependents_6": 7840
+      }
+    },
+    {
+      "range_min": 101101,
+      "range_max": 105600,
+      "insured_salary": 105600,
+      "self_payment": {
+        "dependents_0": 1638,
+        "dependents_1": 3276,
+        "dependents_2": 4914,
+        "dependents_3": 6552,
+        "dependents_4": 8190,
+        "dependents_5": 8190,
+        "dependents_6": 8190
+      }
+    },
+    {
+      "range_min": 105601,
+      "range_max": 110100,
+      "insured_salary": 110100,
+      "self_payment": {
+        "dependents_0": 1708,
+        "dependents_1": 3416,
+        "dependents_2": 5124,
+        "dependents_3": 6832,
+        "dependents_4": 8540,
+        "dependents_5": 8540,
+        "dependents_6": 8540
+      }
+    },
+    {
+      "range_min": 110101,
+      "range_max": 115500,
+      "insured_salary": 115500,
+      "self_payment": {
+        "dependents_0": 1791,
+        "dependents_1": 3582,
+        "dependents_2": 5373,
+        "dependents_3": 7164,
+        "dependents_4": 8955,
+        "dependents_5": 8955,
+        "dependents_6": 8955
+      }
+    },
+    {
+      "range_min": 115501,
+      "range_max": 120900,
+      "insured_salary": 120900,
+      "self_payment": {
+        "dependents_0": 1875,
+        "dependents_1": 3750,
+        "dependents_2": 5625,
+        "dependents_3": 7500,
+        "dependents_4": 9375,
+        "dependents_5": 9375,
+        "dependents_6": 9375
+      }
+    },
+    {
+      "range_min": 120901,
+      "range_max": 126300,
+      "insured_salary": 126300,
+      "self_payment": {
+        "dependents_0": 1959,
+        "dependents_1": 3918,
+        "dependents_2": 5877,
+        "dependents_3": 7836,
+        "dependents_4": 9795,
+        "dependents_5": 9795,
+        "dependents_6": 9795
+      }
+    },
+    {
+      "range_min": 126301,
+      "range_max": 131700,
+      "insured_salary": 131700,
+      "self_payment": {
+        "dependents_0": 2042,
+        "dependents_1": 4084,
+        "dependents_2": 6126,
+        "dependents_3": 8168,
+        "dependents_4": 10210,
+        "dependents_5": 10210,
+        "dependents_6": 10210
+      }
+    },
+    {
+      "range_min": 131701,
+      "range_max": 137100,
+      "insured_salary": 137100,
+      "self_payment": {
+        "dependents_0": 2126,
+        "dependents_1": 4252,
+        "dependents_2": 6378,
+        "dependents_3": 8504,
+        "dependents_4": 10630,
+        "dependents_5": 10630,
+        "dependents_6": 10630
+      }
+    },
+    {
+      "range_min": 137101,
+      "range_max": 142500,
+      "insured_salary": 142500,
+      "self_payment": {
+        "dependents_0": 2210,
+        "dependents_1": 4420,
+        "dependents_2": 6630,
+        "dependents_3": 8840,
+        "dependents_4": 11050,
+        "dependents_5": 11050,
+        "dependents_6": 11050
+      }
+    },
+    {
+      "range_min": 142501,
+      "range_max": 147900,
+      "insured_salary": 147900,
+      "self_payment": {
+        "dependents_0": 2293,
+        "dependents_1": 4586,
+        "dependents_2": 6879,
+        "dependents_3": 9172,
+        "dependents_4": 11465,
+        "dependents_5": 11465,
+        "dependents_6": 11465
+      }
+    },
+    {
+      "range_min": 147901,
+      "range_max": 156400,
+      "insured_salary": 156400,
+      "self_payment": {
+        "dependents_0": 2426,
+        "dependents_1": 4852,
+        "dependents_2": 7278,
+        "dependents_3": 9704,
+        "dependents_4": 12130,
+        "dependents_5": 12130,
+        "dependents_6": 12130
+      }
+    },
+    {
+      "range_min": 156401,
+      "range_max": 164900,
+      "insured_salary": 164900,
+      "self_payment": {
+        "dependents_0": 2558,
+        "dependents_1": 5116,
+        "dependents_2": 7674,
+        "dependents_3": 10232,
+        "dependents_4": 12790,
+        "dependents_5": 12790,
+        "dependents_6": 12790
+      }
+    },
+    {
+      "range_min": 164901,
+      "range_max": 173400,
+      "insured_salary": 173400,
+      "self_payment": {
+        "dependents_0": 2690,
+        "dependents_1": 5380,
+        "dependents_2": 8070,
+        "dependents_3": 10760,
+        "dependents_4": 13450,
+        "dependents_5": 13450,
+        "dependents_6": 13450
+      }
+    },
+    {
+      "range_min": 173401,
+      "range_max": 182000,
+      "insured_salary": 182000,
+      "self_payment": {
+        "dependents_0": 2823,
+        "dependents_1": 5646,
+        "dependents_2": 8469,
+        "dependents_3": 11292,
+        "dependents_4": 14115,
+        "dependents_5": 14115,
+        "dependents_6": 14115
+      }
+    },
+    {
+      "range_min": 182001,
+      "range_max": 219000,
+      "insured_salary": 219000,
+      "self_payment": {
+        "dependents_0": 3397,
+        "dependents_1": 6794,
+        "dependents_2": 10191,
+        "dependents_3": 13588,
+        "dependents_4": 16985,
+        "dependents_5": 16985,
+        "dependents_6": 16985
+      }
+    }
+  ]
+}

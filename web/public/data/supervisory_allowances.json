@@ -1,0 +1,51 @@
+{
+  "dataset": "supervisory_allowances",
+  "version": "114.01",
+  "effective_date": "2025-01-01",
+  "source_name": "銓敘部主管職務加給表",
+  "source_url": "https://www.mocs.gov.tw/",
+  "last_checked_at": "2026-05-16",
+  "generated_at": "2026-05-16T15:26:41+00:00",
+  "items": [
+    {
+      "category_id": "supervisor_section",
+      "category_name": "科員以上主管（委任或薦任組長/課長）",
+      "min_rank": 4,
+      "max_rank": 7,
+      "monthly_allowance": 2100,
+      "note": "委任四等至薦任七等"
+    },
+    {
+      "category_id": "supervisor_section_senior",
+      "category_name": "薦任科長（薦任八等）",
+      "min_rank": 8,
+      "max_rank": 9,
+      "monthly_allowance": 3600,
+      "note": "薦任八至九等科長"
+    },
+    {
+      "category_id": "supervisor_division",
+      "category_name": "簡任科長/副處長",
+      "min_rank": 10,
+      "max_rank": 11,
+      "monthly_allowance": 5700,
+      "note": "簡任十至十一等"
+    },
+    {
+      "category_id": "supervisor_department",
+      "category_name": "簡任處長/副局長",
+      "min_rank": 12,
+      "max_rank": 13,
+      "monthly_allowance": 7500,
+      "note": "簡任十二至十三等"
+    },
+    {
+      "category_id": "supervisor_bureau",
+      "category_name": "簡任局長/署長",
+      "min_rank": 13,
+      "max_rank": 14,
+      "monthly_allowance": 10000,
+      "note": "簡任十三至十四等"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-gray-100 text-gray-900 min-h-screen;
+    font-family: -apple-system, "Noto Sans TC", BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+}
+
+@layer components {
+  .tab-btn {
+    @apply px-4 py-2 text-sm font-medium rounded-lg transition-colors text-gray-600 hover:text-gray-900 hover:bg-white;
+  }
+  .tab-active {
+    @apply bg-white text-blue-600 shadow-sm font-semibold;
+  }
+}

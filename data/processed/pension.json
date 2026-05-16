@@ -1,0 +1,192 @@
+{
+  "dataset": "pension",
+  "version": "114.01",
+  "effective_date": "2025-01-01",
+  "source_name": "公務人員退休撫卹基金管理委員會",
+  "source_url": "https://www.fund.gov.tw/",
+  "last_checked_at": "2026-05-16",
+  "generated_at": "2026-05-16T15:26:41+00:00",
+  "system": "old",
+  "items": [
+    {
+      "point": 160,
+      "base_salary": 14395,
+      "self_payment": 1511
+    },
+    {
+      "point": 190,
+      "base_salary": 16270,
+      "self_payment": 1708
+    },
+    {
+      "point": 220,
+      "base_salary": 18220,
+      "self_payment": 1913
+    },
+    {
+      "point": 245,
+      "base_salary": 19885,
+      "self_payment": 2088
+    },
+    {
+      "point": 260,
+      "base_salary": 20965,
+      "self_payment": 2201
+    },
+    {
+      "point": 280,
+      "base_salary": 22450,
+      "self_payment": 2357
+    },
+    {
+      "point": 300,
+      "base_salary": 24010,
+      "self_payment": 2521
+    },
+    {
+      "point": 315,
+      "base_salary": 25085,
+      "self_payment": 2634
+    },
+    {
+      "point": 330,
+      "base_salary": 26185,
+      "self_payment": 2749
+    },
+    {
+      "point": 345,
+      "base_salary": 27330,
+      "self_payment": 2870
+    },
+    {
+      "point": 355,
+      "base_salary": 28155,
+      "self_payment": 2956
+    },
+    {
+      "point": 370,
+      "base_salary": 29365,
+      "self_payment": 3083
+    },
+    {
+      "point": 380,
+      "base_salary": 30205,
+      "self_payment": 3172
+    },
+    {
+      "point": 390,
+      "base_salary": 31090,
+      "self_payment": 3264
+    },
+    {
+      "point": 400,
+      "base_salary": 32005,
+      "self_payment": 3361
+    },
+    {
+      "point": 410,
+      "base_salary": 32945,
+      "self_payment": 3459
+    },
+    {
+      "point": 420,
+      "base_salary": 33945,
+      "self_payment": 3564
+    },
+    {
+      "point": 430,
+      "base_salary": 34945,
+      "self_payment": 3669
+    },
+    {
+      "point": 440,
+      "base_salary": 35970,
+      "self_payment": 3777
+    },
+    {
+      "point": 450,
+      "base_salary": 37030,
+      "self_payment": 3888
+    },
+    {
+      "point": 460,
+      "base_salary": 38110,
+      "self_payment": 4002
+    },
+    {
+      "point": 470,
+      "base_salary": 39215,
+      "self_payment": 4118
+    },
+    {
+      "point": 475,
+      "base_salary": 36160,
+      "self_payment": 3797
+    },
+    {
+      "point": 480,
+      "base_salary": 40345,
+      "self_payment": 4236
+    },
+    {
+      "point": 490,
+      "base_salary": 41500,
+      "self_payment": 4358
+    },
+    {
+      "point": 500,
+      "base_salary": 42680,
+      "self_payment": 4481
+    },
+    {
+      "point": 510,
+      "base_salary": 43890,
+      "self_payment": 4608
+    },
+    {
+      "point": 520,
+      "base_salary": 45125,
+      "self_payment": 4738
+    },
+    {
+      "point": 530,
+      "base_salary": 46390,
+      "self_payment": 4871
+    },
+    {
+      "point": 540,
+      "base_salary": 47680,
+      "self_payment": 5006
+    },
+    {
+      "point": 550,
+      "base_salary": 49000,
+      "self_payment": 5145
+    },
+    {
+      "point": 560,
+      "base_salary": 50350,
+      "self_payment": 5287
+    },
+    {
+      "point": 570,
+      "base_salary": 51730,
+      "self_payment": 5432
+    },
+    {
+      "point": 580,
+      "base_salary": 53145,
+      "self_payment": 5582
+    },
+    {
+      "point": 590,
+      "base_salary": 54590,
+      "self_payment": 5732
+    },
+    {
+      "point": 600,
+      "base_salary": 56070,
+      "self_payment": 5887
+    }
+  ]
+}

@@ -1,0 +1,405 @@
+{
+  "dataset": "professional_allowances",
+  "version": "114.01",
+  "effective_date": "2025-01-01",
+  "source_name": "銓敘部公務人員專業加給表",
+  "source_url": "https://www.mocs.gov.tw/",
+  "last_checked_at": "2026-05-16",
+  "generated_at": "2026-05-16T15:26:41+00:00",
+  "tables": [
+    {
+      "table_id": "professional_allowance_table_1",
+      "name": "公務人員專業加給表一（主計人員）",
+      "items": [
+        {
+          "rank": 1,
+          "monthly_allowance": 9500
+        },
+        {
+          "rank": 2,
+          "monthly_allowance": 10300
+        },
+        {
+          "rank": 3,
+          "monthly_allowance": 11500
+        },
+        {
+          "rank": 4,
+          "monthly_allowance": 12900
+        },
+        {
+          "rank": 5,
+          "monthly_allowance": 14800
+        },
+        {
+          "rank": 6,
+          "monthly_allowance": 17400
+        },
+        {
+          "rank": 7,
+          "monthly_allowance": 21900
+        },
+        {
+          "rank": 8,
+          "monthly_allowance": 24200
+        },
+        {
+          "rank": 9,
+          "monthly_allowance": 27100
+        },
+        {
+          "rank": 10,
+          "monthly_allowance": 30200
+        },
+        {
+          "rank": 11,
+          "monthly_allowance": 33500
+        },
+        {
+          "rank": 12,
+          "monthly_allowance": 37400
+        },
+        {
+          "rank": 13,
+          "monthly_allowance": 42200
+        },
+        {
+          "rank": 14,
+          "monthly_allowance": 47500
+        }
+      ],
+      "extra_allowances": [
+        {
+          "code": "engineering_extra",
+          "name": "工程機關或工程單位實際從事工程業務另增支",
+          "amount": 3000
+        }
+      ]
+    },
+    {
+      "table_id": "professional_allowance_table_2",
+      "name": "公務人員專業加給表二（人事人員）",
+      "items": [
+        {
+          "rank": 1,
+          "monthly_allowance": 9500
+        },
+        {
+          "rank": 2,
+          "monthly_allowance": 10300
+        },
+        {
+          "rank": 3,
+          "monthly_allowance": 11500
+        },
+        {
+          "rank": 4,
+          "monthly_allowance": 12900
+        },
+        {
+          "rank": 5,
+          "monthly_allowance": 14800
+        },
+        {
+          "rank": 6,
+          "monthly_allowance": 17400
+        },
+        {
+          "rank": 7,
+          "monthly_allowance": 21900
+        },
+        {
+          "rank": 8,
+          "monthly_allowance": 24200
+        },
+        {
+          "rank": 9,
+          "monthly_allowance": 27100
+        },
+        {
+          "rank": 10,
+          "monthly_allowance": 30200
+        },
+        {
+          "rank": 11,
+          "monthly_allowance": 33500
+        },
+        {
+          "rank": 12,
+          "monthly_allowance": 37400
+        },
+        {
+          "rank": 13,
+          "monthly_allowance": 42200
+        },
+        {
+          "rank": 14,
+          "monthly_allowance": 47500
+        }
+      ],
+      "extra_allowances": [
+        {
+          "code": "engineering_extra",
+          "name": "工程機關或工程單位實際從事工程業務另增支",
+          "amount": 3000
+        }
+      ]
+    },
+    {
+      "table_id": "professional_allowance_table_3",
+      "name": "公務人員專業加給表三（政風人員）",
+      "items": [
+        {
+          "rank": 1,
+          "monthly_allowance": 9500
+        },
+        {
+          "rank": 2,
+          "monthly_allowance": 10300
+        },
+        {
+          "rank": 3,
+          "monthly_allowance": 11500
+        },
+        {
+          "rank": 4,
+          "monthly_allowance": 12900
+        },
+        {
+          "rank": 5,
+          "monthly_allowance": 14800
+        },
+        {
+          "rank": 6,
+          "monthly_allowance": 17400
+        },
+        {
+          "rank": 7,
+          "monthly_allowance": 21900
+        },
+        {
+          "rank": 8,
+          "monthly_allowance": 24200
+        },
+        {
+          "rank": 9,
+          "monthly_allowance": 27100
+        },
+        {
+          "rank": 10,
+          "monthly_allowance": 30200
+        },
+        {
+          "rank": 11,
+          "monthly_allowance": 33500
+        },
+        {
+          "rank": 12,
+          "monthly_allowance": 37400
+        },
+        {
+          "rank": 13,
+          "monthly_allowance": 42200
+        },
+        {
+          "rank": 14,
+          "monthly_allowance": 47500
+        }
+      ],
+      "extra_allowances": [
+        {
+          "code": "engineering_extra",
+          "name": "工程機關或工程單位實際從事工程業務另增支",
+          "amount": 3000
+        }
+      ]
+    },
+    {
+      "table_id": "professional_allowance_table_4",
+      "name": "公務人員專業加給表四（一般行政）",
+      "items": [
+        {
+          "rank": 1,
+          "monthly_allowance": 8700
+        },
+        {
+          "rank": 2,
+          "monthly_allowance": 9400
+        },
+        {
+          "rank": 3,
+          "monthly_allowance": 10500
+        },
+        {
+          "rank": 4,
+          "monthly_allowance": 11800
+        },
+        {
+          "rank": 5,
+          "monthly_allowance": 13600
+        },
+        {
+          "rank": 6,
+          "monthly_allowance": 15900
+        },
+        {
+          "rank": 7,
+          "monthly_allowance": 20100
+        },
+        {
+          "rank": 8,
+          "monthly_allowance": 22400
+        },
+        {
+          "rank": 9,
+          "monthly_allowance": 25200
+        },
+        {
+          "rank": 10,
+          "monthly_allowance": 28100
+        },
+        {
+          "rank": 11,
+          "monthly_allowance": 31400
+        },
+        {
+          "rank": 12,
+          "monthly_allowance": 35200
+        },
+        {
+          "rank": 13,
+          "monthly_allowance": 39800
+        },
+        {
+          "rank": 14,
+          "monthly_allowance": 44900
+        }
+      ],
+      "extra_allowances": [
+        {
+          "code": "engineering_extra",
+          "name": "工程機關或工程單位實際從事工程業務另增支",
+          "amount": 3000
+        }
+      ]
+    },
+    {
+      "table_id": "professional_allowance_table_7",
+      "name": "公務人員專業加給表七",
+      "items": [
+        {
+          "rank": 1,
+          "monthly_allowance": 10400
+        },
+        {
+          "rank": 2,
+          "monthly_allowance": 11200
+        },
+        {
+          "rank": 3,
+          "monthly_allowance": 12500
+        },
+        {
+          "rank": 4,
+          "monthly_allowance": 14000
+        },
+        {
+          "rank": 5,
+          "monthly_allowance": 15895
+        },
+        {
+          "rank": 6,
+          "monthly_allowance": 24870
+        },
+        {
+          "rank": 7,
+          "monthly_allowance": 28730
+        },
+        {
+          "rank": 8,
+          "monthly_allowance": 31130
+        },
+        {
+          "rank": 9,
+          "monthly_allowance": 33675
+        },
+        {
+          "rank": 10,
+          "monthly_allowance": 36295
+        },
+        {
+          "rank": 11,
+          "monthly_allowance": 39100
+        },
+        {
+          "rank": 12,
+          "monthly_allowance": 42060
+        },
+        {
+          "rank": 13,
+          "monthly_allowance": 45210
+        },
+        {
+          "rank": 14,
+          "monthly_allowance": 48590
+        }
+      ],
+      "extra_allowances": [
+        {
+          "code": "engineering_extra",
+          "name": "工程機關或工程單位實際從事工程業務另增支",
+          "amount": 3000
+        }
+      ]
+    },
+    {
+      "table_id": "professional_allowance_table_8",
+      "name": "公務人員專業加給表八（醫事人員）",
+      "items": [
+        {
+          "rank": 6,
+          "monthly_allowance": 24200
+        },
+        {
+          "rank": 7,
+          "monthly_allowance": 29500
+        },
+        {
+          "rank": 8,
+          "monthly_allowance": 32800
+        },
+        {
+          "rank": 9,
+          "monthly_allowance": 36500
+        },
+        {
+          "rank": 10,
+          "monthly_allowance": 40200
+        },
+        {
+          "rank": 11,
+          "monthly_allowance": 44600
+        },
+        {
+          "rank": 12,
+          "monthly_allowance": 49800
+        },
+        {
+          "rank": 13,
+          "monthly_allowance": 55400
+        },
+        {
+          "rank": 14,
+          "monthly_allowance": 61200
+        }
+      ],
+      "extra_allowances": [
+        {
+          "code": "engineering_extra",
+          "name": "工程機關或工程單位實際從事工程業務另增支",
+          "amount": 3000
+        }
+      ]
+    }
+  ]
+}

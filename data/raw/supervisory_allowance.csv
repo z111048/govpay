@@ -1,0 +1,6 @@
+category_id,category_name,min_rank,max_rank,monthly_allowance,note
+supervisor_section,科員以上主管（委任或薦任組長/課長）,4,7,2100,委任四等至薦任七等
+supervisor_section_senior,薦任科長（薦任八等）,8,9,3600,薦任八至九等科長
+supervisor_division,簡任科長/副處長,10,11,5700,簡任十至十一等
+supervisor_department,簡任處長/副局長,12,13,7500,簡任十二至十三等
+supervisor_bureau,簡任局長/署長,13,14,10000,簡任十三至十四等

@@ -1,0 +1,971 @@
+{
+  "dataset": "salary_grades",
+  "version": "114.01",
+  "effective_date": "2025-01-01",
+  "source_name": "銓敘部公務人員職等俸級表",
+  "source_url": "https://www.mocs.gov.tw/",
+  "last_checked_at": "2026-05-16",
+  "generated_at": "2026-05-16T15:26:41+00:00",
+  "year": 114,
+  "entries": [
+    {
+      "rank": 1,
+      "rank_name": "委任第一職等",
+      "grade_type": "本俸",
+      "level": 1,
+      "point": 160
+    },
+    {
+      "rank": 1,
+      "rank_name": "委任第一職等",
+      "grade_type": "本俸",
+      "level": 2,
+      "point": 165
+    },
+    {
+      "rank": 1,
+      "rank_name": "委任第一職等",
+      "grade_type": "本俸",
+      "level": 3,
+      "point": 170
+    },
+    {
+      "rank": 1,
+      "rank_name": "委任第一職等",
+      "grade_type": "本俸",
+      "level": 4,
+      "point": 175
+    },
+    {
+      "rank": 1,
+      "rank_name": "委任第一職等",
+      "grade_type": "本俸",
+      "level": 5,
+      "point": 185
+    },
+    {
+      "rank": 1,
+      "rank_name": "委任第一職等",
+      "grade_type": "年功俸",
+      "level": 1,
+      "point": 190
+    },
+    {
+      "rank": 1,
+      "rank_name": "委任第一職等",
+      "grade_type": "年功俸",
+      "level": 2,
+      "point": 195
+    },
+    {
+      "rank": 1,
+      "rank_name": "委任第一職等",
+      "grade_type": "年功俸",
+      "level": 3,
+      "point": 200
+    },
+    {
+      "rank": 1,
+      "rank_name": "委任第一職等",
+      "grade_type": "年功俸",
+      "level": 4,
+      "point": 210
+    },
+    {
+      "rank": 1,
+      "rank_name": "委任第一職等",
+      "grade_type": "年功俸",
+      "level": 5,
+      "point": 215
+    },
+    {
+      "rank": 2,
+      "rank_name": "委任第二職等",
+      "grade_type": "本俸",
+      "level": 1,
+      "point": 185
+    },
+    {
+      "rank": 2,
+      "rank_name": "委任第二職等",
+      "grade_type": "本俸",
+      "level": 2,
+      "point": 190
+    },
+    {
+      "rank": 2,
+      "rank_name": "委任第二職等",
+      "grade_type": "本俸",
+      "level": 3,
+      "point": 200
+    },
+    {
+      "rank": 2,
+      "rank_name": "委任第二職等",
+      "grade_type": "本俸",
+      "level": 4,
+      "point": 210
+    },
+    {
+      "rank": 2,
+      "rank_name": "委任第二職等",
+      "grade_type": "本俸",
+      "level": 5,
+      "point": 220
+    },
+    {
+      "rank": 2,
+      "rank_name": "委任第二職等",
+      "grade_type": "年功俸",
+      "level": 1,
+      "point": 225
+    },
+    {
+      "rank": 2,
+      "rank_name": "委任第二職等",
+      "grade_type": "年功俸",
+      "level": 2,
+      "point": 230
+    },
+    {
+      "rank": 2,
+      "rank_name": "委任第二職等",
+      "grade_type": "年功俸",
+      "level": 3,
+      "point": 240
+    },
+    {
+      "rank": 2,
+      "rank_name": "委任第二職等",
+      "grade_type": "年功俸",
+      "level": 4,
+      "point": 250
+    },
+    {
+      "rank": 2,
+      "rank_name": "委任第二職等",
+      "grade_type": "年功俸",
+      "level": 5,
+      "point": 260
+    },
+    {
+      "rank": 3,
+      "rank_name": "委任第三職等",
+      "grade_type": "本俸",
+      "level": 1,
+      "point": 220
+    },
+    {
+      "rank": 3,
+      "rank_name": "委任第三職等",
+      "grade_type": "本俸",
+      "level": 2,
+      "point": 230
+    },
+    {
+      "rank": 3,
+      "rank_name": "委任第三職等",
+      "grade_type": "本俸",
+      "level": 3,
+      "point": 240
+    },
+    {
+      "rank": 3,
+      "rank_name": "委任第三職等",
+      "grade_type": "本俸",
+      "level": 4,
+      "point": 250
+    },
+    {
+      "rank": 3,
+      "rank_name": "委任第三職等",
+      "grade_type": "本俸",
+      "level": 5,
+      "point": 260
+    },
+    {
+      "rank": 3,
+      "rank_name": "委任第三職等",
+      "grade_type": "年功俸",
+      "level": 1,
+      "point": 270
+    },
+    {
+      "rank": 3,
+      "rank_name": "委任第三職等",
+      "grade_type": "年功俸",
+      "level": 2,
+      "point": 280
+    },
+    {
+      "rank": 3,
+      "rank_name": "委任第三職等",
+      "grade_type": "年功俸",
+      "level": 3,
+      "point": 290
+    },
+    {
+      "rank": 3,
+      "rank_name": "委任第三職等",
+      "grade_type": "年功俸",
+      "level": 4,
+      "point": 300
+    },
+    {
+      "rank": 3,
+      "rank_name": "委任第三職等",
+      "grade_type": "年功俸",
+      "level": 5,
+      "point": 310
+    },
+    {
+      "rank": 4,
+      "rank_name": "委任第四職等",
+      "grade_type": "本俸",
+      "level": 1,
+      "point": 255
+    },
+    {
+      "rank": 4,
+      "rank_name": "委任第四職等",
+      "grade_type": "本俸",
+      "level": 2,
+      "point": 265
+    },
+    {
+      "rank": 4,
+      "rank_name": "委任第四職等",
+      "grade_type": "本俸",
+      "level": 3,
+      "point": 275
+    },
+    {
+      "rank": 4,
+      "rank_name": "委任第四職等",
+      "grade_type": "本俸",
+      "level": 4,
+      "point": 285
+    },
+    {
+      "rank": 4,
+      "rank_name": "委任第四職等",
+      "grade_type": "本俸",
+      "level": 5,
+      "point": 300
+    },
+    {
+      "rank": 4,
+      "rank_name": "委任第四職等",
+      "grade_type": "年功俸",
+      "level": 1,
+      "point": 310
+    },
+    {
+      "rank": 4,
+      "rank_name": "委任第四職等",
+      "grade_type": "年功俸",
+      "level": 2,
+      "point": 320
+    },
+    {
+      "rank": 4,
+      "rank_name": "委任第四職等",
+      "grade_type": "年功俸",
+      "level": 3,
+      "point": 330
+    },
+    {
+      "rank": 4,
+      "rank_name": "委任第四職等",
+      "grade_type": "年功俸",
+      "level": 4,
+      "point": 345
+    },
+    {
+      "rank": 4,
+      "rank_name": "委任第四職等",
+      "grade_type": "年功俸",
+      "level": 5,
+      "point": 360
+    },
+    {
+      "rank": 5,
+      "rank_name": "委任第五職等",
+      "grade_type": "本俸",
+      "level": 1,
+      "point": 290
+    },
+    {
+      "rank": 5,
+      "rank_name": "委任第五職等",
+      "grade_type": "本俸",
+      "level": 2,
+      "point": 305
+    },
+    {
+      "rank": 5,
+      "rank_name": "委任第五職等",
+      "grade_type": "本俸",
+      "level": 3,
+      "point": 315
+    },
+    {
+      "rank": 5,
+      "rank_name": "委任第五職等",
+      "grade_type": "本俸",
+      "level": 4,
+      "point": 330
+    },
+    {
+      "rank": 5,
+      "rank_name": "委任第五職等",
+      "grade_type": "本俸",
+      "level": 5,
+      "point": 350
+    },
+    {
+      "rank": 5,
+      "rank_name": "委任第五職等",
+      "grade_type": "年功俸",
+      "level": 1,
+      "point": 360
+    },
+    {
+      "rank": 5,
+      "rank_name": "委任第五職等",
+      "grade_type": "年功俸",
+      "level": 2,
+      "point": 375
+    },
+    {
+      "rank": 5,
+      "rank_name": "委任第五職等",
+      "grade_type": "年功俸",
+      "level": 3,
+      "point": 390
+    },
+    {
+      "rank": 5,
+      "rank_name": "委任第五職等",
+      "grade_type": "年功俸",
+      "level": 4,
+      "point": 405
+    },
+    {
+      "rank": 5,
+      "rank_name": "委任第五職等",
+      "grade_type": "年功俸",
+      "level": 5,
+      "point": 420
+    },
+    {
+      "rank": 6,
+      "rank_name": "薦任第六職等",
+      "grade_type": "本俸",
+      "level": 1,
+      "point": 345
+    },
+    {
+      "rank": 6,
+      "rank_name": "薦任第六職等",
+      "grade_type": "本俸",
+      "level": 2,
+      "point": 360
+    },
+    {
+      "rank": 6,
+      "rank_name": "薦任第六職等",
+      "grade_type": "本俸",
+      "level": 3,
+      "point": 380
+    },
+    {
+      "rank": 6,
+      "rank_name": "薦任第六職等",
+      "grade_type": "本俸",
+      "level": 4,
+      "point": 400
+    },
+    {
+      "rank": 6,
+      "rank_name": "薦任第六職等",
+      "grade_type": "本俸",
+      "level": 5,
+      "point": 415
+    },
+    {
+      "rank": 6,
+      "rank_name": "薦任第六職等",
+      "grade_type": "年功俸",
+      "level": 1,
+      "point": 425
+    },
+    {
+      "rank": 6,
+      "rank_name": "薦任第六職等",
+      "grade_type": "年功俸",
+      "level": 2,
+      "point": 440
+    },
+    {
+      "rank": 6,
+      "rank_name": "薦任第六職等",
+      "grade_type": "年功俸",
+      "level": 3,
+      "point": 455
+    },
+    {
+      "rank": 6,
+      "rank_name": "薦任第六職等",
+      "grade_type": "年功俸",
+      "level": 4,
+      "point": 465
+    },
+    {
+      "rank": 6,
+      "rank_name": "薦任第六職等",
+      "grade_type": "年功俸",
+      "level": 5,
+      "point": 475
+    },
+    {
+      "rank": 7,
+      "rank_name": "薦任第七職等",
+      "grade_type": "本俸",
+      "level": 1,
+      "point": 415
+    },
+    {
+      "rank": 7,
+      "rank_name": "薦任第七職等",
+      "grade_type": "本俸",
+      "level": 2,
+      "point": 430
+    },
+    {
+      "rank": 7,
+      "rank_name": "薦任第七職等",
+      "grade_type": "本俸",
+      "level": 3,
+      "point": 445
+    },
+    {
+      "rank": 7,
+      "rank_name": "薦任第七職等",
+      "grade_type": "本俸",
+      "level": 4,
+      "point": 460
+    },
+    {
+      "rank": 7,
+      "rank_name": "薦任第七職等",
+      "grade_type": "本俸",
+      "level": 5,
+      "point": 475
+    },
+    {
+      "rank": 7,
+      "rank_name": "薦任第七職等",
+      "grade_type": "年功俸",
+      "level": 1,
+      "point": 490
+    },
+    {
+      "rank": 7,
+      "rank_name": "薦任第七職等",
+      "grade_type": "年功俸",
+      "level": 2,
+      "point": 510
+    },
+    {
+      "rank": 7,
+      "rank_name": "薦任第七職等",
+      "grade_type": "年功俸",
+      "level": 3,
+      "point": 530
+    },
+    {
+      "rank": 7,
+      "rank_name": "薦任第七職等",
+      "grade_type": "年功俸",
+      "level": 4,
+      "point": 550
+    },
+    {
+      "rank": 7,
+      "rank_name": "薦任第七職等",
+      "grade_type": "年功俸",
+      "level": 5,
+      "point": 565
+    },
+    {
+      "rank": 7,
+      "rank_name": "薦任第七職等",
+      "grade_type": "年功俸",
+      "level": 6,
+      "point": 580
+    },
+    {
+      "rank": 8,
+      "rank_name": "薦任第八職等",
+      "grade_type": "本俸",
+      "level": 1,
+      "point": 460
+    },
+    {
+      "rank": 8,
+      "rank_name": "薦任第八職等",
+      "grade_type": "本俸",
+      "level": 2,
+      "point": 465
+    },
+    {
+      "rank": 8,
+      "rank_name": "薦任第八職等",
+      "grade_type": "本俸",
+      "level": 3,
+      "point": 475
+    },
+    {
+      "rank": 8,
+      "rank_name": "薦任第八職等",
+      "grade_type": "本俸",
+      "level": 4,
+      "point": 490
+    },
+    {
+      "rank": 8,
+      "rank_name": "薦任第八職等",
+      "grade_type": "本俸",
+      "level": 5,
+      "point": 505
+    },
+    {
+      "rank": 8,
+      "rank_name": "薦任第八職等",
+      "grade_type": "年功俸",
+      "level": 1,
+      "point": 500
+    },
+    {
+      "rank": 8,
+      "rank_name": "薦任第八職等",
+      "grade_type": "年功俸",
+      "level": 2,
+      "point": 515
+    },
+    {
+      "rank": 8,
+      "rank_name": "薦任第八職等",
+      "grade_type": "年功俸",
+      "level": 3,
+      "point": 530
+    },
+    {
+      "rank": 8,
+      "rank_name": "薦任第八職等",
+      "grade_type": "年功俸",
+      "level": 4,
+      "point": 545
+    },
+    {
+      "rank": 8,
+      "rank_name": "薦任第八職等",
+      "grade_type": "年功俸",
+      "level": 5,
+      "point": 560
+    },
+    {
+      "rank": 8,
+      "rank_name": "薦任第八職等",
+      "grade_type": "年功俸",
+      "level": 6,
+      "point": 575
+    },
+    {
+      "rank": 9,
+      "rank_name": "薦任第九職等",
+      "grade_type": "本俸",
+      "level": 1,
+      "point": 500
+    },
+    {
+      "rank": 9,
+      "rank_name": "薦任第九職等",
+      "grade_type": "本俸",
+      "level": 2,
+      "point": 510
+    },
+    {
+      "rank": 9,
+      "rank_name": "薦任第九職等",
+      "grade_type": "本俸",
+      "level": 3,
+      "point": 520
+    },
+    {
+      "rank": 9,
+      "rank_name": "薦任第九職等",
+      "grade_type": "本俸",
+      "level": 4,
+      "point": 535
+    },
+    {
+      "rank": 9,
+      "rank_name": "薦任第九職等",
+      "grade_type": "本俸",
+      "level": 5,
+      "point": 550
+    },
+    {
+      "rank": 9,
+      "rank_name": "薦任第九職等",
+      "grade_type": "年功俸",
+      "level": 1,
+      "point": 565
+    },
+    {
+      "rank": 9,
+      "rank_name": "薦任第九職等",
+      "grade_type": "年功俸",
+      "level": 2,
+      "point": 580
+    },
+    {
+      "rank": 9,
+      "rank_name": "薦任第九職等",
+      "grade_type": "年功俸",
+      "level": 3,
+      "point": 595
+    },
+    {
+      "rank": 9,
+      "rank_name": "薦任第九職等",
+      "grade_type": "年功俸",
+      "level": 4,
+      "point": 610
+    },
+    {
+      "rank": 9,
+      "rank_name": "薦任第九職等",
+      "grade_type": "年功俸",
+      "level": 5,
+      "point": 625
+    },
+    {
+      "rank": 9,
+      "rank_name": "薦任第九職等",
+      "grade_type": "年功俸",
+      "level": 6,
+      "point": 640
+    },
+    {
+      "rank": 10,
+      "rank_name": "簡任第十職等",
+      "grade_type": "本俸",
+      "level": 1,
+      "point": 550
+    },
+    {
+      "rank": 10,
+      "rank_name": "簡任第十職等",
+      "grade_type": "本俸",
+      "level": 2,
+      "point": 565
+    },
+    {
+      "rank": 10,
+      "rank_name": "簡任第十職等",
+      "grade_type": "本俸",
+      "level": 3,
+      "point": 580
+    },
+    {
+      "rank": 10,
+      "rank_name": "簡任第十職等",
+      "grade_type": "本俸",
+      "level": 4,
+      "point": 595
+    },
+    {
+      "rank": 10,
+      "rank_name": "簡任第十職等",
+      "grade_type": "本俸",
+      "level": 5,
+      "point": 610
+    },
+    {
+      "rank": 10,
+      "rank_name": "簡任第十職等",
+      "grade_type": "年功俸",
+      "level": 1,
+      "point": 625
+    },
+    {
+      "rank": 10,
+      "rank_name": "簡任第十職等",
+      "grade_type": "年功俸",
+      "level": 2,
+      "point": 640
+    },
+    {
+      "rank": 10,
+      "rank_name": "簡任第十職等",
+      "grade_type": "年功俸",
+      "level": 3,
+      "point": 655
+    },
+    {
+      "rank": 10,
+      "rank_name": "簡任第十職等",
+      "grade_type": "年功俸",
+      "level": 4,
+      "point": 670
+    },
+    {
+      "rank": 11,
+      "rank_name": "簡任第十一職等",
+      "grade_type": "本俸",
+      "level": 1,
+      "point": 610
+    },
+    {
+      "rank": 11,
+      "rank_name": "簡任第十一職等",
+      "grade_type": "本俸",
+      "level": 2,
+      "point": 630
+    },
+    {
+      "rank": 11,
+      "rank_name": "簡任第十一職等",
+      "grade_type": "本俸",
+      "level": 3,
+      "point": 650
+    },
+    {
+      "rank": 11,
+      "rank_name": "簡任第十一職等",
+      "grade_type": "本俸",
+      "level": 4,
+      "point": 670
+    },
+    {
+      "rank": 11,
+      "rank_name": "簡任第十一職等",
+      "grade_type": "本俸",
+      "level": 5,
+      "point": 690
+    },
+    {
+      "rank": 11,
+      "rank_name": "簡任第十一職等",
+      "grade_type": "年功俸",
+      "level": 1,
+      "point": 710
+    },
+    {
+      "rank": 11,
+      "rank_name": "簡任第十一職等",
+      "grade_type": "年功俸",
+      "level": 2,
+      "point": 730
+    },
+    {
+      "rank": 11,
+      "rank_name": "簡任第十一職等",
+      "grade_type": "年功俸",
+      "level": 3,
+      "point": 750
+    },
+    {
+      "rank": 11,
+      "rank_name": "簡任第十一職等",
+      "grade_type": "年功俸",
+      "level": 4,
+      "point": 770
+    },
+    {
+      "rank": 12,
+      "rank_name": "簡任第十二職等",
+      "grade_type": "本俸",
+      "level": 1,
+      "point": 680
+    },
+    {
+      "rank": 12,
+      "rank_name": "簡任第十二職等",
+      "grade_type": "本俸",
+      "level": 2,
+      "point": 700
+    },
+    {
+      "rank": 12,
+      "rank_name": "簡任第十二職等",
+      "grade_type": "本俸",
+      "level": 3,
+      "point": 720
+    },
+    {
+      "rank": 12,
+      "rank_name": "簡任第十二職等",
+      "grade_type": "本俸",
+      "level": 4,
+      "point": 740
+    },
+    {
+      "rank": 12,
+      "rank_name": "簡任第十二職等",
+      "grade_type": "本俸",
+      "level": 5,
+      "point": 760
+    },
+    {
+      "rank": 12,
+      "rank_name": "簡任第十二職等",
+      "grade_type": "年功俸",
+      "level": 1,
+      "point": 780
+    },
+    {
+      "rank": 12,
+      "rank_name": "簡任第十二職等",
+      "grade_type": "年功俸",
+      "level": 2,
+      "point": 800
+    },
+    {
+      "rank": 12,
+      "rank_name": "簡任第十二職等",
+      "grade_type": "年功俸",
+      "level": 3,
+      "point": 820
+    },
+    {
+      "rank": 12,
+      "rank_name": "簡任第十二職等",
+      "grade_type": "年功俸",
+      "level": 4,
+      "point": 840
+    },
+    {
+      "rank": 13,
+      "rank_name": "簡任第十三職等",
+      "grade_type": "本俸",
+      "level": 1,
+      "point": 750
+    },
+    {
+      "rank": 13,
+      "rank_name": "簡任第十三職等",
+      "grade_type": "本俸",
+      "level": 2,
+      "point": 770
+    },
+    {
+      "rank": 13,
+      "rank_name": "簡任第十三職等",
+      "grade_type": "本俸",
+      "level": 3,
+      "point": 790
+    },
+    {
+      "rank": 13,
+      "rank_name": "簡任第十三職等",
+      "grade_type": "本俸",
+      "level": 4,
+      "point": 810
+    },
+    {
+      "rank": 13,
+      "rank_name": "簡任第十三職等",
+      "grade_type": "本俸",
+      "level": 5,
+      "point": 830
+    },
+    {
+      "rank": 13,
+      "rank_name": "簡任第十三職等",
+      "grade_type": "年功俸",
+      "level": 1,
+      "point": 850
+    },
+    {
+      "rank": 13,
+      "rank_name": "簡任第十三職等",
+      "grade_type": "年功俸",
+      "level": 2,
+      "point": 870
+    },
+    {
+      "rank": 13,
+      "rank_name": "簡任第十三職等",
+      "grade_type": "年功俸",
+      "level": 3,
+      "point": 890
+    },
+    {
+      "rank": 13,
+      "rank_name": "簡任第十三職等",
+      "grade_type": "年功俸",
+      "level": 4,
+      "point": 910
+    },
+    {
+      "rank": 14,
+      "rank_name": "簡任第十四職等",
+      "grade_type": "本俸",
+      "level": 1,
+      "point": 820
+    },
+    {
+      "rank": 14,
+      "rank_name": "簡任第十四職等",
+      "grade_type": "本俸",
+      "level": 2,
+      "point": 840
+    },
+    {
+      "rank": 14,
+      "rank_name": "簡任第十四職等",
+      "grade_type": "本俸",
+      "level": 3,
+      "point": 860
+    },
+    {
+      "rank": 14,
+      "rank_name": "簡任第十四職等",
+      "grade_type": "本俸",
+      "level": 4,
+      "point": 880
+    },
+    {
+      "rank": 14,
+      "rank_name": "簡任第十四職等",
+      "grade_type": "本俸",
+      "level": 5,
+      "point": 900
+    },
+    {
+      "rank": 14,
+      "rank_name": "簡任第十四職等",
+      "grade_type": "年功俸",
+      "level": 1,
+      "point": 920
+    },
+    {
+      "rank": 14,
+      "rank_name": "簡任第十四職等",
+      "grade_type": "年功俸",
+      "level": 2,
+      "point": 940
+    },
+    {
+      "rank": 14,
+      "rank_name": "簡任第十四職等",
+      "grade_type": "年功俸",
+      "level": 3,
+      "point": 960
+    }
+  ]
+}
