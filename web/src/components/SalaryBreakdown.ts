@@ -21,7 +21,7 @@ export function renderSalaryBreakdown(container: HTMLElement, result: SalaryResu
         <div style="opacity:0.3;">${icon("banknotes","w-12 h-12")}</div>
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.25rem;">
+      <div class="two-stat-grid">
         <div class="stat-chip stat-chip-success">
           <div style="font-size:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:4px;">應領合計</div>
           <div style="font-size:1.4rem;font-weight:700;font-variant-numeric:tabular-nums;">${fmt(result.grossTotal)}</div>

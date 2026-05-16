@@ -76,7 +76,7 @@ export function renderPromotionCompare(
         <div class="section-heading">${icon("arrow-trending-up")} 升等比較結果</div>
 
         <!-- 四格摘要 -->
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.25rem;">
+        <div class="compare-summary-grid">
           <div style="background:var(--c-surface-2);border-radius:10px;padding:14px;text-align:center;">
             <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--c-text-3);margin-bottom:6px;">升等前實領</div>
             <div style="font-size:1.25rem;font-weight:700;font-variant-numeric:tabular-nums;color:var(--c-text);">${fmt(cmp.before.netTotal)}</div>
@@ -96,7 +96,7 @@ export function renderPromotionCompare(
         </div>
 
         <!-- 明細對照 -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="compare-details-grid">
           ${(["before", "after"] as const).map((side) => {
             const result = side === "before" ? cmp.before : cmp.after;
             const label = side === "before" ? "升等前明細" : "升等後明細";
@@ -120,7 +120,7 @@ export function renderPromotionCompare(
                 <div class="row-item" style="border-top:1.5px solid var(--c-border);margin-top:4px;padding-top:6px;font-weight:700;color:var(--c-error);">
                   <span>扣款合計</span><span>−${fmt(result.deductionTotal)}</span>
                 </div>
-                <div class="row-item" style="background:var(--c-primary-bg);border-radius:8px;padding:8px 12px;margin-top:6px;font-weight:700;color:var(--c-primary);">
+                <div class="row-item" style="background:var(--c-primary-bg);border-radius:8px;padding:8px 12px;margin-top:6px;font-weight:700;color:var(--c-primary);border-bottom:0;">
                   <span>實領</span><span style="font-size:1.1rem;">${fmt(result.netTotal)}</span>
                 </div>
               </div>`;
@@ -141,7 +141,7 @@ export function renderPromotionCompare(
       <div class="card">
         <div class="section-heading">${icon("share")} 分享圖卡</div>
 
-        <div id="share-card-preview" style="margin:0 auto;width:320px;aspect-ratio:1/1;background:linear-gradient(135deg,var(--c-primary) 0%,#1565C0 100%);border-radius:20px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;user-select:none;">
+        <div id="share-card-preview" style="margin:0 auto;width:min(320px,100%);aspect-ratio:1/1;background:linear-gradient(135deg,#1A73E8 0%,#0B4FA8 100%);border-radius:20px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;user-select:none;">
           <div>
             <div style="font-size:10px;font-weight:600;opacity:0.7;margin-bottom:4px;">公務人員薪資試算</div>
             <div style="font-size:14px;font-weight:700;">${rankLabel(beforeScenario.rank)} → ${rankLabel(afterScenario.rank)}</div>
@@ -158,7 +158,7 @@ export function renderPromotionCompare(
             </div>
           </div>
           <div style="background:#fff;border-radius:14px;padding:16px;text-align:center;">
-            <div style="font-size:11px;font-weight:600;color:var(--c-primary);margin-bottom:4px;">每月增加</div>
+            <div style="font-size:11px;font-weight:600;color:#174EA6;margin-bottom:4px;">每月增加</div>
             <div style="font-size:2rem;font-weight:900;color:${diffTextColor};font-variant-numeric:tabular-nums;">${sign}${fmt(cmp.monthlyDiff)}</div>
             <div style="font-size:11px;color:#666;margin-top:4px;">每年增加 ${sign}${fmt(cmp.annualDiff)} 元</div>
           </div>

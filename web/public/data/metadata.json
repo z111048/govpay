@@ -7,7 +7,7 @@
       "effective_date": "2025-01-01",
       "source_name": "銓敘部公務人員俸額表",
       "source_document": "公務人員俸給法施行細則附表一（俸額表）第 114 年版",
-      "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030007",
+      "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030001",
       "last_checked_at": "2026-05-16"
     },
     {
@@ -16,7 +16,7 @@
       "effective_date": "2025-01-01",
       "source_name": "銓敘部公務人員職等俸級表",
       "source_document": "公務人員俸給法施行細則附表二（職等俸級表）第 114 年版",
-      "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030007",
+      "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030001",
       "last_checked_at": "2026-05-16"
     },
     {
@@ -25,7 +25,7 @@
       "effective_date": "2025-01-01",
       "source_name": "銓敘部公務人員專業加給表",
       "source_document": "公務人員加給給與辦法附表（專業加給表）第 114 年版",
-      "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030008",
+      "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030007",
       "last_checked_at": "2026-05-16"
     },
     {
@@ -34,7 +34,7 @@
       "effective_date": "2025-01-01",
       "source_name": "銓敘部主管職務加給表",
       "source_document": "公務人員加給給與辦法附表（主管職務加給表）第 114 年版",
-      "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030008",
+      "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030007",
       "last_checked_at": "2026-05-16"
     },
     {
@@ -52,7 +52,7 @@
       "effective_date": "2025-01-01",
       "source_name": "公務人員退休撫卹基金管理委員會",
       "source_document": "公務人員退休資遣撫卹法施行細則附表（退撫費率表）第 114 年版",
-      "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030027",
+      "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0080034",
       "last_checked_at": "2026-05-16"
     },
     {
@@ -60,8 +60,8 @@
       "version": "114.01",
       "effective_date": "2025-01-01",
       "source_name": "臺灣銀行公教保險部公保費率表",
-      "source_document": "公務人員保險法施行細則附表（保費費率表）第 114 年版",
-      "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0050013",
+      "source_document": "公教人員保險法施行細則附表（保費費率表）第 114 年版",
+      "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0070001",
       "last_checked_at": "2026-05-16"
     }
   ]

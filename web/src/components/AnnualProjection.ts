@@ -113,7 +113,7 @@ export function renderAnnualProjection(
         <div class="card">
           <div class="section-heading">${icon("calendar")} 本年度薪資試算</div>
 
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1rem;">
+          <div class="annual-summary-grid">
             <div class="stat-chip stat-chip-neutral" style="text-align:center;">
               <div style="font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px;color:var(--c-text-3);">月薪 × 12</div>
               <div style="font-size:1.3rem;font-weight:700;font-variant-numeric:tabular-nums;">${fmt(annualNet)}</div>
@@ -122,7 +122,7 @@ export function renderAnnualProjection(
               <div style="font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px;">考績獎金（${GRADE_LABEL[grade]}）</div>
               <div style="font-size:1.3rem;font-weight:700;font-variant-numeric:tabular-nums;">+${fmt(performanceBonus)}</div>
             </div>
-            <div class="stat-chip" style="background:#FFF3E0;color:#E65100;text-align:center;">
+            <div class="stat-chip" style="background:var(--c-warning-bg);color:var(--c-accent-orange);text-align:center;">
               <div style="font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px;">年終獎金（${yearEndMonths}月）</div>
               <div style="font-size:1.3rem;font-weight:700;font-variant-numeric:tabular-nums;">+${fmt(yearEndBonus)}</div>
             </div>
@@ -205,7 +205,7 @@ export function renderAnnualProjection(
                     <td class="right">${fmt(r.monthlyNet)}</td>
                     <td class="right">${fmt(r.monthlyTotal)}</td>
                     <td class="right" style="color:var(--c-warning);">${fmt(r.performanceBonus)}</td>
-                    <td class="right" style="color:#E65100;">${fmt(r.yearEndBonus)}</td>
+                    <td class="right" style="color:var(--c-accent-orange);">${fmt(r.yearEndBonus)}</td>
                     <td class="right">
                       <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end;">
                         <div style="width:${barW}px;max-width:60px;height:4px;background:var(--c-primary);border-radius:2px;opacity:0.35;"></div>
@@ -254,4 +254,3 @@ export function updateAnnualProjection(
 ): void {
   renderAnnualProjection(container, data, scenario);
 }
-

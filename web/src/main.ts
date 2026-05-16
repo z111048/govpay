@@ -11,6 +11,28 @@ import { SCENARIOS } from "./scenarios";
 
 type TabId = "calculator" | "promotion" | "annual" | "databrowser" | "about";
 
+function setupTheme(): void {
+  const root = document.documentElement;
+  const button = document.getElementById("theme-toggle") as HTMLButtonElement | null;
+  const saved = localStorage.getItem("theme");
+  const initialTheme = saved === "light" ? "light" : "dark";
+
+  function apply(theme: "dark" | "light"): void {
+    root.dataset.theme = theme;
+    localStorage.setItem("theme", theme);
+    if (button) {
+      button.innerHTML = `<span aria-hidden="true">${theme === "dark" ? "☾" : "☀"}</span>`;
+      button.setAttribute("aria-pressed", String(theme === "dark"));
+    }
+  }
+
+  button?.addEventListener("click", () => {
+    apply(root.dataset.theme === "dark" ? "light" : "dark");
+  });
+
+  apply(initialTheme);
+}
+
 function setupTabs(): void {
   const tabs = document.querySelectorAll<HTMLButtonElement>("[data-tab]");
   const panels = document.querySelectorAll<HTMLElement>("[data-panel]");
@@ -18,10 +40,14 @@ function setupTabs(): void {
   function activate(id: TabId): void {
     tabs.forEach((tab) => {
       tab.classList.toggle("tab-active", tab.dataset.tab === id);
+      tab.setAttribute("aria-selected", String(tab.dataset.tab === id));
     });
     panels.forEach((panel) => {
-      panel.classList.toggle("hidden", panel.dataset.panel !== id);
+      const active = panel.dataset.panel === id;
+      panel.classList.toggle("hidden", !active);
+      panel.toggleAttribute("hidden", !active);
     });
+    document.querySelector(`[data-tab="${id}"]`)?.scrollIntoView({ block: "nearest", inline: "center" });
   }
 
   tabs.forEach((tab) =>
@@ -31,6 +57,7 @@ function setupTabs(): void {
 }
 
 async function main(): Promise<void> {
+  setupTheme();
   setupTabs();
 
   const loading = document.getElementById("loading")!;
@@ -70,7 +97,7 @@ async function main(): Promise<void> {
         scenario = nextScenario;
         updateBreakdown();
         // 同步更新年度試算（如果已渲染）
-        if (!annualEl.classList.contains("hidden")) {
+        if (!annualEl.hidden) {
           updateAnnualProjection(annualEl, data, scenario);
         }
       },
@@ -88,11 +115,11 @@ async function main(): Promise<void> {
   renderDataBrowser(dataBrowserEl, data);
 
   const LEGAL_REFS = [
-    { title: "公務人員俸給法", desc: "規範本俸、年功俸及各項加給之給與標準，本俸依俸點換算月俸額。", url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030007", code: "S0030007" },
-    { title: "公務人員加給給與辦法", desc: "規範專業加給、主管職務加給、地域加給之適用對象、職等範圍及月支數額。", url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030008", code: "S0030008" },
-    { title: "公務人員考績法（第 6 條）", desc: "甲等：晉本俸一級，給與一個月俸給總額獎金；乙等：晉本俸一級；丙等：留原俸級；丁等：免職。年功俸最高級者，甲等改給一個半月俸給總額獎金。", url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030005", code: "S0030005" },
-    { title: "公務人員退休資遣撫卹法", desc: "規範退撫舊制（84 年 7 月前到職）及新制（84 年 7 月後到職）之費率、自付比例及基數計算方式。", url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030027", code: "S0030027" },
-    { title: "公務人員保險法", desc: "公保費率目前為 7.22%，政府補助 65%，被保險人自付 35%。", url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0050013", code: "S0050013" },
+    { title: "公務人員俸給法", desc: "規範本俸、年功俸及各項加給之給與標準，本俸依俸點換算月俸額。", url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030001", code: "S0030001" },
+    { title: "公務人員加給給與辦法", desc: "規範專業加給、主管職務加給、地域加給之適用對象、職等範圍及月支數額。", url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030007", code: "S0030007" },
+    { title: "公務人員考績法（第 6 條）", desc: "甲等：晉本俸一級，給與一個月俸給總額獎金；乙等：晉本俸一級；丙等：留原俸級；丁等：免職。年功俸最高級者，甲等改給一個半月俸給總額獎金。", url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0040001", code: "S0040001" },
+    { title: "公務人員退休資遣撫卹法", desc: "規範退撫舊制（84 年 7 月前到職）及新制（84 年 7 月後到職）之費率、自付比例及基數計算方式。", url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0080034", code: "S0080034" },
+    { title: "公教人員保險法", desc: "公保費率目前為 7.22%，政府補助 65%，被保險人自付 35%。", url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0070001", code: "S0070001" },
     { title: "全民健康保險法（第 18 條）", desc: "健保費率 115 年為 5.17%，受僱者自付比例 30%，眷屬以每口計算。投保金額依主管機關公告之分級表認定。", url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0060001", code: "L0060001" },
   ];
 
