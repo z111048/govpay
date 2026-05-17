@@ -113,8 +113,8 @@ def calculate_salary(scenario: SalaryScenario) -> SalaryResult:
     insurance_payment = find_civil_insurance_payment(base_salary)
 
     pension_labels = {
-        "old": "退撫舊制",
-        "new": "退撫新制",
+        "old": "退撫基金制",
+        "new": "退撫基金制",
         "personal_account": "個人專戶制",
     }
     pension_label = pension_labels[scenario.pension_system]

@@ -128,7 +128,6 @@ export function renderDataBrowser(container: HTMLElement, data: AppData): void {
       fmt(item.point),
       fmt(item.base_salary),
       fmt(item.self_payment),
-      fmt(item.self_payment),
       fmt(personalAccount),
       fmt(Math.round(item.base_salary * 2 * 0.15 * 0.65)),
     ];
@@ -203,10 +202,10 @@ export function renderDataBrowser(container: HTMLElement, data: AppData): void {
         <div class="card">
           <div class="section-heading">${icon("shield-check")} 退撫制度對照</div>
           <div class="notice notice-blue" style="margin-bottom:10px;">
-            舊制與新制目前使用同一組退撫基金自付額資料；112 年 7 月 1 日後初任者適用個人專戶制，個人月提繳額以本俸 × 2 × 15% × 35% 試算，政府提撥欄僅供制度理解，不列入薪資扣款。
+            目前月扣款試算分為退撫基金共同提撥制與 112 年 7 月 1 日後初任適用的個人專戶制。兩者個人負擔公式同為本俸 × 2 × 15% × 35%，所以多數俸點的月扣金額會相同；差異主要在退休給付制度，不在每月個人提繳金額。政府提撥欄僅供制度理解，不列入薪資扣款。
           </div>
           ${renderTable(
-            ["俸點", "本俸", "舊制自付", "新制自付", "個人專戶自提", "政府提撥"],
+            ["俸點", "本俸", "退撫基金自付", "個人專戶自提", "政府提撥"],
             pensionRows,
             1
           )}

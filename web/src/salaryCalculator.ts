@@ -107,8 +107,8 @@ export function calculateSalary(data: AppData, scenario: SalaryScenario): Salary
       : findPensionPayment(data, scenario.point);
   const insuranceAmount = findInsurancePayment(data, baseSalary);
   const pensionLabelMap = {
-    old: "退撫舊制",
-    new: "退撫新制",
+    old: "退撫基金制",
+    new: "退撫基金制",
     personal_account: "個人專戶制",
   } satisfies Record<SalaryScenario["pensionSystem"], string>;
 

@@ -95,8 +95,8 @@ export function renderSalaryForm(container: HTMLElement, opts: FormOptions): voi
           <label>
             <span class="field-label">退撫制度</span>
             <select id="pension" style="${SEL}">
-              <option value="old" ${scenario.pensionSystem==="old"?"selected":""}>舊制（84年7月前到職）</option>
-              <option value="new" ${scenario.pensionSystem==="new"?"selected":""}>新制（84年7月後至112年6月30日）</option>
+              <option value="old" ${scenario.pensionSystem==="old"?"selected":""}>退撫基金制（原舊制標示）</option>
+              <option value="new" ${scenario.pensionSystem==="new"?"selected":""}>退撫基金制（84年7月至112年6月）</option>
               <option value="personal_account" ${scenario.pensionSystem==="personal_account"?"selected":""}>個人專戶制（112年7月1日後初任）</option>
             </select>
           </label>

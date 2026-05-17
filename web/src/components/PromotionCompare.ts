@@ -27,8 +27,8 @@ const GRADE_MONTHS: Record<PerformanceGrade, number> = { A: 1, B: 0.5, C: 0 };
 
 function pensionLabel(system: SalaryScenario["pensionSystem"]): string {
   const labels = {
-    old: "退撫舊制",
-    new: "退撫新制",
+    old: "退撫基金制",
+    new: "退撫基金制",
     personal_account: "個人專戶制",
   } satisfies Record<SalaryScenario["pensionSystem"], string>;
   return labels[system];
