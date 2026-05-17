@@ -60,15 +60,15 @@ export function renderSalaryForm(container: HTMLElement, opts: FormOptions): voi
       applicableSupervisors.find((i) => i.monthly_allowance === scenario.supervisoryAllowance)?.category_id ?? "manual";
 
     container.innerHTML = `
-      <div class="card">
+      <div class="card salary-form-card">
         <div class="section-heading" style="margin-bottom:1.25rem;">
           ${icon("cog")} 試算條件
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;margin-bottom:1.25rem;">
+        <div class="salary-form-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;margin-bottom:1.25rem;">
           <label>
             <span class="field-label">職等</span>
-            <select id="rank" style="${SEL}">
+            <select id="rank" class="salary-control" style="${SEL}">
               ${Array.from(new Set(data.salaryGrades.entries.map((e) => e.rank))).sort((a,b)=>a-b)
                 .map((r) => `<option value="${r}" ${r===scenario.rank?"selected":""}>${rankLabel(r)}</option>`).join("")}
             </select>
@@ -76,7 +76,7 @@ export function renderSalaryForm(container: HTMLElement, opts: FormOptions): voi
 
           <label>
             <span class="field-label">俸級 / 俸點</span>
-            <select id="point" style="${SEL}">
+            <select id="point" class="salary-control" style="${SEL}">
               ${rankEntries.map((e) =>
                 `<option value="${e.point}" ${e.point===scenario.point?"selected":""}>${e.grade_type}${e.level}・${e.point} 點</option>`
               ).join("")}
@@ -85,7 +85,7 @@ export function renderSalaryForm(container: HTMLElement, opts: FormOptions): voi
 
           <label>
             <span class="field-label">專業加給表</span>
-            <select id="professional-table" style="${SEL}">
+            <select id="professional-table" class="salary-control" style="${SEL}">
               ${availableTables.map((t) =>
                 `<option value="${t.table_id}" ${t.table_id===scenario.professionalAllowanceTable?"selected":""}>${t.name}</option>`
               ).join("")}
@@ -94,7 +94,7 @@ export function renderSalaryForm(container: HTMLElement, opts: FormOptions): voi
 
           <label>
             <span class="field-label">退撫制度</span>
-            <select id="pension" style="${SEL}">
+            <select id="pension" class="salary-control" style="${SEL}">
               <option value="old" ${scenario.pensionSystem==="old"?"selected":""}>退撫基金制（原舊制標示）</option>
               <option value="new" ${scenario.pensionSystem==="new"?"selected":""}>退撫基金制（84年7月至112年6月）</option>
               <option value="personal_account" ${scenario.pensionSystem==="personal_account"?"selected":""}>個人專戶制（112年7月1日後初任）</option>
@@ -103,7 +103,7 @@ export function renderSalaryForm(container: HTMLElement, opts: FormOptions): voi
 
           <label>
             <span class="field-label">健保眷口數</span>
-            <select id="dependents" style="${SEL}">
+            <select id="dependents" class="salary-control" style="${SEL}">
               ${[0,1,2,3,4,5,6].map((c) =>
                 `<option value="${c}" ${c===scenario.healthInsuranceDependents?"selected":""}>${c===0?"本人（無眷口）":c+" 口眷屬"}</option>`
               ).join("")}
@@ -112,14 +112,14 @@ export function renderSalaryForm(container: HTMLElement, opts: FormOptions): voi
         </div>
 
         <!-- 工程加給 -->
-        <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 14px;border-radius:10px;background:var(--c-surface-2);margin-bottom:10px;user-select:none;">
+        <label class="salary-toggle-row" style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 14px;border-radius:10px;background:var(--c-surface-2);margin-bottom:10px;user-select:none;">
           <input type="checkbox" id="engineering" style="width:16px;height:16px;accent-color:var(--c-primary);" ${scenario.engineeringExtra?"checked":""}>
           <span style="font-size:13.5px;color:var(--c-text-2);">工程人員另增支</span>
           <span class="badge badge-blue" style="margin-left:auto;">+3,000 元</span>
         </label>
 
         <!-- 主管加給 -->
-        <div style="border:1.5px solid var(--c-border);border-radius:10px;padding:12px 14px;">
+        <div class="supervisor-panel" style="border:1.5px solid var(--c-border);border-radius:10px;padding:12px 14px;">
           <label style="display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;margin-bottom:${supervisoryEnabled?"12px":"0"};">
             <input type="checkbox" id="supervisory-enabled" style="width:16px;height:16px;accent-color:var(--c-primary);" ${supervisoryEnabled?"checked":""}>
             <span style="font-size:13.5px;font-weight:500;color:var(--c-text-2);">主管職務加給</span>
@@ -127,10 +127,10 @@ export function renderSalaryForm(container: HTMLElement, opts: FormOptions): voi
           </label>
 
           ${supervisoryEnabled ? `
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div class="supervisor-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <label>
               <span class="field-label">主管類別</span>
-              <select id="supervisory-category" style="${SEL}">
+              <select id="supervisory-category" class="salary-control" style="${SEL}">
                 <option value="manual" ${selectedSupervisorId==="manual"?"selected":""}>手動輸入</option>
                 ${applicableSupervisors.map((i) =>
                   `<option value="${i.category_id}" ${i.category_id===selectedSupervisorId?"selected":""}>${i.category_name}（${i.monthly_allowance.toLocaleString("zh-TW")} 元）</option>`
@@ -139,7 +139,7 @@ export function renderSalaryForm(container: HTMLElement, opts: FormOptions): voi
             </label>
             <label>
               <span class="field-label">加給金額（元）</span>
-              <input id="supervisory-allowance" type="number" min="0" step="100" value="${scenario.supervisoryAllowance}" style="${SEL}">
+              <input id="supervisory-allowance" class="salary-control" type="number" min="0" step="100" value="${scenario.supervisoryAllowance}" style="${SEL}">
             </label>
           </div>
           <p style="font-size:11px;color:var(--c-text-4);margin-top:6px;">選擇職類自動帶入，亦可手動修改金額</p>

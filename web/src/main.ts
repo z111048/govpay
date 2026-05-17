@@ -11,6 +11,7 @@ import type { AppData, SalaryScenario } from "./types";
 import { DEFAULT_SALARY_SCENARIO } from "./scenarios";
 
 type TabId = "home" | "calculator" | "promotion" | "annual" | "databrowser" | "about";
+const MOBILE_QUERY = "(max-width: 760px)";
 
 function setupTheme(): void {
   const root = document.documentElement;
@@ -78,6 +79,7 @@ function setupAutoHideHeader(): void {
 function setupTabs(): (id: TabId) => void {
   const tabs = document.querySelectorAll<HTMLButtonElement>("[data-tab]");
   const panels = document.querySelectorAll<HTMLElement>("[data-panel]");
+  let hasActivatedOnce = false;
 
   function activate(id: TabId): void {
     tabs.forEach((tab) => {
@@ -92,7 +94,13 @@ function setupTabs(): (id: TabId) => void {
     document.querySelector(`.tab-scroll [data-tab="${id}"]`)?.scrollIntoView({ block: "nearest", inline: "center" });
     if (id === "home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (hasActivatedOnce && window.matchMedia(MOBILE_QUERY).matches) {
+      const panel = document.getElementById(`panel-${id}`);
+      window.setTimeout(() => {
+        panel?.scrollIntoView({ block: "start", behavior: "smooth" });
+      }, 0);
     }
+    hasActivatedOnce = true;
   }
 
   tabs.forEach((tab) =>

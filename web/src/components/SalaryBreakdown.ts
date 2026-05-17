@@ -15,14 +15,14 @@ export function renderSalaryBreakdown(
   scenario: SalaryScenario
 ): void {
   container.innerHTML = `
-    <div style="display:flex;flex-direction:column;gap:1rem;">
-      <div class="card" style="padding:1.5rem;">
+    <div class="salary-breakdown-wrap" style="display:flex;flex-direction:column;gap:1rem;">
+      <div class="card salary-result-card" style="padding:1.5rem;">
 
       <!-- 每月實領 hero -->
-      <div style="background:var(--c-primary);border-radius:12px;padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">
+      <div class="salary-hero" style="background:var(--c-primary);border-radius:12px;padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">
         <div>
           <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.75);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:4px;">每月實領</div>
-          <div style="font-size:2rem;font-weight:700;color:#fff;line-height:1;font-variant-numeric:tabular-nums;">${fmt(result.netTotal)}</div>
+          <div class="salary-hero-amount" style="font-size:2rem;font-weight:700;color:#fff;line-height:1;font-variant-numeric:tabular-nums;">${fmt(result.netTotal)}</div>
           <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:4px;">元 / 月</div>
         </div>
         <div style="opacity:0.3;">${icon("banknotes","w-12 h-12")}</div>
