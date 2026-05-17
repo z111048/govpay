@@ -25,6 +25,11 @@ type PerformanceGrade = "A" | "B" | "C";
 
 const GRADE_LABEL: Record<PerformanceGrade, string> = { A: "甲等", B: "乙等", C: "丙等" };
 const GRADE_MONTHS: Record<PerformanceGrade, number> = { A: 1, B: 0.5, C: 0 };
+const GRADE_OPTION_LABEL: Record<PerformanceGrade, string> = {
+  A: "甲等：應領差額 × 1 個月",
+  B: "乙等：應領差額 × 0.5 個月",
+  C: "丙等：不列入考績獎金",
+};
 
 function pensionLabel(system: SalaryScenario["pensionSystem"]): string {
   const labels = {
@@ -41,6 +46,10 @@ function earningAmount(result: ReturnType<typeof comparePromotion>["before"], co
 
 function signedAmount(n: number): string {
   return `${n >= 0 ? "+" : ""}${fmt(n)}`;
+}
+
+function bonusDiffLabel(value: number, zeroLabel: string): string {
+  return value === 0 ? zeroLabel : signedAmount(value);
 }
 
 export function renderPromotionCompare(
@@ -179,20 +188,15 @@ export function renderPromotionCompare(
     const sign = cmp.monthlyDiff >= 0 ? "+" : "";
     const diffTextColor = cmp.monthlyDiff >= 0 ? "#10B981" : "#EF4444";
     const performanceDiff = Math.round((cmp.after.grossTotal - cmp.before.grossTotal) * GRADE_MONTHS[shareGrade]);
+    const monthlyGrossDiff = cmp.after.grossTotal - cmp.before.grossTotal;
+    const baseSalaryDiff = earningAmount(cmp.after, "base_salary") - earningAmount(cmp.before, "base_salary");
     const yearEndDiff = Math.round(
-      (earningAmount(cmp.after, "base_salary") - earningAmount(cmp.before, "base_salary")) * shareYearEndMonths
+      baseSalaryDiff * shareYearEndMonths
     );
     const annualTotalDiff = cmp.annualDiff + performanceDiff + yearEndDiff;
     const annualSign = annualTotalDiff >= 0 ? "+" : "";
-    const yearEndNote =
-      yearEndDiff === 0
-        ? "年終差額：同本俸無差額"
-        : `年終差額：${signedAmount(yearEndDiff)}`;
-    const bonusBreakdown = [
-      `月實領差額×12：${signedAmount(cmp.annualDiff)}`,
-      `考績差額（${GRADE_LABEL[shareGrade]}）：${signedAmount(performanceDiff)}`,
-      yearEndNote,
-    ].join(" ｜ ");
+    const performanceText = bonusDiffLabel(performanceDiff, "不列入");
+    const yearEndText = bonusDiffLabel(yearEndDiff, "同本俸，無差額");
 
     cardEl.innerHTML = `
       <div class="card">
@@ -200,21 +204,22 @@ export function renderPromotionCompare(
 
         <div class="share-controls">
           <label>
-            <span class="field-label">年度估算：考績等級</span>
+            <span class="field-label">考績獎金假設</span>
             <select id="share-grade" class="field-input">
-              <option value="A" ${shareGrade === "A" ? "selected" : ""}>甲等（1 個月）</option>
-              <option value="B" ${shareGrade === "B" ? "selected" : ""}>乙等（0.5 個月）</option>
-              <option value="C" ${shareGrade === "C" ? "selected" : ""}>丙等（0 個月）</option>
+              <option value="A" ${shareGrade === "A" ? "selected" : ""}>${GRADE_OPTION_LABEL.A}</option>
+              <option value="B" ${shareGrade === "B" ? "selected" : ""}>${GRADE_OPTION_LABEL.B}</option>
+              <option value="C" ${shareGrade === "C" ? "selected" : ""}>${GRADE_OPTION_LABEL.C}</option>
             </select>
           </label>
           <label>
-            <span class="field-label">年度估算：年終月數</span>
+            <span class="field-label">年終獎金假設</span>
             <input id="share-yearend" class="field-input" type="number" min="0" max="3" step="0.5" value="${shareYearEndMonths}">
           </label>
         </div>
+        <p style="font-size:12px;color:var(--c-text-3);margin:-4px 0 1rem;">年度估算 = 月實領差額 × 12 + 考績獎金差額 + 年終獎金差額。考績以「月應領合計差」計算，年終以「本俸差」計算。</p>
 
         <div id="share-card-export" class="share-card-export">
-          <div id="share-card-preview" style="width:320px;max-width:100%;aspect-ratio:1/1;background:linear-gradient(135deg,#1A73E8 0%,#0B4FA8 100%);border-radius:20px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;user-select:none;">
+          <div id="share-card-preview" style="width:320px;max-width:100%;aspect-ratio:1/1;background:linear-gradient(135deg,#1A73E8 0%,#0B4FA8 100%);border-radius:20px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;user-select:none;">
             <div>
               <div style="font-size:10px;font-weight:600;opacity:0.7;margin-bottom:4px;">公務人員薪資試算</div>
               <div style="font-size:14px;font-weight:700;">${rankLabel(beforeScenario.rank)} → ${rankLabel(afterScenario.rank)}</div>
@@ -234,7 +239,12 @@ export function renderPromotionCompare(
               <div style="font-size:11px;font-weight:600;color:#174EA6;margin-bottom:4px;">每月增加</div>
               <div style="font-size:2rem;font-weight:900;color:${diffTextColor};font-variant-numeric:tabular-nums;">${sign}${fmt(cmp.monthlyDiff)}</div>
               <div style="font-size:11px;color:#666;margin-top:4px;">年度估算差額 ${annualSign}${fmt(annualTotalDiff)} 元</div>
-              <div style="font-size:9px;line-height:1.45;color:#888;margin-top:5px;">${bonusBreakdown}</div>
+              <div style="display:grid;gap:4px;margin-top:9px;text-align:left;font-size:9.5px;line-height:1.35;color:#666;">
+                <div style="display:flex;justify-content:space-between;gap:8px;"><span>月實領差額 × 12</span><strong style="color:#333;">${signedAmount(cmp.annualDiff)}</strong></div>
+                <div style="display:flex;justify-content:space-between;gap:8px;"><span>${GRADE_LABEL[shareGrade]}考績獎金差</span><strong style="color:#333;">${performanceText}</strong></div>
+                <div style="display:flex;justify-content:space-between;gap:8px;"><span>年終獎金差（本俸 × ${shareYearEndMonths}）</span><strong style="color:#333;">${yearEndText}</strong></div>
+              </div>
+              <div style="font-size:8.5px;color:#999;margin-top:6px;text-align:left;">考績基礎：月應領差 ${signedAmount(monthlyGrossDiff)}；年終基礎：本俸差 ${signedAmount(baseSalaryDiff)}</div>
             </div>
             <div style="font-size:10px;opacity:0.4;text-align:right;">govpay・資料僅供參考</div>
           </div>
