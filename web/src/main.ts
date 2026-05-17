@@ -34,6 +34,47 @@ function setupTheme(): void {
   apply(initialTheme);
 }
 
+function setupAutoHideHeader(): void {
+  const header = document.querySelector<HTMLElement>(".app-header");
+  if (!header) return;
+  const appHeader = header;
+
+  let lastY = window.scrollY;
+  let ticking = false;
+
+  function setHidden(hidden: boolean): void {
+    appHeader.classList.toggle("header-hidden", hidden);
+    document.body.classList.toggle("header-hidden", hidden);
+  }
+
+  function update(): void {
+    const currentY = window.scrollY;
+    const delta = currentY - lastY;
+
+    if (currentY < 24) {
+      setHidden(false);
+    } else if (delta > 8 && currentY > 90) {
+      setHidden(true);
+    } else if (delta < -8) {
+      setHidden(false);
+    }
+
+    lastY = currentY;
+    ticking = false;
+  }
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    },
+    { passive: true }
+  );
+}
+
 function setupTabs(): (id: TabId) => void {
   const tabs = document.querySelectorAll<HTMLButtonElement>("[data-tab]");
   const panels = document.querySelectorAll<HTMLElement>("[data-panel]");
@@ -48,7 +89,10 @@ function setupTabs(): (id: TabId) => void {
       panel.classList.toggle("hidden", !active);
       panel.toggleAttribute("hidden", !active);
     });
-    document.querySelector(`[data-tab="${id}"]`)?.scrollIntoView({ block: "nearest", inline: "center" });
+    document.querySelector(`.tab-scroll [data-tab="${id}"]`)?.scrollIntoView({ block: "nearest", inline: "center" });
+    if (id === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   }
 
   tabs.forEach((tab) =>
@@ -60,6 +104,7 @@ function setupTabs(): (id: TabId) => void {
 
 async function main(): Promise<void> {
   setupTheme();
+  setupAutoHideHeader();
   const activateTab = setupTabs();
 
   const loading = document.getElementById("loading")!;
