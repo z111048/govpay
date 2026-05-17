@@ -2,9 +2,9 @@
   "dataset": "civil_service_insurance",
   "version": "114.01",
   "effective_date": "2025-01-01",
-  "source_name": "臺灣銀行公教保險部公保費率表",
+  "source_name": "全國法規資料庫",
   "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0070001",
-  "source_document": "公教人員保險法施行細則附表（保費費率表）第 114 年版",
+  "source_document": "公教人員保險法及公保費率自付比例試算依據",
   "last_checked_at": "2026-05-16",
   "generated_at": "2026-05-16T17:11:30+00:00",
   "items": [

@@ -2,9 +2,9 @@
   "dataset": "supervisory_allowances",
   "version": "114.01",
   "effective_date": "2025-01-01",
-  "source_name": "銓敘部主管職務加給表",
-  "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030008",
-  "source_document": "公務人員加給給與辦法附表（主管職務加給表）第 114 年版",
+  "source_name": "行政院人事行政總處待遇加給",
+  "source_url": "https://www.dgpa.gov.tw/information?pid=12407&uid=108",
+  "source_document": "支給要點附表5-公務人員主管職務加給表（114年度）",
   "last_checked_at": "2026-05-16",
   "generated_at": "2026-05-16T17:11:30+00:00",
   "items": [

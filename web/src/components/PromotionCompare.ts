@@ -141,28 +141,30 @@ export function renderPromotionCompare(
       <div class="card">
         <div class="section-heading">${icon("share")} 分享圖卡</div>
 
-        <div id="share-card-preview" style="margin:0 auto;width:min(320px,100%);aspect-ratio:1/1;background:linear-gradient(135deg,#1A73E8 0%,#0B4FA8 100%);border-radius:20px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;user-select:none;">
-          <div>
-            <div style="font-size:10px;font-weight:600;opacity:0.7;margin-bottom:4px;">公務人員薪資試算</div>
-            <div style="font-size:14px;font-weight:700;">${rankLabel(beforeScenario.rank)} → ${rankLabel(afterScenario.rank)}</div>
-            <div style="font-size:10px;opacity:0.6;margin-top:3px;">俸點 ${beforeScenario.point}・${beforeScenario.pensionSystem === "old" ? "退撫舊制" : "退撫新制"}・健保${beforeScenario.healthInsuranceDependents === 0 ? "本人" : beforeScenario.healthInsuranceDependents + "口眷"}${beforeScenario.engineeringExtra ? "・工程加給" : ""}</div>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;">
-            <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:12px;text-align:center;">
-              <div style="font-size:10px;opacity:0.7;margin-bottom:4px;">升等前實領</div>
-              <div style="font-size:1.1rem;font-weight:800;font-variant-numeric:tabular-nums;">${fmt(cmp.before.netTotal)}</div>
+        <div id="share-card-export" class="share-card-export">
+          <div id="share-card-preview" style="width:320px;max-width:100%;aspect-ratio:1/1;background:linear-gradient(135deg,#1A73E8 0%,#0B4FA8 100%);border-radius:20px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;user-select:none;box-shadow:0 18px 38px rgba(0,0,0,0.25);">
+            <div>
+              <div style="font-size:10px;font-weight:600;opacity:0.7;margin-bottom:4px;">公務人員薪資試算</div>
+              <div style="font-size:14px;font-weight:700;">${rankLabel(beforeScenario.rank)} → ${rankLabel(afterScenario.rank)}</div>
+              <div style="font-size:10px;opacity:0.6;margin-top:3px;">俸點 ${beforeScenario.point}・${beforeScenario.pensionSystem === "old" ? "退撫舊制" : "退撫新制"}・健保${beforeScenario.healthInsuranceDependents === 0 ? "本人" : beforeScenario.healthInsuranceDependents + "口眷"}${beforeScenario.engineeringExtra ? "・工程加給" : ""}</div>
             </div>
-            <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:12px;text-align:center;">
-              <div style="font-size:10px;opacity:0.7;margin-bottom:4px;">升等後實領</div>
-              <div style="font-size:1.1rem;font-weight:800;font-variant-numeric:tabular-nums;">${fmt(cmp.after.netTotal)}</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;">
+              <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:12px;text-align:center;">
+                <div style="font-size:10px;opacity:0.7;margin-bottom:4px;">升等前實領</div>
+                <div style="font-size:1.1rem;font-weight:800;font-variant-numeric:tabular-nums;">${fmt(cmp.before.netTotal)}</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:12px;text-align:center;">
+                <div style="font-size:10px;opacity:0.7;margin-bottom:4px;">升等後實領</div>
+                <div style="font-size:1.1rem;font-weight:800;font-variant-numeric:tabular-nums;">${fmt(cmp.after.netTotal)}</div>
+              </div>
             </div>
+            <div style="background:#fff;border-radius:14px;padding:16px;text-align:center;">
+              <div style="font-size:11px;font-weight:600;color:#174EA6;margin-bottom:4px;">每月增加</div>
+              <div style="font-size:2rem;font-weight:900;color:${diffTextColor};font-variant-numeric:tabular-nums;">${sign}${fmt(cmp.monthlyDiff)}</div>
+              <div style="font-size:11px;color:#666;margin-top:4px;">每年增加 ${sign}${fmt(cmp.annualDiff)} 元</div>
+            </div>
+            <div style="font-size:10px;opacity:0.4;text-align:right;">govpay・資料僅供參考</div>
           </div>
-          <div style="background:#fff;border-radius:14px;padding:16px;text-align:center;">
-            <div style="font-size:11px;font-weight:600;color:#174EA6;margin-bottom:4px;">每月增加</div>
-            <div style="font-size:2rem;font-weight:900;color:${diffTextColor};font-variant-numeric:tabular-nums;">${sign}${fmt(cmp.monthlyDiff)}</div>
-            <div style="font-size:11px;color:#666;margin-top:4px;">每年增加 ${sign}${fmt(cmp.annualDiff)} 元</div>
-          </div>
-          <div style="font-size:10px;opacity:0.4;text-align:right;">govpay・資料僅供參考</div>
         </div>
 
         <button id="download-png" class="btn btn-primary" style="width:100%;margin-top:1rem;">
@@ -172,7 +174,7 @@ export function renderPromotionCompare(
     `;
 
     const btn = cardEl.querySelector("#download-png") as HTMLButtonElement;
-    const card = cardEl.querySelector("#share-card-preview") as HTMLElement;
+    const card = cardEl.querySelector("#share-card-export") as HTMLElement;
 
     btn.addEventListener("click", async () => {
       btn.disabled = true;

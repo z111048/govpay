@@ -5,17 +5,17 @@
       "dataset": "salary_points",
       "version": "114.01",
       "effective_date": "2025-01-01",
-      "source_name": "銓敘部公務人員俸額表",
-      "source_document": "公務人員俸給法施行細則附表一（俸額表）第 114 年版",
-      "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030001",
+      "source_name": "行政院人事行政總處待遇加給",
+      "source_document": "支給要點附表2-公務人員俸額表（114年度）",
+      "source_url": "https://www.dgpa.gov.tw/information?pid=12407&uid=108",
       "last_checked_at": "2026-05-16"
     },
     {
       "dataset": "salary_grades",
       "version": "114.01",
       "effective_date": "2025-01-01",
-      "source_name": "銓敘部公務人員職等俸級表",
-      "source_document": "公務人員俸給法施行細則附表二（職等俸級表）第 114 年版",
+      "source_name": "全國法規資料庫",
+      "source_document": "公務人員俸給法施行細則附表：公務人員俸表",
       "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030001",
       "last_checked_at": "2026-05-16"
     },
@@ -23,18 +23,18 @@
       "dataset": "professional_allowances",
       "version": "114.01",
       "effective_date": "2025-01-01",
-      "source_name": "銓敘部公務人員專業加給表",
-      "source_document": "公務人員加給給與辦法附表（專業加給表）第 114 年版",
-      "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030007",
+      "source_name": "行政院人事行政總處待遇加給",
+      "source_document": "支給要點附表6-公務人員專業加給表（二）（114年度）；本工具收錄表一、二、三、四、七、八",
+      "source_url": "https://www.dgpa.gov.tw/information?pid=12407&uid=108",
       "last_checked_at": "2026-05-16"
     },
     {
       "dataset": "supervisory_allowances",
       "version": "114.01",
       "effective_date": "2025-01-01",
-      "source_name": "銓敘部主管職務加給表",
-      "source_document": "公務人員加給給與辦法附表（主管職務加給表）第 114 年版",
-      "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030007",
+      "source_name": "行政院人事行政總處待遇加給",
+      "source_document": "支給要點附表5-公務人員主管職務加給表（114年度）",
+      "source_url": "https://www.dgpa.gov.tw/information?pid=12407&uid=108",
       "last_checked_at": "2026-05-16"
     },
     {
@@ -43,15 +43,15 @@
       "effective_date": "2026-01-01",
       "source_name": "衛生福利部中央健康保險署投保金額分級表",
       "source_document": "全民健康保險投保金額分級表第 115 年版（自 2026-01-01 起）",
-      "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0060001",
+      "source_url": "https://www.nhi.gov.tw/ch/cp-19421-f9533-2569-1.html",
       "last_checked_at": "2026-05-16"
     },
     {
       "dataset": "pension",
       "version": "114.01",
       "effective_date": "2025-01-01",
-      "source_name": "公務人員退休撫卹基金管理委員會",
-      "source_document": "公務人員退休資遣撫卹法施行細則附表（退撫費率表）第 114 年版",
+      "source_name": "全國法規資料庫",
+      "source_document": "公務人員退休資遣撫卹法及退撫自付額試算依據",
       "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0080034",
       "last_checked_at": "2026-05-16"
     },
@@ -59,8 +59,8 @@
       "dataset": "civil_service_insurance",
       "version": "114.01",
       "effective_date": "2025-01-01",
-      "source_name": "臺灣銀行公教保險部公保費率表",
-      "source_document": "公教人員保險法施行細則附表（保費費率表）第 114 年版",
+      "source_name": "全國法規資料庫",
+      "source_document": "公教人員保險法及公保費率自付比例試算依據",
       "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0070001",
       "last_checked_at": "2026-05-16"
     }

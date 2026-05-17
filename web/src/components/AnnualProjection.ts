@@ -73,7 +73,7 @@ function calcYears(
 
     records.push({ year: y, point, monthlyNet, monthlyTotal, performanceBonus, yearEndBonus, annualTotal, cumulative });
 
-    // 甲等、乙等均晉俸一級（公務人員考績法第 6 條）；丙等留原俸級
+    // 甲等、乙等均晉俸一級（公務人員考績法第 7 條）；丙等留原俸級
     if (advanceLevel && grade !== "C") {
       point = advanceSalaryPoint(data, scenario.rank, point);
     }
@@ -149,7 +149,7 @@ export function renderAnnualProjection(
         <!-- 多年預測 -->
         <div class="card">
           <div class="section-heading">${icon("chart-bar")} 多年收入預測</div>
-          <p style="font-size:12px;color:var(--c-text-3);margin-bottom:1rem;">以目前職等不升等為前提，預測未來收入。甲、乙等每年晉俸一級（考績法第 6 條）。</p>
+          <p style="font-size:12px;color:var(--c-text-3);margin-bottom:1rem;">以目前職等不升等為前提，預測未來收入。甲、乙等每年晉俸一級（考績法第 7 條）。</p>
 
           <!-- 參數列 -->
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:1rem;">
@@ -179,7 +179,7 @@ export function renderAnnualProjection(
 
           <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 12px;background:var(--c-surface-2);border-radius:8px;margin-bottom:1rem;user-select:none;">
             <input id="proj-advance" type="checkbox" style="width:15px;height:15px;accent-color:var(--c-primary);" ${advanceLevel?"checked":""}>
-            <span style="font-size:13px;color:var(--c-text-2);">甲、乙等每年晉俸一級（依考績法第 6 條，丙等留原俸級）</span>
+            <span style="font-size:13px;color:var(--c-text-2);">甲、乙等每年晉俸一級（依考績法第 7 條，丙等留原俸級）</span>
           </label>
 
           <!-- 表格 -->

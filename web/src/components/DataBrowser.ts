@@ -125,16 +125,20 @@ export function renderDataBrowser(container: HTMLElement, data: AppData): void {
 
   container.innerHTML = `
     <div style="display:flex;flex-direction:column;gap:1rem;">
-      <!-- sub-tab pills -->
-      <div style="display:flex;flex-wrap:wrap;gap:8px;">
-        ${subTabs
-          .map(
-            (tab, index) =>
-              `<button data-subtab="${tab.id}" class="tab-btn ${index === 0 ? "tab-active" : ""}" style="display:flex;align-items:center;gap:5px;">
-                ${icon(tab.ico, "inline-icon")} ${tab.label}
-              </button>`
-          )
-          .join("")}
+      <div class="data-browser-toolbar">
+        <select id="data-browser-select" class="data-browser-select" aria-label="切換資料表">
+          ${subTabs.map((tab) => `<option value="${tab.id}">${tab.label}</option>`).join("")}
+        </select>
+        <div class="subtab-scroll" aria-label="資料表快速切換">
+          ${subTabs
+            .map(
+              (tab, index) =>
+                `<button data-subtab="${tab.id}" class="tab-btn ${index === 0 ? "tab-active" : ""}" style="display:flex;align-items:center;gap:5px;">
+                  ${icon(tab.ico, "inline-icon")} ${tab.label}
+                </button>`
+            )
+            .join("")}
+        </div>
       </div>
 
       <div data-subpanel="salary-points">
@@ -219,18 +223,25 @@ export function renderDataBrowser(container: HTMLElement, data: AppData): void {
 
   const buttons = Array.from(container.querySelectorAll<HTMLButtonElement>("[data-subtab]"));
   const panels = Array.from(container.querySelectorAll<HTMLElement>("[data-subpanel]"));
+  const select = container.querySelector<HTMLSelectElement>("#data-browser-select");
 
   const activate = (id: string) => {
     buttons.forEach((btn) => {
       const active = btn.dataset.subtab === id;
       btn.classList.toggle("tab-active", active);
+      btn.setAttribute("aria-selected", String(active));
     });
     panels.forEach((panel) => {
-      panel.classList.toggle("hidden", panel.dataset.subpanel !== id);
+      const active = panel.dataset.subpanel === id;
+      panel.classList.toggle("hidden", !active);
+      panel.toggleAttribute("hidden", !active);
     });
+    if (select) select.value = id;
+    container.querySelector(`[data-subtab="${id}"]`)?.scrollIntoView({ block: "nearest", inline: "center" });
   };
 
   buttons.forEach((btn) => btn.addEventListener("click", () => activate(btn.dataset.subtab!)));
+  select?.addEventListener("change", () => activate(select.value));
 
   const salaryPointsTable = container.querySelector("#salary-points-table") as HTMLElement;
   const salaryPointsSearch = container.querySelector("#salary-points-search") as HTMLInputElement;
