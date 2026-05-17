@@ -3,6 +3,7 @@
 import type { AppData, SalaryGradeEntry, SalaryScenario } from "../types";
 import { calculateSalary } from "../salaryCalculator";
 import { icon } from "../icons";
+import { renderDatasetMetaPanel, renderEstimateNotice } from "../trust";
 
 type PerformanceGrade = "A" | "B" | "C";
 
@@ -112,6 +113,8 @@ export function renderAnnualProjection(
         <!-- 本年度 -->
         <div class="card">
           <div class="section-heading">${icon("calendar")} 本年度薪資試算</div>
+          ${renderEstimateNotice("本年度薪資試算")}
+          ${renderDatasetMetaPanel(data, ["salary_points", "salary_grades", "professional_allowances", "health_insurance", "pension"])}
 
           <div class="annual-summary-grid">
             <div class="stat-chip stat-chip-neutral" style="text-align:center;">
@@ -149,7 +152,7 @@ export function renderAnnualProjection(
         <!-- 多年預測 -->
         <div class="card">
           <div class="section-heading">${icon("chart-bar")} 多年收入預測</div>
-          <p style="font-size:12px;color:var(--c-text-3);margin-bottom:1rem;">以目前職等不升等為前提，預測未來收入。甲、乙等每年晉俸一級（考績法第 7 條）。</p>
+          <p style="font-size:12px;color:var(--c-text-3);margin-bottom:1rem;">以目前職等不升等為前提，預測未來收入。甲、乙等每年晉俸一級（考績法第 7 條）；未來年度仍會受官方調薪、考績核定與任職條件影響。</p>
 
           <!-- 參數列 -->
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:1rem;">

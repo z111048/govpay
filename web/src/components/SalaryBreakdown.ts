@@ -1,15 +1,22 @@
 // 薪資明細顯示元件
 
-import type { SalaryResult } from "../types";
+import type { AppData, SalaryResult, SalaryScenario } from "../types";
 import { icon } from "../icons";
+import { renderCalculationBasis } from "../trust";
 
 function fmt(n: number): string {
   return n.toLocaleString("zh-TW");
 }
 
-export function renderSalaryBreakdown(container: HTMLElement, result: SalaryResult): void {
+export function renderSalaryBreakdown(
+  container: HTMLElement,
+  result: SalaryResult,
+  data: AppData,
+  scenario: SalaryScenario
+): void {
   container.innerHTML = `
-    <div class="card" style="padding:1.5rem;">
+    <div style="display:flex;flex-direction:column;gap:1rem;">
+      <div class="card" style="padding:1.5rem;">
 
       <!-- 每月實領 hero -->
       <div style="background:var(--c-primary);border-radius:12px;padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">
@@ -56,6 +63,8 @@ export function renderSalaryBreakdown(container: HTMLElement, result: SalaryResu
           </div>`).join("")}
       </div>
 
+      </div>
+      ${renderCalculationBasis(data, scenario)}
     </div>
   `;
 }

@@ -1,5 +1,6 @@
 import type { AppData } from "../types";
 import { icon } from "../icons";
+import { renderTableTrustBar } from "../trust";
 
 function fmt(n: number): string {
   return n.toLocaleString("zh-TW");
@@ -155,6 +156,7 @@ export function renderDataBrowser(container: HTMLElement, data: AppData): void {
         <div class="card">
           <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;" class="search-header">
             <div class="section-heading">${icon("currency-dollar")} 俸點查詢</div>
+            ${renderTableTrustBar(data, "salary-points")}
             <input id="salary-points-search" type="search" placeholder="輸入俸點或俸額搜尋…"
               style="border:1.5px solid var(--c-border);border-radius:8px;padding:7px 11px;font-size:13px;color:var(--c-text);background:var(--c-surface);font-family:inherit;width:100%;max-width:280px;">
           </div>
@@ -163,10 +165,12 @@ export function renderDataBrowser(container: HTMLElement, data: AppData): void {
       </div>
 
       <div data-subpanel="salary-grades" class="hidden">
+        ${renderTableTrustBar(data, "salary-grades")}
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;">${gradeCards}</div>
       </div>
 
       <div data-subpanel="professional" class="hidden">
+        ${renderTableTrustBar(data, "professional")}
         <div class="notice notice-warning" style="margin-bottom:10px;">
           目前收錄：表一（主計）、表二（人事）、表三（政風）、表四（一般行政）、表七（技術/工程）、表八（醫事）。
           其他加給表（如表五、表六）未收錄，以官方公告為準。
@@ -177,6 +181,7 @@ export function renderDataBrowser(container: HTMLElement, data: AppData): void {
       <div data-subpanel="supervisory" class="hidden">
         <div class="card">
           <div class="section-heading">${icon("user")} 主管職務加給</div>
+          ${renderTableTrustBar(data, "supervisory")}
           ${renderTable(
             ["類別", "適用職等", "月支數額", "備註"],
             data.supervisoryAllowances.items.map((item) => [
@@ -193,6 +198,7 @@ export function renderDataBrowser(container: HTMLElement, data: AppData): void {
       <div data-subpanel="health" class="hidden">
         <div class="card">
           <div class="section-heading">${icon("heart")} 健保投保金額分級表</div>
+          ${renderTableTrustBar(data, "health")}
           <p style="font-size:12px;color:var(--c-text-3);margin-bottom:1rem;">健保自付額依眷口數分欄顯示，單位：元。115 年費率 5.17%，受僱者自付比例 30%。</p>
           ${renderTable(healthHeaders, healthRows, 1)}
         </div>
@@ -201,6 +207,7 @@ export function renderDataBrowser(container: HTMLElement, data: AppData): void {
       <div data-subpanel="pension" class="hidden">
         <div class="card">
           <div class="section-heading">${icon("shield-check")} 退撫制度對照</div>
+          ${renderTableTrustBar(data, "pension")}
           <div class="notice notice-blue" style="margin-bottom:10px;">
             目前月扣款試算分為退撫基金共同提撥制與 112 年 7 月 1 日後初任適用的個人專戶制。兩者個人負擔公式同為本俸 × 2 × 15% × 35%，所以多數俸點的月扣金額會相同；差異主要在退休給付制度，不在每月個人提繳金額。政府提撥欄僅供制度理解，不列入薪資扣款。
           </div>
@@ -215,6 +222,7 @@ export function renderDataBrowser(container: HTMLElement, data: AppData): void {
       <div data-subpanel="insurance" class="hidden">
         <div class="card">
           <div class="section-heading">${icon("document-text")} 公保自付額</div>
+          ${renderTableTrustBar(data, "insurance")}
           ${renderTable(
             ["本俸", "費率", "自付比例", "自付額"],
             data.insurance.items.map((item) => [

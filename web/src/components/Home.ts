@@ -1,5 +1,6 @@
 import type { AppData } from "../types";
 import { icon } from "../icons";
+import { renderHomeTrustSummary } from "../trust";
 
 type HomeAction = "calculator" | "promotion" | "databrowser";
 const homeHeroUrl = `${import.meta.env.BASE_URL}images/home-hero.png`;
@@ -67,6 +68,8 @@ export function renderHome(
         </button>
       `).join("")}
     </section>
+
+    ${renderHomeTrustSummary(data)}
   `;
 
   container.querySelectorAll<HTMLButtonElement>("[data-home-action]").forEach((button) => {

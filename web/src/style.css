@@ -263,6 +263,131 @@
     line-height: 1.6;
   }
 
+  /* === TRUST / SOURCES === */
+  .trust-summary {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(300px, 1.1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .trust-summary p,
+  .trust-note {
+    color: var(--c-text-3);
+    font-size: 12px;
+    margin: 0;
+  }
+  .trust-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .trust-summary-grid div {
+    border: 1px solid var(--c-border);
+    border-radius: 10px;
+    padding: 10px 12px;
+    background: var(--c-surface-2);
+  }
+  .trust-summary-grid span {
+    display: block;
+    color: var(--c-text-4);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .trust-summary-grid strong {
+    color: var(--c-text);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+  }
+  .trust-source-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 10px;
+  }
+  .trust-source-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    border: 1px solid var(--c-border);
+    border-radius: 9px;
+    padding: 9px 11px;
+    background: var(--c-surface-2);
+  }
+  .trust-source-row strong {
+    display: block;
+    color: var(--c-text);
+    font-size: 12px;
+  }
+  .trust-source-row span {
+    display: block;
+    color: var(--c-text-3);
+    font-size: 11px;
+    line-height: 1.45;
+    margin-top: 2px;
+  }
+  .trust-source-row a,
+  .dataset-meta-line a {
+    color: var(--c-primary);
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .trust-card {
+    padding: 1.25rem;
+  }
+  .trust-formula-list {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .trust-formula-list div {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+    border-bottom: 1px solid var(--c-border);
+    padding-bottom: 8px;
+  }
+  .trust-formula-list div:last-child {
+    border-bottom: 0;
+  }
+  .trust-formula-list span {
+    color: var(--c-text-4);
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .trust-formula-list strong {
+    color: var(--c-text-2);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.45;
+  }
+  .dataset-meta-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    align-items: center;
+    margin-bottom: 10px;
+    color: var(--c-text-3);
+    font-size: 11px;
+  }
+  .dataset-meta-line span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 22px;
+    border: 1px solid var(--c-border);
+    border-radius: 999px;
+    padding: 2px 8px;
+    background: var(--c-surface-2);
+  }
+  .trust-estimate-notice {
+    margin-bottom: 1rem;
+  }
+
   /* === CARDS === */
   .card {
     background: var(--c-surface);
@@ -637,6 +762,9 @@
     }
     .home-feature-grid,
     .data-browser-toolbar {
+      grid-template-columns: 1fr;
+    }
+    .trust-summary {
       grid-template-columns: 1fr;
     }
     .tab-scroll {

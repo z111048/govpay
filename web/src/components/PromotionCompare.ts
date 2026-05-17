@@ -6,6 +6,7 @@ import { renderSalaryForm } from "./SalaryForm";
 import { SCENARIOS } from "../scenarios";
 import { toPng } from "html-to-image";
 import { icon } from "../icons";
+import { renderDatasetMetaPanel, renderEstimateNotice } from "../trust";
 
 function fmt(n: number): string {
   return n.toLocaleString("zh-TW");
@@ -101,6 +102,8 @@ export function renderPromotionCompare(
     resultEl.innerHTML = `
       <div class="card">
         <div class="section-heading">${icon("arrow-trending-up")} 升等比較結果</div>
+        ${renderEstimateNotice("升等年度差額")}
+        ${renderDatasetMetaPanel(data, ["salary_points", "salary_grades", "professional_allowances", "health_insurance", "pension"])}
 
         <!-- 四格摘要 -->
         <div class="compare-summary-grid">

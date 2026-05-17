@@ -134,7 +134,7 @@ async function main(): Promise<void> {
 
   const updateBreakdown = (): void => {
     const result = calculateSalary(data, scenario);
-    renderSalaryBreakdown(breakdownEl, result);
+    renderSalaryBreakdown(breakdownEl, result, data, scenario);
   };
 
   const renderCalculator = (): void => {
@@ -197,6 +197,23 @@ async function main(): Promise<void> {
             )
             .join("")}
         </div>
+      </div>
+
+      <!-- 計算公式 -->
+      <div class="card">
+        <div class="section-heading">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16" style="display:inline;vertical-align:-2px;margin-right:6px;"><path fill-rule="evenodd" d="M9 3.5A5.5 5.5 0 0 0 3.5 9c0 2.156 1.24 4.024 3.045 4.928.318.16.455.546.313.872l-.62 1.424 1.9-.633a.75.75 0 0 1 .475-.002A5.5 5.5 0 1 0 9 3.5Zm0 1.5a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm1.18 2.04a.75.75 0 0 0-1.36-.633l-2 4.29a.75.75 0 1 0 1.36.633l2-4.29Zm2.32.46a.75.75 0 0 0-1.5 0v1.25H9.75a.75.75 0 0 0 0 1.5H11v1.25a.75.75 0 0 0 1.5 0v-1.25h1.25a.75.75 0 0 0 0-1.5H12.5V7.5Z" clip-rule="evenodd"/></svg>
+          計算公式摘要
+        </div>
+        <div class="trust-formula-list">
+          <div><span>本俸</span><strong>依 114 年公務人員俸額表，以俸點對應月支數額。</strong></div>
+          <div><span>加給</span><strong>專業加給、主管加給依資料表按職等或類別套用；工程另增支為手動條件。</strong></div>
+          <div><span>公保</span><strong>本俸 × 7.22% × 35%，四捨五入至整數。</strong></div>
+          <div><span>健保</span><strong>應領合計對照 115 年投保金額級距，再依眷口數取自付額。</strong></div>
+          <div><span>退撫</span><strong>退撫基金制讀取自付額表；個人專戶制以本俸 × 2 × 15% × 35% 試算。</strong></div>
+          <div><span>年度</span><strong>考績獎金以月應領合計計算；年終獎金以本俸與使用者輸入月數計算。</strong></div>
+        </div>
+        <p class="trust-note">本工具不估算所得稅、補休/加班、地域加給、特殊職務加給或各機關個案認定。</p>
       </div>
 
       <!-- 相關法規 -->
