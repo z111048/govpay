@@ -8,7 +8,7 @@ import { renderDataBrowser } from "./components/DataBrowser";
 import { renderAnnualProjection, updateAnnualProjection } from "./components/AnnualProjection";
 import { renderHome } from "./components/Home";
 import type { AppData, SalaryScenario } from "./types";
-import { SCENARIOS } from "./scenarios";
+import { DEFAULT_SALARY_SCENARIO } from "./scenarios";
 
 type TabId = "home" | "calculator" | "promotion" | "annual" | "databrowser" | "about";
 
@@ -76,8 +76,8 @@ async function main(): Promise<void> {
   loading.classList.add("hidden");
   appContent.classList.remove("hidden");
 
-  // 使用第一個範例情境作為初始薪資試算情境
-  let scenario: SalaryScenario = { ...SCENARIOS[0].before };
+  // 使用土木初任公務員作為初始薪資試算情境
+  let scenario: SalaryScenario = { ...DEFAULT_SALARY_SCENARIO };
 
   const formEl = document.getElementById("calc-form")!;
   const breakdownEl = document.getElementById("calc-breakdown")!;

@@ -1,6 +1,16 @@
 // 預設範例情境（供升等比較頁使用）
 import type { SalaryScenario } from "./types";
 
+export const DEFAULT_SALARY_SCENARIO: SalaryScenario = {
+  rank: 6,
+  point: 345,
+  professionalAllowanceTable: "professional_allowance_table_7",
+  engineeringExtra: true,
+  pensionSystem: "personal_account",
+  healthInsuranceDependents: 0,
+  supervisoryAllowance: 0,
+};
+
 export const SCENARIOS: Array<{ label: string; before: SalaryScenario; after: SalaryScenario }> = [
   {
     label: "工程人員升等（薦任七→八）",
