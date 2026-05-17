@@ -149,3 +149,18 @@ class TestHealthInsuranceDependents:
         assert result.gross_total == 69990
         assert sv.amount == 2100
         assert hi.amount == 1129
+
+    def test_personal_account_pension(self) -> None:
+        scenario = SalaryScenario(
+            scenario_id="test",
+            title="test",
+            rank=7,
+            point=475,
+            engineering_extra=True,
+            pension_system="personal_account",
+            health_insurance_dependents=0,
+        )
+        result = calculate_salary(scenario)
+        pension = next(d for d in result.deductions if d.code == "pension_personal_account")
+        assert pension.label == "個人專戶制"
+        assert pension.amount == 3797

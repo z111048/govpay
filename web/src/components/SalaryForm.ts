@@ -96,7 +96,8 @@ export function renderSalaryForm(container: HTMLElement, opts: FormOptions): voi
             <span class="field-label">退撫制度</span>
             <select id="pension" style="${SEL}">
               <option value="old" ${scenario.pensionSystem==="old"?"selected":""}>舊制（84年7月前到職）</option>
-              <option value="new" ${scenario.pensionSystem==="new"?"selected":""}>新制（84年7月後到職）</option>
+              <option value="new" ${scenario.pensionSystem==="new"?"selected":""}>新制（84年7月後至112年6月30日）</option>
+              <option value="personal_account" ${scenario.pensionSystem==="personal_account"?"selected":""}>個人專戶制（112年7月1日後初任）</option>
             </select>
           </label>
 
@@ -185,7 +186,7 @@ export function renderSalaryForm(container: HTMLElement, opts: FormOptions): voi
     scenario = {
       rank: nextRank, point: nextPoint,
       professionalAllowanceTable: nextTableId,
-      pensionSystem: (container.querySelector("#pension") as HTMLSelectElement).value as "old" | "new",
+      pensionSystem: (container.querySelector("#pension") as HTMLSelectElement).value as SalaryScenario["pensionSystem"],
       healthInsuranceDependents: parseInt((container.querySelector("#dependents") as HTMLSelectElement).value, 10),
       engineeringExtra: (container.querySelector("#engineering") as HTMLInputElement).checked,
       supervisoryAllowance,

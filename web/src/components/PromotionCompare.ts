@@ -20,6 +20,24 @@ function rankLabel(rank: number): string {
   return map[rank] ?? `第 ${rank} 職等`;
 }
 
+type PerformanceGrade = "A" | "B" | "C";
+
+const GRADE_LABEL: Record<PerformanceGrade, string> = { A: "甲等", B: "乙等", C: "丙等" };
+const GRADE_MONTHS: Record<PerformanceGrade, number> = { A: 1, B: 0.5, C: 0 };
+
+function pensionLabel(system: SalaryScenario["pensionSystem"]): string {
+  const labels = {
+    old: "退撫舊制",
+    new: "退撫新制",
+    personal_account: "個人專戶制",
+  } satisfies Record<SalaryScenario["pensionSystem"], string>;
+  return labels[system];
+}
+
+function earningAmount(result: ReturnType<typeof comparePromotion>["before"], code: string): number {
+  return result.earnings.find((item) => item.code === code)?.amount ?? 0;
+}
+
 export function renderPromotionCompare(
   container: HTMLElement,
   data: AppData,
@@ -28,6 +46,8 @@ export function renderPromotionCompare(
 ): void {
   let beforeScenario: SalaryScenario = { ...initialBefore };
   let afterScenario: SalaryScenario = { ...initialAfter };
+  let shareGrade: PerformanceGrade = "A";
+  let shareYearEndMonths = 1.5;
 
   container.innerHTML = `
     <div style="display:flex;flex-direction:column;gap:1.25rem;">
@@ -70,6 +90,9 @@ export function renderPromotionCompare(
     const sign = cmp.monthlyDiff >= 0 ? "+" : "";
     const diffColor = cmp.monthlyDiff >= 0 ? "var(--c-success)" : "var(--c-error)";
     const diffBg = cmp.monthlyDiff >= 0 ? "var(--c-success-bg)" : "var(--c-error-bg)";
+    const annualBonusDiff = getAnnualBonusDiff(cmp, shareGrade, shareYearEndMonths);
+    const annualTotalDiff = cmp.annualDiff + annualBonusDiff;
+    const annualSign = annualTotalDiff >= 0 ? "+" : "";
 
     resultEl.innerHTML = `
       <div class="card">
@@ -90,8 +113,8 @@ export function renderPromotionCompare(
             <div style="font-size:1.25rem;font-weight:700;font-variant-numeric:tabular-nums;color:${diffColor};">${sign}${fmt(cmp.monthlyDiff)}</div>
           </div>
           <div style="background:${diffBg};border-radius:10px;padding:14px;text-align:center;">
-            <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:${diffColor};margin-bottom:6px;">每年增加</div>
-            <div style="font-size:1.25rem;font-weight:700;font-variant-numeric:tabular-nums;color:${diffColor};">${sign}${fmt(cmp.annualDiff)}</div>
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:${diffColor};margin-bottom:6px;">年收差額</div>
+            <div style="font-size:1.25rem;font-weight:700;font-variant-numeric:tabular-nums;color:${diffColor};">${annualSign}${fmt(annualTotalDiff)}</div>
           </div>
         </div>
 
@@ -132,21 +155,54 @@ export function renderPromotionCompare(
     renderShareCard(cmp);
   }
 
+  function getAnnualBonusDiff(
+    cmp: ReturnType<typeof comparePromotion>,
+    grade: PerformanceGrade,
+    yearEndMonths: number
+  ): number {
+    const performanceDiff = Math.round((cmp.after.grossTotal - cmp.before.grossTotal) * GRADE_MONTHS[grade]);
+    const beforeBase = earningAmount(cmp.before, "base_salary");
+    const afterBase = earningAmount(cmp.after, "base_salary");
+    const yearEndDiff = Math.round((afterBase - beforeBase) * yearEndMonths);
+    return performanceDiff + yearEndDiff;
+  }
+
   function renderShareCard(cmp: ReturnType<typeof comparePromotion>): void {
     const cardEl = container.querySelector("#share-card-section") as HTMLElement;
     const sign = cmp.monthlyDiff >= 0 ? "+" : "";
     const diffTextColor = cmp.monthlyDiff >= 0 ? "#10B981" : "#EF4444";
+    const performanceDiff = Math.round((cmp.after.grossTotal - cmp.before.grossTotal) * GRADE_MONTHS[shareGrade]);
+    const yearEndDiff = Math.round(
+      (earningAmount(cmp.after, "base_salary") - earningAmount(cmp.before, "base_salary")) * shareYearEndMonths
+    );
+    const annualTotalDiff = cmp.annualDiff + performanceDiff + yearEndDiff;
+    const annualSign = annualTotalDiff >= 0 ? "+" : "";
 
     cardEl.innerHTML = `
       <div class="card">
         <div class="section-heading">${icon("share")} 分享圖卡</div>
 
+        <div class="share-controls">
+          <label>
+            <span class="field-label">考績等級</span>
+            <select id="share-grade" class="field-input">
+              <option value="A" ${shareGrade === "A" ? "selected" : ""}>甲等（1 個月）</option>
+              <option value="B" ${shareGrade === "B" ? "selected" : ""}>乙等（0.5 個月）</option>
+              <option value="C" ${shareGrade === "C" ? "selected" : ""}>丙等（0 個月）</option>
+            </select>
+          </label>
+          <label>
+            <span class="field-label">年終月數</span>
+            <input id="share-yearend" class="field-input" type="number" min="0" max="3" step="0.5" value="${shareYearEndMonths}">
+          </label>
+        </div>
+
         <div id="share-card-export" class="share-card-export">
-          <div id="share-card-preview" style="width:320px;max-width:100%;aspect-ratio:1/1;background:linear-gradient(135deg,#1A73E8 0%,#0B4FA8 100%);border-radius:20px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;user-select:none;box-shadow:0 18px 38px rgba(0,0,0,0.25);">
+          <div id="share-card-preview" style="width:320px;max-width:100%;aspect-ratio:1/1;background:linear-gradient(135deg,#1A73E8 0%,#0B4FA8 100%);border-radius:20px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;user-select:none;">
             <div>
               <div style="font-size:10px;font-weight:600;opacity:0.7;margin-bottom:4px;">公務人員薪資試算</div>
               <div style="font-size:14px;font-weight:700;">${rankLabel(beforeScenario.rank)} → ${rankLabel(afterScenario.rank)}</div>
-              <div style="font-size:10px;opacity:0.6;margin-top:3px;">俸點 ${beforeScenario.point}・${beforeScenario.pensionSystem === "old" ? "退撫舊制" : "退撫新制"}・健保${beforeScenario.healthInsuranceDependents === 0 ? "本人" : beforeScenario.healthInsuranceDependents + "口眷"}${beforeScenario.engineeringExtra ? "・工程加給" : ""}</div>
+              <div style="font-size:10px;opacity:0.6;margin-top:3px;">俸點 ${beforeScenario.point}・${pensionLabel(beforeScenario.pensionSystem)}・健保${beforeScenario.healthInsuranceDependents === 0 ? "本人" : beforeScenario.healthInsuranceDependents + "口眷"}${beforeScenario.engineeringExtra ? "・工程加給" : ""}</div>
             </div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;">
               <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:12px;text-align:center;">
@@ -161,7 +217,8 @@ export function renderPromotionCompare(
             <div style="background:#fff;border-radius:14px;padding:16px;text-align:center;">
               <div style="font-size:11px;font-weight:600;color:#174EA6;margin-bottom:4px;">每月增加</div>
               <div style="font-size:2rem;font-weight:900;color:${diffTextColor};font-variant-numeric:tabular-nums;">${sign}${fmt(cmp.monthlyDiff)}</div>
-              <div style="font-size:11px;color:#666;margin-top:4px;">每年增加 ${sign}${fmt(cmp.annualDiff)} 元</div>
+              <div style="font-size:11px;color:#666;margin-top:4px;">年收差額 ${annualSign}${fmt(annualTotalDiff)} 元</div>
+              <div style="font-size:10px;color:#888;margin-top:3px;">含${GRADE_LABEL[shareGrade]}考績 ${performanceDiff >= 0 ? "+" : ""}${fmt(performanceDiff)}、年終 ${yearEndDiff >= 0 ? "+" : ""}${fmt(yearEndDiff)}</div>
             </div>
             <div style="font-size:10px;opacity:0.4;text-align:right;">govpay・資料僅供參考</div>
           </div>
@@ -174,13 +231,27 @@ export function renderPromotionCompare(
     `;
 
     const btn = cardEl.querySelector("#download-png") as HTMLButtonElement;
-    const card = cardEl.querySelector("#share-card-export") as HTMLElement;
+    const card = cardEl.querySelector("#share-card-preview") as HTMLElement;
+    const gradeSelect = cardEl.querySelector("#share-grade") as HTMLSelectElement;
+    const yearEndInput = cardEl.querySelector("#share-yearend") as HTMLInputElement;
+
+    gradeSelect.addEventListener("change", () => {
+      shareGrade = gradeSelect.value as PerformanceGrade;
+      renderResult();
+    });
+    yearEndInput.addEventListener("input", () => {
+      const next = parseFloat(yearEndInput.value);
+      if (!Number.isNaN(next) && next >= 0) {
+        shareYearEndMonths = next;
+        renderResult();
+      }
+    });
 
     btn.addEventListener("click", async () => {
       btn.disabled = true;
       btn.textContent = "產生中…";
       try {
-        const dataUrl = await toPng(card, { pixelRatio: 2 });
+        const dataUrl = await toPng(card, { pixelRatio: 2, backgroundColor: "transparent" });
         const a = document.createElement("a");
         a.href = dataUrl;
         a.download = `govpay_${beforeScenario.rank}→${afterScenario.rank}_${beforeScenario.point}.png`;

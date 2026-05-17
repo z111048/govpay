@@ -41,7 +41,7 @@ SOURCE_DOCUMENTS = {
     "professional_allowances": "支給要點附表6-公務人員專業加給表（二）（114年度）；本工具收錄表一、二、三、四、七、八",
     "supervisory_allowances": "支給要點附表5-公務人員主管職務加給表（114年度）",
     "health_insurance": "全民健康保險投保金額分級表第 115 年版（自 2026-01-01 起）",
-    "pension": "公務人員退休資遣撫卹法及退撫自付額試算依據",
+    "pension": "公務人員退休資遣撫卹法及個人專戶制退撫法；個人專戶制依本俸×2×15%×35% 試算",
     "civil_service_insurance": "公教人員保險法及公保費率自付比例試算依據",
 }
 

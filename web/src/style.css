@@ -523,12 +523,16 @@
     width: min(420px, 100%);
     aspect-ratio: 1 / 1;
     margin: 0 auto;
-    padding: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 22px;
-    background: var(--c-surface-2);
+    background: transparent;
+  }
+  .share-controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 1rem;
   }
 
   /* === BUTTONS === */
@@ -639,7 +643,8 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     .annual-summary-grid,
-    .two-stat-grid {
+    .two-stat-grid,
+    .share-controls {
       grid-template-columns: 1fr;
     }
     .row-item {

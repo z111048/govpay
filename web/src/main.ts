@@ -123,6 +123,7 @@ async function main(): Promise<void> {
     { title: "公務人員加給給與辦法", desc: "規範專業加給、主管職務加給、地域加給之適用對象、職等範圍及月支數額。", url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030007", code: "S0030007" },
     { title: "公務人員考績法（第 7 條）", desc: "甲等：晉本俸一級，給與一個月俸給總額獎金；乙等：晉本俸一級，給與半個月俸給總額獎金；丙等：留原俸級；丁等：免職。", url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0040001", code: "S0040001" },
     { title: "公務人員退休資遣撫卹法", desc: "規範退撫舊制（84 年 7 月前到職）及新制（84 年 7 月後到職）之費率、自付比例及基數計算方式。", url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0080034", code: "S0080034" },
+    { title: "公務人員個人專戶制退休資遣撫卹法", desc: "112 年 7 月 1 日以後初任公務人員適用，採確定提撥制，按本（年功）俸加一倍 15% 提撥，個人負擔 35%。", url: "https://law.exam.gov.tw/LawContent.aspx?id=GL000095", code: "GL000095" },
     { title: "公教人員保險法", desc: "公保費率目前為 7.22%，政府補助 65%，被保險人自付 35%。", url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0070001", code: "S0070001" },
     { title: "全民健康保險法（第 18 條）", desc: "健保費率 115 年為 5.17%，受僱者自付比例 30%，眷屬以每口計算。投保金額依主管機關公告之分級表認定。", url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0060001", code: "L0060001" },
   ];

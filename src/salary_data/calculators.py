@@ -46,6 +46,9 @@ def find_health_insurance_bracket(gross_salary: int, year: int = 115) -> HealthI
 
 def find_pension_payment(point: int, system: str = "old") -> int:
     """查找俸點對應的退撫自付額。"""
+    if system == "personal_account":
+        base_salary = find_salary_point(point)
+        return round(base_salary * 2 * 0.15 * 0.35)
     table = load_pension(system)
     for item in table.items:
         if item.point == point:
@@ -109,7 +112,12 @@ def calculate_salary(scenario: SalaryScenario) -> SalaryResult:
     pension_payment = find_pension_payment(scenario.point, scenario.pension_system)
     insurance_payment = find_civil_insurance_payment(base_salary)
 
-    pension_label = "退撫舊制" if scenario.pension_system == "old" else "退撫新制"
+    pension_labels = {
+        "old": "退撫舊制",
+        "new": "退撫新制",
+        "personal_account": "個人專戶制",
+    }
+    pension_label = pension_labels[scenario.pension_system]
     deductions: list[DeductionItem] = [
         DeductionItem(code="civil_service_insurance", label="公保", amount=insurance_payment),
         DeductionItem(code="health_insurance", label="健保", amount=hi_payment),

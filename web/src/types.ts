@@ -124,7 +124,7 @@ export interface MetadataData {
   datasets: MetadataDataset[];
 }
 
-export type PensionSystem = "old" | "new";
+export type PensionSystem = "old" | "new" | "personal_account";
 
 export interface SalaryScenario {
   rank: number;

@@ -100,14 +100,14 @@ class HealthInsuranceTable(BaseModel):
 class PensionContribution(BaseModel):
     """一個俸點的退撫自付額。"""
 
-    system: Literal["old", "new"]
+    system: Literal["old", "new", "personal_account"]
     point: int
     base_salary: int
     self_payment: int
 
 
 class PensionTable(BaseModel):
-    system: Literal["old", "new"]
+    system: Literal["old", "new", "personal_account"]
     effective_date: str
     items: list[PensionContribution]
 
@@ -137,7 +137,7 @@ class SalaryScenario(BaseModel):
         default="professional_allowance_table_7", description="專業加給表代碼"
     )
     engineering_extra: bool = Field(default=False, description="是否適用工程人員另增支 3,000 元")
-    pension_system: Literal["old", "new"] = Field(default="old", description="退撫制度")
+    pension_system: Literal["old", "new", "personal_account"] = Field(default="old", description="退撫制度")
     health_insurance_dependents: int = Field(
         default=0, ge=0, le=6, description="健保眷口數（0=本人無眷口）"
     )

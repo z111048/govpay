@@ -2,6 +2,7 @@ import type { AppData } from "../types";
 import { icon } from "../icons";
 
 type HomeAction = "calculator" | "promotion" | "databrowser";
+const homeHeroUrl = `${import.meta.env.BASE_URL}images/home-hero.png`;
 
 function fmt(n: number): string {
   return n.toLocaleString("zh-TW");
@@ -30,7 +31,7 @@ export function renderHome(
         </div>
       </div>
       <div class="home-hero-visual" aria-hidden="true">
-        <img src="/images/home-hero.png" alt="" loading="eager" />
+        <img src="${homeHeroUrl}" alt="" loading="eager" />
       </div>
     </section>
 

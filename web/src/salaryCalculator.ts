@@ -56,6 +56,10 @@ function findPensionPayment(data: AppData, point: number): number {
   return nearest.self_payment;
 }
 
+function calculatePersonalAccountPayment(baseSalary: number): number {
+  return Math.round(baseSalary * 2 * 0.15 * 0.35);
+}
+
 function findInsurancePayment(data: AppData, baseSalary: number): number {
   const item = data.insurance.items.find((entry) => entry.base_salary === baseSalary);
   if (item) return item.self_payment;
@@ -97,15 +101,23 @@ export function calculateSalary(data: AppData, scenario: SalaryScenario): Salary
     hiBracket.self_payment,
     scenario.healthInsuranceDependents
   );
-  const pensionAmount = findPensionPayment(data, scenario.point);
+  const pensionAmount =
+    scenario.pensionSystem === "personal_account"
+      ? calculatePersonalAccountPayment(baseSalary)
+      : findPensionPayment(data, scenario.point);
   const insuranceAmount = findInsurancePayment(data, baseSalary);
+  const pensionLabelMap = {
+    old: "退撫舊制",
+    new: "退撫新制",
+    personal_account: "個人專戶制",
+  } satisfies Record<SalaryScenario["pensionSystem"], string>;
 
   const deductions: DeductionItem[] = [
     { code: "civil_service_insurance", label: "公保", amount: insuranceAmount },
     { code: "health_insurance", label: "健保", amount: hiAmount },
     {
       code: `pension_${scenario.pensionSystem}`,
-      label: scenario.pensionSystem === "old" ? "退撫舊制" : "退撫新制",
+      label: pensionLabelMap[scenario.pensionSystem],
       amount: pensionAmount,
     },
   ];
