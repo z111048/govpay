@@ -38,6 +38,10 @@ function earningAmount(result: ReturnType<typeof comparePromotion>["before"], co
   return result.earnings.find((item) => item.code === code)?.amount ?? 0;
 }
 
+function signedAmount(n: number): string {
+  return `${n >= 0 ? "+" : ""}${fmt(n)}`;
+}
+
 export function renderPromotionCompare(
   container: HTMLElement,
   data: AppData,
@@ -113,7 +117,7 @@ export function renderPromotionCompare(
             <div style="font-size:1.25rem;font-weight:700;font-variant-numeric:tabular-nums;color:${diffColor};">${sign}${fmt(cmp.monthlyDiff)}</div>
           </div>
           <div style="background:${diffBg};border-radius:10px;padding:14px;text-align:center;">
-            <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:${diffColor};margin-bottom:6px;">年收差額</div>
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:${diffColor};margin-bottom:6px;">年度估算差額</div>
             <div style="font-size:1.25rem;font-weight:700;font-variant-numeric:tabular-nums;color:${diffColor};">${annualSign}${fmt(annualTotalDiff)}</div>
           </div>
         </div>
@@ -177,6 +181,15 @@ export function renderPromotionCompare(
     );
     const annualTotalDiff = cmp.annualDiff + performanceDiff + yearEndDiff;
     const annualSign = annualTotalDiff >= 0 ? "+" : "";
+    const yearEndNote =
+      yearEndDiff === 0
+        ? "年終差額：同本俸無差額"
+        : `年終差額：${signedAmount(yearEndDiff)}`;
+    const bonusBreakdown = [
+      `月實領差額×12：${signedAmount(cmp.annualDiff)}`,
+      `考績差額（${GRADE_LABEL[shareGrade]}）：${signedAmount(performanceDiff)}`,
+      yearEndNote,
+    ].join(" ｜ ");
 
     cardEl.innerHTML = `
       <div class="card">
@@ -184,7 +197,7 @@ export function renderPromotionCompare(
 
         <div class="share-controls">
           <label>
-            <span class="field-label">考績等級</span>
+            <span class="field-label">年度估算：考績等級</span>
             <select id="share-grade" class="field-input">
               <option value="A" ${shareGrade === "A" ? "selected" : ""}>甲等（1 個月）</option>
               <option value="B" ${shareGrade === "B" ? "selected" : ""}>乙等（0.5 個月）</option>
@@ -192,7 +205,7 @@ export function renderPromotionCompare(
             </select>
           </label>
           <label>
-            <span class="field-label">年終月數</span>
+            <span class="field-label">年度估算：年終月數</span>
             <input id="share-yearend" class="field-input" type="number" min="0" max="3" step="0.5" value="${shareYearEndMonths}">
           </label>
         </div>
@@ -217,8 +230,8 @@ export function renderPromotionCompare(
             <div style="background:#fff;border-radius:14px;padding:16px;text-align:center;">
               <div style="font-size:11px;font-weight:600;color:#174EA6;margin-bottom:4px;">每月增加</div>
               <div style="font-size:2rem;font-weight:900;color:${diffTextColor};font-variant-numeric:tabular-nums;">${sign}${fmt(cmp.monthlyDiff)}</div>
-              <div style="font-size:11px;color:#666;margin-top:4px;">年收差額 ${annualSign}${fmt(annualTotalDiff)} 元</div>
-              <div style="font-size:10px;color:#888;margin-top:3px;">含${GRADE_LABEL[shareGrade]}考績 ${performanceDiff >= 0 ? "+" : ""}${fmt(performanceDiff)}、年終 ${yearEndDiff >= 0 ? "+" : ""}${fmt(yearEndDiff)}</div>
+              <div style="font-size:11px;color:#666;margin-top:4px;">年度估算差額 ${annualSign}${fmt(annualTotalDiff)} 元</div>
+              <div style="font-size:9px;line-height:1.45;color:#888;margin-top:5px;">${bonusBreakdown}</div>
             </div>
             <div style="font-size:10px;opacity:0.4;text-align:right;">govpay・資料僅供參考</div>
           </div>
