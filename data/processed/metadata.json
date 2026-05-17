@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-16T17:11:30+00:00",
+  "generated_at": "2026-05-17T05:59:46+00:00",
   "datasets": [
     {
       "dataset": "salary_points",
@@ -7,8 +7,8 @@
       "effective_date": "2025-01-01",
       "source_name": "行政院人事行政總處待遇加給",
       "source_document": "支給要點附表2-公務人員俸額表（114年度）",
-      "source_url": "https://www.dgpa.gov.tw/information?pid=12407&uid=108",
-      "last_checked_at": "2026-05-16"
+      "source_url": "https://www.dgpa.gov.tw/uploads/dgpa/files/202505/7927abfd-d520-43d5-913e-c616bf4a16e7.pdf",
+      "last_checked_at": "2026-05-17"
     },
     {
       "dataset": "salary_grades",
@@ -16,8 +16,8 @@
       "effective_date": "2025-01-01",
       "source_name": "全國法規資料庫",
       "source_document": "公務人員俸給法施行細則附表：公務人員俸表",
-      "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030001",
-      "last_checked_at": "2026-05-16"
+      "source_url": "https://www.dgpa.gov.tw/uploads/dgpa/files/202505/7927abfd-d520-43d5-913e-c616bf4a16e7.pdf",
+      "last_checked_at": "2026-05-17"
     },
     {
       "dataset": "professional_allowances",
@@ -26,7 +26,7 @@
       "source_name": "行政院人事行政總處待遇加給",
       "source_document": "支給要點附表6-公務人員專業加給表（二）（114年度）；本工具收錄表一、二、三、四、七、八",
       "source_url": "https://www.dgpa.gov.tw/information?pid=12407&uid=108",
-      "last_checked_at": "2026-05-16"
+      "last_checked_at": "2026-05-17"
     },
     {
       "dataset": "supervisory_allowances",
@@ -35,7 +35,7 @@
       "source_name": "行政院人事行政總處待遇加給",
       "source_document": "支給要點附表5-公務人員主管職務加給表（114年度）",
       "source_url": "https://www.dgpa.gov.tw/information?pid=12407&uid=108",
-      "last_checked_at": "2026-05-16"
+      "last_checked_at": "2026-05-17"
     },
     {
       "dataset": "health_insurance",
@@ -44,7 +44,7 @@
       "source_name": "衛生福利部中央健康保險署投保金額分級表",
       "source_document": "全民健康保險投保金額分級表第 115 年版（自 2026-01-01 起）",
       "source_url": "https://www.nhi.gov.tw/ch/cp-19421-f9533-2569-1.html",
-      "last_checked_at": "2026-05-16"
+      "last_checked_at": "2026-05-17"
     },
     {
       "dataset": "pension",
@@ -53,7 +53,7 @@
       "source_name": "全國法規資料庫",
       "source_document": "公務人員退休資遣撫卹法及個人專戶制退撫法；個人專戶制依本俸×2×15%×35% 試算",
       "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0080034",
-      "last_checked_at": "2026-05-16"
+      "last_checked_at": "2026-05-17"
     },
     {
       "dataset": "civil_service_insurance",
@@ -62,7 +62,7 @@
       "source_name": "全國法規資料庫",
       "source_document": "公教人員保險法及公保費率自付比例試算依據",
       "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0070001",
-      "last_checked_at": "2026-05-16"
+      "last_checked_at": "2026-05-17"
     }
   ]
 }

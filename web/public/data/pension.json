@@ -5,119 +5,149 @@
   "source_name": "全國法規資料庫",
   "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0080034",
   "source_document": "公務人員退休資遣撫卹法及個人專戶制退撫法；個人專戶制依本俸×2×15%×35% 試算",
-  "last_checked_at": "2026-05-16",
-  "generated_at": "2026-05-16T17:11:30+00:00",
+  "last_checked_at": "2026-05-17",
+  "generated_at": "2026-05-17T05:59:46+00:00",
   "system": "old",
   "items": [
     {
       "point": 160,
-      "base_salary": 14395,
-      "self_payment": 1511
+      "base_salary": 13380,
+      "self_payment": 1405
+    },
+    {
+      "point": 170,
+      "base_salary": 13920,
+      "self_payment": 1462
+    },
+    {
+      "point": 180,
+      "base_salary": 14460,
+      "self_payment": 1518
     },
     {
       "point": 190,
-      "base_salary": 16270,
-      "self_payment": 1708
+      "base_salary": 15000,
+      "self_payment": 1575
+    },
+    {
+      "point": 200,
+      "base_salary": 15540,
+      "self_payment": 1632
+    },
+    {
+      "point": 210,
+      "base_salary": 16090,
+      "self_payment": 1689
     },
     {
       "point": 220,
-      "base_salary": 18220,
-      "self_payment": 1913
+      "base_salary": 16630,
+      "self_payment": 1746
     },
     {
-      "point": 245,
-      "base_salary": 19885,
-      "self_payment": 2088
+      "point": 230,
+      "base_salary": 17390,
+      "self_payment": 1826
+    },
+    {
+      "point": 240,
+      "base_salary": 18160,
+      "self_payment": 1907
+    },
+    {
+      "point": 250,
+      "base_salary": 18920,
+      "self_payment": 1987
     },
     {
       "point": 260,
-      "base_salary": 20965,
-      "self_payment": 2201
+      "base_salary": 19690,
+      "self_payment": 2067
+    },
+    {
+      "point": 270,
+      "base_salary": 20460,
+      "self_payment": 2148
     },
     {
       "point": 280,
-      "base_salary": 22450,
-      "self_payment": 2357
+      "base_salary": 21220,
+      "self_payment": 2228
+    },
+    {
+      "point": 290,
+      "base_salary": 21990,
+      "self_payment": 2309
     },
     {
       "point": 300,
-      "base_salary": 24010,
-      "self_payment": 2521
+      "base_salary": 22750,
+      "self_payment": 2389
     },
     {
-      "point": 315,
-      "base_salary": 25085,
-      "self_payment": 2634
+      "point": 310,
+      "base_salary": 23520,
+      "self_payment": 2470
+    },
+    {
+      "point": 320,
+      "base_salary": 24290,
+      "self_payment": 2550
     },
     {
       "point": 330,
-      "base_salary": 26185,
-      "self_payment": 2749
+      "base_salary": 25050,
+      "self_payment": 2630
     },
     {
-      "point": 345,
-      "base_salary": 27330,
-      "self_payment": 2870
+      "point": 340,
+      "base_salary": 25820,
+      "self_payment": 2711
     },
     {
-      "point": 355,
-      "base_salary": 28155,
-      "self_payment": 2956
+      "point": 350,
+      "base_salary": 26580,
+      "self_payment": 2791
+    },
+    {
+      "point": 360,
+      "base_salary": 27350,
+      "self_payment": 2872
     },
     {
       "point": 370,
-      "base_salary": 29365,
-      "self_payment": 3083
+      "base_salary": 28120,
+      "self_payment": 2953
     },
     {
-      "point": 380,
-      "base_salary": 30205,
-      "self_payment": 3172
-    },
-    {
-      "point": 390,
-      "base_salary": 31090,
-      "self_payment": 3264
+      "point": 385,
+      "base_salary": 29270,
+      "self_payment": 3073
     },
     {
       "point": 400,
-      "base_salary": 32005,
-      "self_payment": 3361
+      "base_salary": 30410,
+      "self_payment": 3193
     },
     {
-      "point": 410,
-      "base_salary": 32945,
-      "self_payment": 3459
-    },
-    {
-      "point": 420,
-      "base_salary": 33945,
-      "self_payment": 3564
+      "point": 415,
+      "base_salary": 31560,
+      "self_payment": 3314
     },
     {
       "point": 430,
-      "base_salary": 34945,
-      "self_payment": 3669
+      "base_salary": 32710,
+      "self_payment": 3435
     },
     {
-      "point": 440,
-      "base_salary": 35970,
-      "self_payment": 3777
-    },
-    {
-      "point": 450,
-      "base_salary": 37030,
-      "self_payment": 3888
+      "point": 445,
+      "base_salary": 33860,
+      "self_payment": 3555
     },
     {
       "point": 460,
-      "base_salary": 38110,
-      "self_payment": 4002
-    },
-    {
-      "point": 470,
-      "base_salary": 39215,
-      "self_payment": 4118
+      "base_salary": 35010,
+      "self_payment": 3676
     },
     {
       "point": 475,
@@ -125,69 +155,89 @@
       "self_payment": 3797
     },
     {
-      "point": 480,
-      "base_salary": 40345,
-      "self_payment": 4236
-    },
-    {
       "point": 490,
-      "base_salary": 41500,
-      "self_payment": 4358
+      "base_salary": 37310,
+      "self_payment": 3918
     },
     {
-      "point": 500,
-      "base_salary": 42680,
-      "self_payment": 4481
-    },
-    {
-      "point": 510,
-      "base_salary": 43890,
-      "self_payment": 4608
+      "point": 505,
+      "base_salary": 38460,
+      "self_payment": 4038
     },
     {
       "point": 520,
-      "base_salary": 45125,
-      "self_payment": 4738
+      "base_salary": 39610,
+      "self_payment": 4159
     },
     {
-      "point": 530,
-      "base_salary": 46390,
-      "self_payment": 4871
-    },
-    {
-      "point": 540,
-      "base_salary": 47680,
-      "self_payment": 5006
+      "point": 535,
+      "base_salary": 40760,
+      "self_payment": 4280
     },
     {
       "point": 550,
-      "base_salary": 49000,
-      "self_payment": 5145
-    },
-    {
-      "point": 560,
-      "base_salary": 50350,
-      "self_payment": 5287
-    },
-    {
-      "point": 570,
-      "base_salary": 51730,
-      "self_payment": 5432
-    },
-    {
-      "point": 580,
-      "base_salary": 53145,
-      "self_payment": 5582
+      "base_salary": 41900,
+      "self_payment": 4400
     },
     {
       "point": 590,
-      "base_salary": 54590,
-      "self_payment": 5732
+      "base_salary": 44970,
+      "self_payment": 4722
     },
     {
-      "point": 600,
-      "base_salary": 56070,
-      "self_payment": 5887
+      "point": 610,
+      "base_salary": 46500,
+      "self_payment": 4882
+    },
+    {
+      "point": 630,
+      "base_salary": 48030,
+      "self_payment": 5043
+    },
+    {
+      "point": 650,
+      "base_salary": 49560,
+      "self_payment": 5204
+    },
+    {
+      "point": 670,
+      "base_salary": 51100,
+      "self_payment": 5366
+    },
+    {
+      "point": 690,
+      "base_salary": 52630,
+      "self_payment": 5526
+    },
+    {
+      "point": 710,
+      "base_salary": 54160,
+      "self_payment": 5687
+    },
+    {
+      "point": 730,
+      "base_salary": 55690,
+      "self_payment": 5847
+    },
+    {
+      "point": 750,
+      "base_salary": 57220,
+      "self_payment": 6008
+    },
+    {
+      "point": 780,
+      "base_salary": 59520,
+      "self_payment": 6250
+    },
+    {
+      "point": 790,
+      "base_salary": 60290,
+      "self_payment": 6330
+    },
+    {
+      "point": 800,
+      "base_salary": 63570,
+      "self_payment": 6675
     }
   ]
 }

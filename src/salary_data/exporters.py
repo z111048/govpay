@@ -27,8 +27,8 @@ PROFESSIONAL_ALLOWANCE_TABLE_IDS = [
     "professional_allowance_table_8",
 ]
 SOURCE_URLS = {
-    "salary_points": "https://www.dgpa.gov.tw/information?pid=12407&uid=108",
-    "salary_grades": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0030001",
+    "salary_points": "https://www.dgpa.gov.tw/uploads/dgpa/files/202505/7927abfd-d520-43d5-913e-c616bf4a16e7.pdf",
+    "salary_grades": "https://www.dgpa.gov.tw/uploads/dgpa/files/202505/7927abfd-d520-43d5-913e-c616bf4a16e7.pdf",
     "professional_allowances": "https://www.dgpa.gov.tw/information?pid=12407&uid=108",
     "supervisory_allowances": "https://www.dgpa.gov.tw/information?pid=12407&uid=108",
     "health_insurance": "https://www.nhi.gov.tw/ch/cp-19421-f9533-2569-1.html",

@@ -3,7 +3,7 @@ import type { SalaryScenario } from "./types";
 
 export const DEFAULT_SALARY_SCENARIO: SalaryScenario = {
   rank: 6,
-  point: 345,
+  point: 385,
   professionalAllowanceTable: "professional_allowance_table_7",
   engineeringExtra: true,
   pensionSystem: "personal_account",

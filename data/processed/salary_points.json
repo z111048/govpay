@@ -3,399 +3,195 @@
   "version": "114.01",
   "effective_date": "2025-01-01",
   "source_name": "行政院人事行政總處待遇加給",
-  "source_url": "https://www.dgpa.gov.tw/information?pid=12407&uid=108",
+  "source_url": "https://www.dgpa.gov.tw/uploads/dgpa/files/202505/7927abfd-d520-43d5-913e-c616bf4a16e7.pdf",
   "source_document": "支給要點附表2-公務人員俸額表（114年度）",
-  "last_checked_at": "2026-05-16",
-  "generated_at": "2026-05-16T17:11:30+00:00",
+  "last_checked_at": "2026-05-17",
+  "generated_at": "2026-05-17T05:59:46+00:00",
   "year": 114,
   "points": [
     {
       "point": 160,
-      "monthly_salary": 14399
-    },
-    {
-      "point": 165,
-      "monthly_salary": 14571
+      "monthly_salary": 13380
     },
     {
       "point": 170,
-      "monthly_salary": 14747
+      "monthly_salary": 13920
     },
     {
-      "point": 175,
-      "monthly_salary": 14930
-    },
-    {
-      "point": 185,
-      "monthly_salary": 15311
+      "point": 180,
+      "monthly_salary": 14460
     },
     {
       "point": 190,
-      "monthly_salary": 15511
-    },
-    {
-      "point": 195,
-      "monthly_salary": 15716
+      "monthly_salary": 15000
     },
     {
       "point": 200,
-      "monthly_salary": 15926
+      "monthly_salary": 15540
     },
     {
       "point": 210,
-      "monthly_salary": 16364
-    },
-    {
-      "point": 215,
-      "monthly_salary": 16591
+      "monthly_salary": 16090
     },
     {
       "point": 220,
-      "monthly_salary": 16824
-    },
-    {
-      "point": 225,
-      "monthly_salary": 17063
+      "monthly_salary": 16630
     },
     {
       "point": 230,
-      "monthly_salary": 17307
+      "monthly_salary": 17390
     },
     {
       "point": 240,
-      "monthly_salary": 17812
+      "monthly_salary": 18160
     },
     {
       "point": 250,
-      "monthly_salary": 18340
-    },
-    {
-      "point": 255,
-      "monthly_salary": 18613
+      "monthly_salary": 18920
     },
     {
       "point": 260,
-      "monthly_salary": 18891
-    },
-    {
-      "point": 265,
-      "monthly_salary": 19174
+      "monthly_salary": 19690
     },
     {
       "point": 270,
-      "monthly_salary": 19463
-    },
-    {
-      "point": 275,
-      "monthly_salary": 19758
+      "monthly_salary": 20460
     },
     {
       "point": 280,
-      "monthly_salary": 20059
-    },
-    {
-      "point": 285,
-      "monthly_salary": 20365
+      "monthly_salary": 21220
     },
     {
       "point": 290,
-      "monthly_salary": 20676
+      "monthly_salary": 21990
     },
     {
       "point": 300,
-      "monthly_salary": 21317
-    },
-    {
-      "point": 305,
-      "monthly_salary": 21645
+      "monthly_salary": 22750
     },
     {
       "point": 310,
-      "monthly_salary": 21979
-    },
-    {
-      "point": 315,
-      "monthly_salary": 22319
+      "monthly_salary": 23520
     },
     {
       "point": 320,
-      "monthly_salary": 22664
+      "monthly_salary": 24290
     },
     {
       "point": 330,
-      "monthly_salary": 23372
+      "monthly_salary": 25050
     },
     {
-      "point": 345,
-      "monthly_salary": 24476
+      "point": 340,
+      "monthly_salary": 25820
     },
     {
       "point": 350,
-      "monthly_salary": 24855
+      "monthly_salary": 26580
     },
     {
       "point": 360,
-      "monthly_salary": 25630
+      "monthly_salary": 27350
     },
     {
-      "point": 375,
-      "monthly_salary": 26835
+      "point": 370,
+      "monthly_salary": 28120
     },
     {
-      "point": 380,
-      "monthly_salary": 27248
-    },
-    {
-      "point": 390,
-      "monthly_salary": 28090
+      "point": 385,
+      "monthly_salary": 29270
     },
     {
       "point": 400,
-      "monthly_salary": 28955
-    },
-    {
-      "point": 405,
-      "monthly_salary": 29396
+      "monthly_salary": 30410
     },
     {
       "point": 415,
-      "monthly_salary": 30295
-    },
-    {
-      "point": 420,
-      "monthly_salary": 30753
-    },
-    {
-      "point": 425,
-      "monthly_salary": 31216
+      "monthly_salary": 31560
     },
     {
       "point": 430,
-      "monthly_salary": 31686
-    },
-    {
-      "point": 440,
-      "monthly_salary": 32641
+      "monthly_salary": 32710
     },
     {
       "point": 445,
-      "monthly_salary": 33126
-    },
-    {
-      "point": 455,
-      "monthly_salary": 34115
+      "monthly_salary": 33860
     },
     {
       "point": 460,
-      "monthly_salary": 34618
-    },
-    {
-      "point": 465,
-      "monthly_salary": 35126
-    },
-    {
-      "point": 470,
-      "monthly_salary": 35640
+      "monthly_salary": 35010
     },
     {
       "point": 475,
       "monthly_salary": 36160
     },
     {
-      "point": 485,
-      "monthly_salary": 37216
-    },
-    {
       "point": 490,
-      "monthly_salary": 37753
+      "monthly_salary": 37310
     },
     {
-      "point": 500,
-      "monthly_salary": 38843
-    },
-    {
-      "point": 510,
-      "monthly_salary": 39955
-    },
-    {
-      "point": 515,
-      "monthly_salary": 40520
+      "point": 505,
+      "monthly_salary": 38460
     },
     {
       "point": 520,
-      "monthly_salary": 41090
-    },
-    {
-      "point": 530,
-      "monthly_salary": 42247
+      "monthly_salary": 39610
     },
     {
       "point": 535,
-      "monthly_salary": 42834
-    },
-    {
-      "point": 545,
-      "monthly_salary": 44026
+      "monthly_salary": 40760
     },
     {
       "point": 550,
-      "monthly_salary": 44630
+      "monthly_salary": 41900
     },
     {
-      "point": 560,
-      "monthly_salary": 45854
-    },
-    {
-      "point": 565,
-      "monthly_salary": 46475
-    },
-    {
-      "point": 575,
-      "monthly_salary": 47734
-    },
-    {
-      "point": 580,
-      "monthly_salary": 48371
-    },
-    {
-      "point": 595,
-      "monthly_salary": 50318
+      "point": 590,
+      "monthly_salary": 44970
     },
     {
       "point": 610,
-      "monthly_salary": 52316
-    },
-    {
-      "point": 625,
-      "monthly_salary": 54364
+      "monthly_salary": 46500
     },
     {
       "point": 630,
-      "monthly_salary": 55058
-    },
-    {
-      "point": 640,
-      "monthly_salary": 56462
+      "monthly_salary": 48030
     },
     {
       "point": 650,
-      "monthly_salary": 57889
-    },
-    {
-      "point": 655,
-      "monthly_salary": 58611
+      "monthly_salary": 49560
     },
     {
       "point": 670,
-      "monthly_salary": 60811
-    },
-    {
-      "point": 680,
-      "monthly_salary": 62306
+      "monthly_salary": 51100
     },
     {
       "point": 690,
-      "monthly_salary": 63823
-    },
-    {
-      "point": 700,
-      "monthly_salary": 65363
+      "monthly_salary": 52630
     },
     {
       "point": 710,
-      "monthly_salary": 66925
-    },
-    {
-      "point": 720,
-      "monthly_salary": 68509
+      "monthly_salary": 54160
     },
     {
       "point": 730,
-      "monthly_salary": 70116
-    },
-    {
-      "point": 740,
-      "monthly_salary": 71746
+      "monthly_salary": 55690
     },
     {
       "point": 750,
-      "monthly_salary": 73398
-    },
-    {
-      "point": 760,
-      "monthly_salary": 75072
-    },
-    {
-      "point": 770,
-      "monthly_salary": 76769
+      "monthly_salary": 57220
     },
     {
       "point": 780,
-      "monthly_salary": 78489
+      "monthly_salary": 59520
     },
     {
       "point": 790,
-      "monthly_salary": 80231
+      "monthly_salary": 60290
     },
     {
       "point": 800,
-      "monthly_salary": 81995
-    },
-    {
-      "point": 810,
-      "monthly_salary": 83782
-    },
-    {
-      "point": 820,
-      "monthly_salary": 85591
-    },
-    {
-      "point": 830,
-      "monthly_salary": 87423
-    },
-    {
-      "point": 840,
-      "monthly_salary": 89278
-    },
-    {
-      "point": 850,
-      "monthly_salary": 91154
-    },
-    {
-      "point": 860,
-      "monthly_salary": 93054
-    },
-    {
-      "point": 870,
-      "monthly_salary": 94976
-    },
-    {
-      "point": 880,
-      "monthly_salary": 96920
-    },
-    {
-      "point": 890,
-      "monthly_salary": 98887
-    },
-    {
-      "point": 900,
-      "monthly_salary": 100876
-    },
-    {
-      "point": 910,
-      "monthly_salary": 102888
-    },
-    {
-      "point": 920,
-      "monthly_salary": 104922
-    },
-    {
-      "point": 940,
-      "monthly_salary": 109058
-    },
-    {
-      "point": 960,
-      "monthly_salary": 113284
+      "monthly_salary": 63570
     }
   ]
 }

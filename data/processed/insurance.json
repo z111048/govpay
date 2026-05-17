@@ -5,140 +5,176 @@
   "source_name": "全國法規資料庫",
   "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0070001",
   "source_document": "公教人員保險法及公保費率自付比例試算依據",
-  "last_checked_at": "2026-05-16",
-  "generated_at": "2026-05-16T17:11:30+00:00",
+  "last_checked_at": "2026-05-17",
+  "generated_at": "2026-05-17T05:59:46+00:00",
   "items": [
     {
-      "base_salary": 14395,
+      "base_salary": 13380,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 362
+      "self_payment": 338
     },
     {
-      "base_salary": 16270,
+      "base_salary": 13920,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 409
+      "self_payment": 352
     },
     {
-      "base_salary": 18220,
+      "base_salary": 14460,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 458
+      "self_payment": 365
     },
     {
-      "base_salary": 19885,
+      "base_salary": 15000,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 500
+      "self_payment": 379
     },
     {
-      "base_salary": 20965,
+      "base_salary": 15540,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 527
+      "self_payment": 393
     },
     {
-      "base_salary": 22450,
+      "base_salary": 16090,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 564
+      "self_payment": 407
     },
     {
-      "base_salary": 24010,
+      "base_salary": 16630,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 604
+      "self_payment": 420
     },
     {
-      "base_salary": 25085,
+      "base_salary": 17390,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 631
+      "self_payment": 439
     },
     {
-      "base_salary": 26185,
+      "base_salary": 18160,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 658
+      "self_payment": 459
     },
     {
-      "base_salary": 27330,
+      "base_salary": 18920,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 687
+      "self_payment": 478
     },
     {
-      "base_salary": 28155,
+      "base_salary": 19690,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 708
+      "self_payment": 498
     },
     {
-      "base_salary": 29365,
+      "base_salary": 20460,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 738
+      "self_payment": 517
     },
     {
-      "base_salary": 30205,
+      "base_salary": 21220,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 759
+      "self_payment": 536
     },
     {
-      "base_salary": 31090,
+      "base_salary": 21990,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 782
+      "self_payment": 556
     },
     {
-      "base_salary": 32005,
+      "base_salary": 22750,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 805
+      "self_payment": 575
     },
     {
-      "base_salary": 32945,
+      "base_salary": 23520,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 828
+      "self_payment": 594
     },
     {
-      "base_salary": 33945,
+      "base_salary": 24290,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 854
+      "self_payment": 614
     },
     {
-      "base_salary": 34945,
+      "base_salary": 25050,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 879
+      "self_payment": 633
     },
     {
-      "base_salary": 35970,
+      "base_salary": 25820,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 905
+      "self_payment": 652
     },
     {
-      "base_salary": 37030,
+      "base_salary": 26580,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 931
+      "self_payment": 672
     },
     {
-      "base_salary": 38110,
+      "base_salary": 27350,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 958
+      "self_payment": 691
     },
     {
-      "base_salary": 39215,
+      "base_salary": 28120,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 986
+      "self_payment": 711
+    },
+    {
+      "base_salary": 29270,
+      "rate_basis_points": 722,
+      "self_pay_ratio_basis_points": 3500,
+      "self_payment": 740
+    },
+    {
+      "base_salary": 30410,
+      "rate_basis_points": 722,
+      "self_pay_ratio_basis_points": 3500,
+      "self_payment": 768
+    },
+    {
+      "base_salary": 31560,
+      "rate_basis_points": 722,
+      "self_pay_ratio_basis_points": 3500,
+      "self_payment": 798
+    },
+    {
+      "base_salary": 32710,
+      "rate_basis_points": 722,
+      "self_pay_ratio_basis_points": 3500,
+      "self_payment": 827
+    },
+    {
+      "base_salary": 33860,
+      "rate_basis_points": 722,
+      "self_pay_ratio_basis_points": 3500,
+      "self_payment": 856
+    },
+    {
+      "base_salary": 35010,
+      "rate_basis_points": 722,
+      "self_pay_ratio_basis_points": 3500,
+      "self_payment": 885
     },
     {
       "base_salary": 36160,
@@ -147,82 +183,106 @@
       "self_payment": 914
     },
     {
-      "base_salary": 40345,
+      "base_salary": 37310,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 1015
+      "self_payment": 943
     },
     {
-      "base_salary": 41500,
+      "base_salary": 38460,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 1044
+      "self_payment": 972
     },
     {
-      "base_salary": 42680,
+      "base_salary": 39610,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 1073
+      "self_payment": 1001
     },
     {
-      "base_salary": 43890,
+      "base_salary": 40760,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 1104
+      "self_payment": 1030
     },
     {
-      "base_salary": 45125,
+      "base_salary": 41900,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 1135
+      "self_payment": 1059
     },
     {
-      "base_salary": 46390,
+      "base_salary": 44970,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 1167
+      "self_payment": 1136
     },
     {
-      "base_salary": 47680,
+      "base_salary": 46500,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 1199
+      "self_payment": 1175
     },
     {
-      "base_salary": 49000,
+      "base_salary": 48030,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 1232
+      "self_payment": 1214
     },
     {
-      "base_salary": 50350,
+      "base_salary": 49560,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 1266
+      "self_payment": 1252
     },
     {
-      "base_salary": 51730,
+      "base_salary": 51100,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 1301
+      "self_payment": 1291
     },
     {
-      "base_salary": 53145,
+      "base_salary": 52630,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 1337
+      "self_payment": 1330
     },
     {
-      "base_salary": 54590,
+      "base_salary": 54160,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 1373
+      "self_payment": 1369
     },
     {
-      "base_salary": 56070,
+      "base_salary": 55690,
       "rate_basis_points": 722,
       "self_pay_ratio_basis_points": 3500,
-      "self_payment": 1410
+      "self_payment": 1407
+    },
+    {
+      "base_salary": 57220,
+      "rate_basis_points": 722,
+      "self_pay_ratio_basis_points": 3500,
+      "self_payment": 1446
+    },
+    {
+      "base_salary": 59520,
+      "rate_basis_points": 722,
+      "self_pay_ratio_basis_points": 3500,
+      "self_payment": 1504
+    },
+    {
+      "base_salary": 60290,
+      "rate_basis_points": 722,
+      "self_pay_ratio_basis_points": 3500,
+      "self_payment": 1524
+    },
+    {
+      "base_salary": 63570,
+      "rate_basis_points": 722,
+      "self_pay_ratio_basis_points": 3500,
+      "self_payment": 1606
     }
   ]
 }
