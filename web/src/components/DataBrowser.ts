@@ -122,6 +122,17 @@ export function renderDataBrowser(container: HTMLElement, data: AppData): void {
     fmt(item.self_payment.dependents_2),
     fmt(item.self_payment.dependents_3),
   ]);
+  const pensionRows = data.pension.items.map((item) => {
+    const personalAccount = Math.round(item.base_salary * 2 * 0.15 * 0.35);
+    return [
+      fmt(item.point),
+      fmt(item.base_salary),
+      fmt(item.self_payment),
+      fmt(item.self_payment),
+      fmt(personalAccount),
+      fmt(Math.round(item.base_salary * 2 * 0.15 * 0.65)),
+    ];
+  });
 
   container.innerHTML = `
     <div style="display:flex;flex-direction:column;gap:1rem;">
@@ -190,14 +201,13 @@ export function renderDataBrowser(container: HTMLElement, data: AppData): void {
 
       <div data-subpanel="pension" class="hidden">
         <div class="card">
-          <div class="section-heading">${icon("shield-check")} 退撫舊制自付額</div>
+          <div class="section-heading">${icon("shield-check")} 退撫制度對照</div>
+          <div class="notice notice-blue" style="margin-bottom:10px;">
+            舊制與新制目前使用同一組退撫基金自付額資料；112 年 7 月 1 日後初任者適用個人專戶制，個人月提繳額以本俸 × 2 × 15% × 35% 試算，政府提撥欄僅供制度理解，不列入薪資扣款。
+          </div>
           ${renderTable(
-            ["俸點", "本俸", "退撫自付額"],
-            data.pension.items.map((item) => [
-              fmt(item.point),
-              fmt(item.base_salary),
-              fmt(item.self_payment),
-            ]),
+            ["俸點", "本俸", "舊制自付", "新制自付", "個人專戶自提", "政府提撥"],
+            pensionRows,
             1
           )}
         </div>
