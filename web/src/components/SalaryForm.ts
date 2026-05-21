@@ -33,10 +33,13 @@ function getAvailableTables(data: AppData, rank: number): ProfessionalAllowanceT
 }
 
 function getApplicableSupervisors(data: AppData, rank: number): SupervisoryAllowanceItem[] {
-  const matched = data.supervisoryAllowances.items.filter(
+  return data.supervisoryAllowances.items.filter(
     (item) => item.min_rank <= rank && rank <= item.max_rank
   );
-  return matched.length > 0 ? matched : data.supervisoryAllowances.items;
+}
+
+function firstSupervisorForRank(data: AppData, rank: number): SupervisoryAllowanceItem | undefined {
+  return getApplicableSupervisors(data, rank).at(0);
 }
 
 const SEL = "width:100%;border:1.5px solid var(--c-border);border-radius:8px;padding:8px 12px;font-size:13px;color:var(--c-text);background:var(--c-surface);font-family:inherit;";
@@ -44,6 +47,13 @@ const SEL = "width:100%;border:1.5px solid var(--c-border);border-radius:8px;pad
 export function renderSalaryForm(container: HTMLElement, opts: FormOptions): void {
   const { data, initialScenario, onChange } = opts;
   let scenario: SalaryScenario = { ...initialScenario };
+  let supervisorySelection =
+    scenario.supervisoryAllowance > 0 &&
+    !getApplicableSupervisors(data, scenario.rank).some(
+      (item) => item.monthly_allowance === scenario.supervisoryAllowance
+    )
+      ? "manual"
+      : "auto";
 
   function render(): void {
     const rankEntries = getRankEntries(data, scenario.rank);
@@ -56,8 +66,20 @@ export function renderSalaryForm(container: HTMLElement, opts: FormOptions): voi
       scenario.professionalAllowanceTable = availableTables[0].table_id;
 
     const supervisoryEnabled = scenario.supervisoryAllowance > 0;
+    if (
+      supervisorySelection !== "manual" &&
+      supervisorySelection !== "auto" &&
+      !applicableSupervisors.some((item) => item.category_id === supervisorySelection)
+    ) {
+      supervisorySelection = "auto";
+    }
+    const autoSupervisor = firstSupervisorForRank(data, scenario.rank);
     const selectedSupervisorId =
-      applicableSupervisors.find((i) => i.monthly_allowance === scenario.supervisoryAllowance)?.category_id ?? "manual";
+      supervisorySelection === "manual"
+        ? "manual"
+        : supervisorySelection === "auto"
+          ? "auto"
+          : supervisorySelection;
 
     container.innerHTML = `
       <div class="card salary-form-card">
@@ -131,6 +153,7 @@ export function renderSalaryForm(container: HTMLElement, opts: FormOptions): voi
             <label>
               <span class="field-label">主管類別</span>
               <select id="supervisory-category" class="salary-control" style="${SEL}">
+                <option value="auto" ${selectedSupervisorId==="auto"?"selected":""}>依職等自動判斷${autoSupervisor ? `（${autoSupervisor.monthly_allowance.toLocaleString("zh-TW")} 元）` : ""}</option>
                 <option value="manual" ${selectedSupervisorId==="manual"?"selected":""}>手動輸入</option>
                 ${applicableSupervisors.map((i) =>
                   `<option value="${i.category_id}" ${i.category_id===selectedSupervisorId?"selected":""}>${i.category_name}（${i.monthly_allowance.toLocaleString("zh-TW")} 元）</option>`
@@ -142,7 +165,7 @@ export function renderSalaryForm(container: HTMLElement, opts: FormOptions): voi
               <input id="supervisory-allowance" class="salary-control" type="number" min="0" step="100" value="${scenario.supervisoryAllowance}" style="${SEL}">
             </label>
           </div>
-          <p style="font-size:11px;color:var(--c-text-4);margin-top:6px;">選擇職類自動帶入，亦可手動修改金額</p>
+          <p style="font-size:11px;color:var(--c-text-4);margin-top:6px;">依職等自動套用主管加給表；直接修改金額會切換為手動輸入。</p>
           ` : ""}
         </div>
       </div>
@@ -159,7 +182,6 @@ export function renderSalaryForm(container: HTMLElement, opts: FormOptions): voi
     const categoryId = (container.querySelector("#supervisory-category") as HTMLSelectElement)?.value ?? "manual";
     const manualAllowance = parseInt((container.querySelector("#supervisory-allowance") as HTMLInputElement)?.value || "0", 10);
     const applicableSupervisors = getApplicableSupervisors(data, nextRank);
-    const selectedSupervisor = applicableSupervisors.find((i) => i.category_id === categoryId);
 
     let nextPoint = parseInt((container.querySelector("#point") as HTMLSelectElement).value, 10);
     if (!nextRankEntries.some((e) => e.point === nextPoint) && nextRankEntries.length > 0)
@@ -171,16 +193,32 @@ export function renderSalaryForm(container: HTMLElement, opts: FormOptions): voi
 
     let supervisoryAllowance = 0;
     if (supervisoryEnabled) {
-      if (source === "supervisory-category" && selectedSupervisor) {
-        supervisoryAllowance = selectedSupervisor.monthly_allowance;
-      } else if (categoryId !== "manual" && selectedSupervisor && manualAllowance === 0) {
-        supervisoryAllowance = selectedSupervisor.monthly_allowance;
-      } else {
+      if (source === "supervisory-enabled") {
+        supervisorySelection = "auto";
+      } else if (source === "supervisory-allowance") {
+        supervisorySelection = "manual";
+      } else if (source === "supervisory-category") {
+        supervisorySelection = categoryId;
+      } else if (
+        supervisorySelection !== "manual" &&
+        supervisorySelection !== "auto" &&
+        !applicableSupervisors.some((item) => item.category_id === supervisorySelection)
+      ) {
+        supervisorySelection = "auto";
+      }
+
+      if (supervisorySelection === "manual") {
         supervisoryAllowance = manualAllowance;
+      } else if (supervisorySelection === "auto") {
+        supervisoryAllowance = applicableSupervisors[0]?.monthly_allowance ?? 0;
+      } else {
+        const selectedSupervisor = applicableSupervisors.find(
+          (item) => item.category_id === supervisorySelection
+        );
+        supervisoryAllowance = selectedSupervisor?.monthly_allowance ?? applicableSupervisors[0]?.monthly_allowance ?? 0;
       }
-      if (source === "supervisory-enabled" && supervisoryAllowance === 0 && applicableSupervisors.length > 0) {
-        supervisoryAllowance = applicableSupervisors[0].monthly_allowance;
-      }
+    } else {
+      supervisorySelection = "auto";
     }
 
     scenario = {
